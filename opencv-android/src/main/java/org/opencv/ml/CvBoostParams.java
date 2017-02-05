@@ -87,70 +87,16 @@ public class CvBoostParams extends CvDTreeParams {
     // C++: int CvBoostParams::boost_type
     //
 
-    // C++:   CvBoostParams::CvBoostParams()
-    private static native long CvBoostParams_0();
-
-    //
-    // C++: void CvBoostParams::boost_type
-    //
-
-    // C++: int CvBoostParams::boost_type
-    private static native int get_boost_type_0(long nativeObj);
-
-    //
-    // C++: int CvBoostParams::weak_count
-    //
-
-    // C++: void CvBoostParams::boost_type
-    private static native void set_boost_type_0(long nativeObj, int boost_type);
-
-    //
-    // C++: void CvBoostParams::weak_count
-    //
-
-    // C++: int CvBoostParams::weak_count
-    private static native int get_weak_count_0(long nativeObj);
-
-    //
-    // C++: int CvBoostParams::split_criteria
-    //
-
-    // C++: void CvBoostParams::weak_count
-    private static native void set_weak_count_0(long nativeObj, int weak_count);
-
-    //
-    // C++: void CvBoostParams::split_criteria
-    //
-
-    // C++: int CvBoostParams::split_criteria
-    private static native int get_split_criteria_0(long nativeObj);
-
-    //
-    // C++: double CvBoostParams::weight_trim_rate
-    //
-
-    // C++: void CvBoostParams::split_criteria
-    private static native void set_split_criteria_0(long nativeObj, int split_criteria);
-
-    //
-    // C++: void CvBoostParams::weight_trim_rate
-    //
-
-    // C++: double CvBoostParams::weight_trim_rate
-    private static native double get_weight_trim_rate_0(long nativeObj);
-
-    // C++: void CvBoostParams::weight_trim_rate
-    private static native void set_weight_trim_rate_0(long nativeObj, double weight_trim_rate);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public int get_boost_type() {
 
         int retVal = get_boost_type_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvBoostParams::boost_type
+    //
 
     public void set_boost_type(int boost_type) {
 
@@ -159,12 +105,20 @@ public class CvBoostParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: int CvBoostParams::weak_count
+    //
+
     public int get_weak_count() {
 
         int retVal = get_weak_count_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvBoostParams::weak_count
+    //
 
     public void set_weak_count(int weak_count) {
 
@@ -173,12 +127,20 @@ public class CvBoostParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: int CvBoostParams::split_criteria
+    //
+
     public int get_split_criteria() {
 
         int retVal = get_split_criteria_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvBoostParams::split_criteria
+    //
 
     public void set_split_criteria(int split_criteria) {
 
@@ -187,12 +149,20 @@ public class CvBoostParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: double CvBoostParams::weight_trim_rate
+    //
+
     public double get_weight_trim_rate() {
 
         double retVal = get_weight_trim_rate_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvBoostParams::weight_trim_rate
+    //
 
     public void set_weight_trim_rate(double weight_trim_rate) {
 
@@ -204,4 +174,34 @@ public class CvBoostParams extends CvDTreeParams {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvBoostParams::CvBoostParams()
+    private static native long CvBoostParams_0();
+
+    // C++: int CvBoostParams::boost_type
+    private static native int get_boost_type_0(long nativeObj);
+
+    // C++: void CvBoostParams::boost_type
+    private static native void set_boost_type_0(long nativeObj, int boost_type);
+
+    // C++: int CvBoostParams::weak_count
+    private static native int get_weak_count_0(long nativeObj);
+
+    // C++: void CvBoostParams::weak_count
+    private static native void set_weak_count_0(long nativeObj, int weak_count);
+
+    // C++: int CvBoostParams::split_criteria
+    private static native int get_split_criteria_0(long nativeObj);
+
+    // C++: void CvBoostParams::split_criteria
+    private static native void set_split_criteria_0(long nativeObj, int split_criteria);
+
+    // C++: double CvBoostParams::weight_trim_rate
+    private static native double get_weight_trim_rate_0(long nativeObj);
+
+    // C++: void CvBoostParams::weight_trim_rate
+    private static native void set_weight_trim_rate_0(long nativeObj, double weight_trim_rate);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

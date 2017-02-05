@@ -83,49 +83,16 @@ public class CvNormalBayesClassifier extends CvStatModel {
     // C++:  void CvNormalBayesClassifier::clear()
     //
 
-    // C++:   CvNormalBayesClassifier::CvNormalBayesClassifier()
-    private static native long CvNormalBayesClassifier_0();
-
-    //
-    // C++:  float CvNormalBayesClassifier::predict(Mat samples, Mat* results = 0)
-    //
-
-    // C++:   CvNormalBayesClassifier::CvNormalBayesClassifier(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat())
-    private static native long CvNormalBayesClassifier_1(long trainData_nativeObj,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj);
-
-    private static native long CvNormalBayesClassifier_2(long trainData_nativeObj,
-        long responses_nativeObj);
-
-    //
-    // C++:  bool CvNormalBayesClassifier::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), bool update = false)
-    //
-
-    // C++:  void CvNormalBayesClassifier::clear()
-    private static native void clear_0(long nativeObj);
-
-    // C++:  float CvNormalBayesClassifier::predict(Mat samples, Mat* results = 0)
-    private static native float predict_0(long nativeObj, long samples_nativeObj,
-        long results_nativeObj);
-
-    private static native float predict_1(long nativeObj, long samples_nativeObj);
-
-    // C++:  bool CvNormalBayesClassifier::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), bool update = false)
-    private static native boolean train_0(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj, boolean update);
-
-    private static native boolean train_1(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public void clear() {
 
         clear_0(nativeObj);
 
         return;
     }
+
+    //
+    // C++:  float CvNormalBayesClassifier::predict(Mat samples, Mat* results = 0)
+    //
 
     /**
      * <p>Predicts the response for sample(s).</p>
@@ -169,6 +136,10 @@ public class CvNormalBayesClassifier extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  bool CvNormalBayesClassifier::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), bool update = false)
+    //
 
     /**
      * <p>Trains the model.</p>
@@ -230,4 +201,33 @@ public class CvNormalBayesClassifier extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvNormalBayesClassifier::CvNormalBayesClassifier()
+    private static native long CvNormalBayesClassifier_0();
+
+    // C++:   CvNormalBayesClassifier::CvNormalBayesClassifier(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat())
+    private static native long CvNormalBayesClassifier_1(long trainData_nativeObj,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj);
+
+    private static native long CvNormalBayesClassifier_2(long trainData_nativeObj,
+        long responses_nativeObj);
+
+    // C++:  void CvNormalBayesClassifier::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  float CvNormalBayesClassifier::predict(Mat samples, Mat* results = 0)
+    private static native float predict_0(long nativeObj, long samples_nativeObj,
+        long results_nativeObj);
+
+    private static native float predict_1(long nativeObj, long samples_nativeObj);
+
+    // C++:  bool CvNormalBayesClassifier::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), bool update = false)
+    private static native boolean train_0(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj, boolean update);
+
+    private static native boolean train_1(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

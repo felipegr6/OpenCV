@@ -11,14 +11,15 @@ public class FpsMeter {
     private static final String TAG = "FpsMeter";
     private static final int STEP = 20;
     private static final DecimalFormat FPS_FORMAT = new DecimalFormat("0.00");
-    Paint mPaint;
-    boolean mIsInitialized = false;
-    int mWidth = 0;
-    int mHeight = 0;
+
     private int mFramesCouner;
     private double mFrequency;
     private long mprevFrameTime;
     private String mStrfps;
+    Paint mPaint;
+    boolean mIsInitialized = false;
+    int mWidth = 0;
+    int mHeight = 0;
 
     public void init() {
         mFramesCouner = 0;

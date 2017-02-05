@@ -81,6 +81,10 @@ public class TargetArchs {
         return retVal;
     }
 
+    @Override protected void finalize() throws Throwable {
+        delete(nativeObj);
+    }
+
     // C++: static bool TargetArchs::builtWith(int feature_set)
     private static native boolean builtWith_0(int feature_set);
 
@@ -107,8 +111,4 @@ public class TargetArchs {
 
     // native support for java finalize()
     private static native void delete(long nativeObj);
-
-    @Override protected void finalize() throws Throwable {
-        delete(nativeObj);
-    }
 }

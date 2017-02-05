@@ -6,11 +6,18 @@ import org.opencv.core.Core;
 
 class StaticHelper {
 
-    private static final String TAG = "OpenCV/StaticHelper";
-
-    public static boolean initOpenCV() {
+    public static boolean initOpenCV(boolean InitCuda) {
         boolean result;
         String libs = "";
+
+        if (InitCuda) {
+            loadLibrary("cudart");
+            loadLibrary("nppc");
+            loadLibrary("nppi");
+            loadLibrary("npps");
+            loadLibrary("cufft");
+            loadLibrary("cublas");
+        }
 
         Log.d(TAG, "Trying to get library list");
 
@@ -44,7 +51,7 @@ class StaticHelper {
         Log.d(TAG, "Trying to load library " + Name);
         try {
             System.loadLibrary(Name);
-            Log.d(TAG, "OpenCV libs init was ok!");
+            Log.d(TAG, "Library " + Name + " loaded");
         } catch (UnsatisfiedLinkError e) {
             Log.d(TAG, "Cannot load library \"" + Name + "\"");
             e.printStackTrace();
@@ -72,6 +79,8 @@ class StaticHelper {
 
         return result;
     }
+
+    private static final String TAG = "OpenCV/StaticHelper";
 
     private static native String getLibraryList();
 }

@@ -11,11 +11,11 @@ public class Core {
 
     // these constants are wrapped inside functions to prevent inlining
     private static String getVersion() {
-        return "2.4.8.0";
+        return "2.4.11.0";
     }
 
     private static String getNativeLibraryName() {
-        return "opencv_java248";
+        return "opencv_java2411";
     }
 
     private static int getVersionEpoch() {
@@ -27,7 +27,7 @@ public class Core {
     }
 
     private static int getVersionMinor() {
-        return 8;
+        return 11;
     }
 
     private static int getVersionRevision() {
@@ -90,8 +90,8 @@ public class Core {
      * <code>src</code>, and the same depth as <code>lut</code>.
      * @param interpolation a interpolation
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#lut">org.opencv.core.Core.LUT</a>
-     * @see Mat#convertTo
-     * @see Core#convertScaleAbs
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#convertScaleAbs
      */
     public static void LUT(Mat src, Mat lut, Mat dst, int interpolation) {
 
@@ -121,8 +121,8 @@ public class Core {
      * @param dst output array of the same size and number of channels as
      * <code>src</code>, and the same depth as <code>lut</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#lut">org.opencv.core.Core.LUT</a>
-     * @see Mat#convertTo
-     * @see Core#convertScaleAbs
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#convertScaleAbs
      */
     public static void LUT(Mat src, Mat lut, Mat dst) {
 
@@ -408,10 +408,10 @@ public class Core {
      * specifies elements of the output array to be changed.
      * @param dtype optional depth of the output array (see the discussion below).
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#add">org.opencv.core.Core.add</a>
-     * @see Core#addWeighted
-     * @see Mat#convertTo
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      */
     public static void add(Mat src1, Mat src2, Mat dst, Mat mask, int dtype) {
 
@@ -480,10 +480,10 @@ public class Core {
      * @param mask optional operation mask - 8-bit single channel array, that
      * specifies elements of the output array to be changed.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#add">org.opencv.core.Core.add</a>
-     * @see Core#addWeighted
-     * @see Mat#convertTo
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      */
     public static void add(Mat src1, Mat src2, Mat dst, Mat mask) {
 
@@ -550,10 +550,10 @@ public class Core {
      * input array(s); the depth is defined by <code>dtype</code> or
      * <code>src1</code>/<code>src2</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#add">org.opencv.core.Core.add</a>
-     * @see Core#addWeighted
-     * @see Mat#convertTo
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      */
     public static void add(Mat src1, Mat src2, Mat dst) {
 
@@ -627,10 +627,10 @@ public class Core {
      * specifies elements of the output array to be changed.
      * @param dtype optional depth of the output array (see the discussion below).
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#add">org.opencv.core.Core.add</a>
-     * @see Core#addWeighted
-     * @see Mat#convertTo
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      */
     public static void add(Mat src1, Scalar src2, Mat dst, Mat mask, int dtype) {
 
@@ -700,10 +700,10 @@ public class Core {
      * @param mask optional operation mask - 8-bit single channel array, that
      * specifies elements of the output array to be changed.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#add">org.opencv.core.Core.add</a>
-     * @see Core#addWeighted
-     * @see Mat#convertTo
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      */
     public static void add(Mat src1, Scalar src2, Mat dst, Mat mask) {
 
@@ -771,10 +771,10 @@ public class Core {
      * input array(s); the depth is defined by <code>dtype</code> or
      * <code>src1</code>/<code>src2</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#add">org.opencv.core.Core.add</a>
-     * @see Core#addWeighted
-     * @see Mat#convertTo
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      */
     public static void add(Mat src1, Scalar src2, Mat dst) {
 
@@ -820,10 +820,10 @@ public class Core {
      * the same depth, <code>dtype</code> can be set to <code>-1</code>, which will
      * be equivalent to <code>src1.depth()</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#addweighted">org.opencv.core.Core.addWeighted</a>
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Core#subtract
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void addWeighted(Mat src1, double alpha, Mat src2, double beta, double gamma,
         Mat dst, int dtype) {
@@ -863,15 +863,69 @@ public class Core {
      * @param dst output array that has the same size and number of channels as the
      * input arrays.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#addweighted">org.opencv.core.Core.addWeighted</a>
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Core#subtract
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void addWeighted(Mat src1, double alpha, Mat src2, double beta, double gamma,
         Mat dst) {
 
         addWeighted_1(src1.nativeObj, alpha, src2.nativeObj, beta, gamma, dst.nativeObj);
+
+        return;
+    }
+
+    //
+    // C++:  void arrowedLine(Mat& img, Point pt1, Point pt2, Scalar color, int thickness = 1, int line_type = 8, int shift = 0, double tipLength = 0.1)
+    //
+
+    /**
+     * <p>Draws a arrow segment pointing from the first point to the second one.</p>
+     *
+     * <p>The function <code>arrowedLine</code> draws an arrow between <code>pt1</code>
+     * and <code>pt2</code> points in the image. See also "line".</p>
+     *
+     * @param img Image.
+     * @param pt1 The point the arrow starts from.
+     * @param pt2 The point the arrow points to.
+     * @param color Line color.
+     * @param thickness Line thickness.
+     * @param line_type Type of the line:
+     * <ul>
+     * <li> 8 (or omitted) - 8-connected line.
+     * <li> 4 - 4-connected line.
+     * <li> CV_AA - antialiased line.
+     * </ul>
+     * @param shift Number of fractional bits in the point coordinates.
+     * @param tipLength The length of the arrow tip in relation to the arrow length
+     * @see <a href="http://docs.opencv.org/modules/core/doc/drawing_functions.html#arrowedline">org.opencv.core.Core.arrowedLine</a>
+     */
+    public static void arrowedLine(Mat img, Point pt1, Point pt2, Scalar color, int thickness,
+        int line_type, int shift, double tipLength) {
+
+        arrowedLine_0(img.nativeObj, pt1.x, pt1.y, pt2.x, pt2.y, color.val[0], color.val[1],
+            color.val[2], color.val[3], thickness, line_type, shift, tipLength);
+
+        return;
+    }
+
+    /**
+     * <p>Draws a arrow segment pointing from the first point to the second one.</p>
+     *
+     * <p>The function <code>arrowedLine</code> draws an arrow between <code>pt1</code>
+     * and <code>pt2</code> points in the image. See also "line".</p>
+     *
+     * @param img Image.
+     * @param pt1 The point the arrow starts from.
+     * @param pt2 The point the arrow points to.
+     * @param color Line color.
+     * @see <a href="http://docs.opencv.org/modules/core/doc/drawing_functions.html#arrowedline">org.opencv.core.Core.arrowedLine</a>
+     */
+    public static void arrowedLine(Mat img, Point pt1, Point pt2, Scalar color) {
+
+        arrowedLine_1(img.nativeObj, pt1.x, pt1.y, pt2.x, pt2.y, color.val[0], color.val[1],
+            color.val[2], color.val[3]);
 
         return;
     }
@@ -1297,8 +1351,8 @@ public class Core {
      * </ul>
      * @param ctype type of the matrixl; it equals 'CV_64F' by default.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#calccovarmatrix">org.opencv.core.Core.calcCovarMatrix</a>
-     * @see Core#Mahalanobis
-     * @see Core#mulTransposed
+     * @see org.opencv.core.Core#Mahalanobis
+     * @see org.opencv.core.Core#mulTransposed
      */
     public static void calcCovarMatrix(Mat samples, Mat covar, Mat mean, int flags, int ctype) {
 
@@ -1366,8 +1420,8 @@ public class Core {
      * vector in this case.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#calccovarmatrix">org.opencv.core.Core.calcCovarMatrix</a>
-     * @see Core#Mahalanobis
-     * @see Core#mulTransposed
+     * @see org.opencv.core.Core#Mahalanobis
+     * @see org.opencv.core.Core#mulTransposed
      */
     public static void calcCovarMatrix(Mat samples, Mat covar, Mat mean, int flags) {
 
@@ -1666,9 +1720,9 @@ public class Core {
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#compare">org.opencv.core.Core.compare</a>
      * @see org.opencv.imgproc.Imgproc#threshold
-     * @see Core#max
-     * @see Core#checkRange
-     * @see Core#min
+     * @see org.opencv.core.Core#max
+     * @see org.opencv.core.Core#checkRange
+     * @see org.opencv.core.Core#min
      */
     public static void compare(Mat src1, Mat src2, Mat dst, int cmpop) {
 
@@ -1738,9 +1792,9 @@ public class Core {
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#compare">org.opencv.core.Core.compare</a>
      * @see org.opencv.imgproc.Imgproc#threshold
-     * @see Core#max
-     * @see Core#checkRange
-     * @see Core#min
+     * @see org.opencv.core.Core#max
+     * @see org.opencv.core.Core#checkRange
+     * @see org.opencv.core.Core#min
      */
     public static void compare(Mat src1, Scalar src2, Mat dst, int cmpop) {
 
@@ -1768,8 +1822,8 @@ public class Core {
      * @param lowerToUpper operation flag; if true, the lower half is copied to the
      * upper half. Otherwise, the upper half is copied to the lower half.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#completesymm">org.opencv.core.Core.completeSymm</a>
-     * @see Core#transpose
-     * @see Core#flip
+     * @see org.opencv.core.Core#transpose
+     * @see org.opencv.core.Core#flip
      */
     public static void completeSymm(Mat mtx, boolean lowerToUpper) {
 
@@ -1790,8 +1844,8 @@ public class Core {
      *
      * @param mtx input-output floating-point square matrix.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#completesymm">org.opencv.core.Core.completeSymm</a>
-     * @see Core#transpose
-     * @see Core#flip
+     * @see org.opencv.core.Core#transpose
+     * @see org.opencv.core.Core#flip
      */
     public static void completeSymm(Mat mtx) {
 
@@ -1837,7 +1891,7 @@ public class Core {
      * @param alpha optional scale factor.
      * @param beta optional delta added to the scaled values.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#convertscaleabs">org.opencv.core.Core.convertScaleAbs</a>
-     * @see Mat#convertTo
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void convertScaleAbs(Mat src, Mat dst, double alpha, double beta) {
 
@@ -1877,7 +1931,7 @@ public class Core {
      * @param src input array.
      * @param dst output array.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#convertscaleabs">org.opencv.core.Core.convertScaleAbs</a>
-     * @see Mat#convertTo
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void convertScaleAbs(Mat src, Mat dst) {
 
@@ -1899,11 +1953,11 @@ public class Core {
      *
      * @param src single-channel array.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#countnonzero">org.opencv.core.Core.countNonZero</a>
-     * @see Core#minMaxLoc
-     * @see Core#calcCovarMatrix
-     * @see Core#meanStdDev
-     * @see Core#norm
-     * @see Core#mean
+     * @see org.opencv.core.Core#minMaxLoc
+     * @see org.opencv.core.Core#calcCovarMatrix
+     * @see org.opencv.core.Core#meanStdDev
+     * @see org.opencv.core.Core#norm
+     * @see org.opencv.core.Core#mean
      */
     public static int countNonZero(Mat src) {
 
@@ -2018,9 +2072,9 @@ public class Core {
      * higher-dimensional transforms and so forth.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#dct">org.opencv.core.Core.dct</a>
-     * @see Core#dft
-     * @see Core#idct
-     * @see Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#dft
+     * @see org.opencv.core.Core#idct
+     * @see org.opencv.core.Core#getOptimalDFTSize
      */
     public static void dct(Mat src, Mat dst, int flags) {
 
@@ -2100,9 +2154,9 @@ public class Core {
      * @param src input floating-point array.
      * @param dst output array of the same size and type as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#dct">org.opencv.core.Core.dct</a>
-     * @see Core#dft
-     * @see Core#idct
-     * @see Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#dft
+     * @see org.opencv.core.Core#idct
+     * @see org.opencv.core.Core#getOptimalDFTSize
      */
     public static void dct(Mat src, Mat dst) {
 
@@ -2129,10 +2183,10 @@ public class Core {
      * @param mtx input matrix that must have <code>CV_32FC1</code> or
      * <code>CV_64FC1</code> type and square size.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#determinant">org.opencv.core.Core.determinant</a>
-     * @see Core#invert
-     * @see Core#solve
-     * @see Core#eigen
-     * @see Core#trace
+     * @see org.opencv.core.Core#invert
+     * @see org.opencv.core.Core#solve
+     * @see org.opencv.core.Core#eigen
+     * @see org.opencv.core.Core#trace
      */
     public static double determinant(Mat mtx) {
 
@@ -2390,14 +2444,14 @@ public class Core {
      * cross-correlation or convolution using DFT.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#dft">org.opencv.core.Core.dft</a>
      * @see org.opencv.imgproc.Imgproc#matchTemplate
-     * @see Core#mulSpectrums
-     * @see Core#cartToPolar
-     * @see Core#flip
-     * @see Core#magnitude
-     * @see Core#phase
-     * @see Core#dct
+     * @see org.opencv.core.Core#mulSpectrums
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#flip
+     * @see org.opencv.core.Core#magnitude
+     * @see org.opencv.core.Core#phase
+     * @see org.opencv.core.Core#dct
      * @see org.opencv.imgproc.Imgproc#filter2D
-     * @see Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#getOptimalDFTSize
      */
     public static void dft(Mat src, Mat dst, int flags, int nonzeroRows) {
 
@@ -2613,14 +2667,14 @@ public class Core {
      * @param dst output array whose size and type depends on the <code>flags</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#dft">org.opencv.core.Core.dft</a>
      * @see org.opencv.imgproc.Imgproc#matchTemplate
-     * @see Core#mulSpectrums
-     * @see Core#cartToPolar
-     * @see Core#flip
-     * @see Core#magnitude
-     * @see Core#phase
-     * @see Core#dct
+     * @see org.opencv.core.Core#mulSpectrums
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#flip
+     * @see org.opencv.core.Core#magnitude
+     * @see org.opencv.core.Core#phase
+     * @see org.opencv.core.Core#dct
      * @see org.opencv.imgproc.Imgproc#filter2D
-     * @see Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#getOptimalDFTSize
      */
     public static void dft(Mat src, Mat dst) {
 
@@ -2660,9 +2714,9 @@ public class Core {
      * array-by-array division, you can only pass <code>-1</code> when
      * <code>src1.depth()==src2.depth()</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(Mat src1, Mat src2, Mat dst, double scale, int dtype) {
 
@@ -2694,9 +2748,9 @@ public class Core {
      * @param dst output array of the same size and type as <code>src2</code>.
      * @param scale scalar factor.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(Mat src1, Mat src2, Mat dst, double scale) {
 
@@ -2727,9 +2781,9 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src2</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(Mat src1, Mat src2, Mat dst) {
 
@@ -2768,9 +2822,9 @@ public class Core {
      * array-by-array division, you can only pass <code>-1</code> when
      * <code>src1.depth()==src2.depth()</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(double scale, Mat src2, Mat dst, int dtype) {
 
@@ -2801,9 +2855,9 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src2</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(double scale, Mat src2, Mat dst) {
 
@@ -2843,9 +2897,9 @@ public class Core {
      * array-by-array division, you can only pass <code>-1</code> when
      * <code>src1.depth()==src2.depth()</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(Mat src1, Scalar src2, Mat dst, double scale, int dtype) {
 
@@ -2878,9 +2932,9 @@ public class Core {
      * @param dst output array of the same size and type as <code>src2</code>.
      * @param scale scalar factor.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(Mat src1, Scalar src2, Mat dst, double scale) {
 
@@ -2912,9 +2966,9 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src2</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#divide">org.opencv.core.Core.divide</a>
-     * @see Core#multiply
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Core#multiply
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void divide(Mat src1, Scalar src2, Mat dst) {
 
@@ -2951,7 +3005,7 @@ public class Core {
      * type as <code>src</code>; the eigenvectors are stored as subsequent matrix
      * rows, in the same order as the corresponding eigenvalues.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#eigen">org.opencv.core.Core.eigen</a>
-     * @see Core#completeSymm
+     * @see org.opencv.core.Core#completeSymm
      */
     public static boolean eigen(Mat src, boolean computeEigenvectors, Mat eigenvalues,
         Mat eigenvectors) {
@@ -3218,13 +3272,13 @@ public class Core {
      * @param src input array.
      * @param dst output array of the same size and type as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#exp">org.opencv.core.Core.exp</a>
-     * @see Core#log
-     * @see Core#cartToPolar
-     * @see Core#pow
-     * @see Core#sqrt
-     * @see Core#magnitude
-     * @see Core#polarToCart
-     * @see Core#phase
+     * @see org.opencv.core.Core#log
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#pow
+     * @see org.opencv.core.Core#sqrt
+     * @see org.opencv.core.Core#magnitude
+     * @see org.opencv.core.Core#polarToCart
+     * @see org.opencv.core.Core#phase
      */
     public static void exp(Mat src, Mat dst) {
 
@@ -3420,9 +3474,9 @@ public class Core {
      * y-axis. Negative value (for example, -1) means flipping around both axes (see
      * the discussion below for the formulas).
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#flip">org.opencv.core.Core.flip</a>
-     * @see Core#repeat
-     * @see Core#transpose
-     * @see Core#completeSymm
+     * @see org.opencv.core.Core#repeat
+     * @see org.opencv.core.Core#transpose
+     * @see org.opencv.core.Core#completeSymm
      */
     public static void flip(Mat src, Mat dst, int flipCode) {
 
@@ -3432,7 +3486,7 @@ public class Core {
     }
 
     //
-    // C++:  void gemm(Mat src1, Mat src2, double alpha, Mat src3, double gamma, Mat& dst, int flags = 0)
+    // C++:  void gemm(Mat src1, Mat src2, double alpha, Mat src3, double beta, Mat& dst, int flags = 0)
     //
 
     /**
@@ -3459,7 +3513,7 @@ public class Core {
      * @param alpha weight of the matrix product.
      * @param src3 third optional delta matrix added to the matrix product; it
      * should have the same type as <code>src1</code> and <code>src2</code>.
-     * @param gamma a gamma
+     * @param beta weight of <code>src3</code>.
      * @param dst output matrix; it has the proper size and the same type as input
      * matrices.
      * @param flags operation flags:
@@ -3469,13 +3523,13 @@ public class Core {
      * <li> GEMM_3_T transposes <code>src3</code>.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#gemm">org.opencv.core.Core.gemm</a>
-     * @see Core#mulTransposed
-     * @see Core#transform
+     * @see org.opencv.core.Core#mulTransposed
+     * @see org.opencv.core.Core#transform
      */
-    public static void gemm(Mat src1, Mat src2, double alpha, Mat src3, double gamma, Mat dst,
+    public static void gemm(Mat src1, Mat src2, double alpha, Mat src3, double beta, Mat dst,
         int flags) {
 
-        gemm_0(src1.nativeObj, src2.nativeObj, alpha, src3.nativeObj, gamma, dst.nativeObj, flags);
+        gemm_0(src1.nativeObj, src2.nativeObj, alpha, src3.nativeObj, beta, dst.nativeObj, flags);
 
         return;
     }
@@ -3504,16 +3558,16 @@ public class Core {
      * @param alpha weight of the matrix product.
      * @param src3 third optional delta matrix added to the matrix product; it
      * should have the same type as <code>src1</code> and <code>src2</code>.
-     * @param gamma a gamma
+     * @param beta weight of <code>src3</code>.
      * @param dst output matrix; it has the proper size and the same type as input
      * matrices.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#gemm">org.opencv.core.Core.gemm</a>
-     * @see Core#mulTransposed
-     * @see Core#transform
+     * @see org.opencv.core.Core#mulTransposed
+     * @see org.opencv.core.Core#transform
      */
-    public static void gemm(Mat src1, Mat src2, double alpha, Mat src3, double gamma, Mat dst) {
+    public static void gemm(Mat src1, Mat src2, double alpha, Mat src3, double beta, Mat dst) {
 
-        gemm_1(src1.nativeObj, src2.nativeObj, alpha, src3.nativeObj, gamma, dst.nativeObj);
+        gemm_1(src1.nativeObj, src2.nativeObj, alpha, src3.nativeObj, beta, dst.nativeObj);
 
         return;
     }
@@ -3568,6 +3622,47 @@ public class Core {
     }
 
     //
+    // C++:  int getNumThreads()
+    //
+
+    /**
+     * <p>Returns the number of threads used by OpenCV for parallel regions.
+     * Always returns 1 if OpenCV is built without threading support.</p>
+     *
+     * <p>The exact meaning of return value depends on the threading framework used by
+     * OpenCV library:</p>
+     * <ul>
+     * <li> TBB – The number of threads, that OpenCV will try to use for
+     * parallel regions.
+     * </ul>
+     * <p>If there is any <code>tbb.thread_scheduler_init</code> in user code
+     * conflicting with OpenCV, then function returns default number of threads used
+     * by TBB library.</p>
+     * <ul>
+     * <li> OpenMP – An upper bound on the number of threads that could be used
+     * to form a new team.
+     * <li> Concurrency – The number of threads, that OpenCV will try to use for
+     * parallel regions.
+     * <li> GCD – Unsupported; returns the GCD thread pool limit (512) for
+     * compatibility.
+     * <li> C= – The number of threads, that OpenCV will try to use for parallel
+     * regions, if before called <code>setNumThreads</code> with <code>threads >
+     * 0</code>, otherwise returns the number of logical CPUs, available for the
+     * process.
+     * </ul>
+     *
+     * @see <a href="http://docs.opencv.org/modules/core/doc/utility_and_system_functions_and_macros.html#getnumthreads">org.opencv.core.Core.getNumThreads</a>
+     * @see org.opencv.core.Core#getThreadNum
+     * @see org.opencv.core.Core#setNumThreads
+     */
+    public static int getNumThreads() {
+
+        int retVal = getNumThreads_0();
+
+        return retVal;
+    }
+
+    //
     // C++:  int getNumberOfCPUs()
     //
 
@@ -3613,15 +3708,50 @@ public class Core {
      *
      * @param vecsize vector size.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#getoptimaldftsize">org.opencv.core.Core.getOptimalDFTSize</a>
-     * @see Core#dft
-     * @see Core#dct
-     * @see Core#idct
-     * @see Core#mulSpectrums
-     * @see Core#idft
+     * @see org.opencv.core.Core#dft
+     * @see org.opencv.core.Core#dct
+     * @see org.opencv.core.Core#idct
+     * @see org.opencv.core.Core#mulSpectrums
+     * @see org.opencv.core.Core#idft
      */
     public static int getOptimalDFTSize(int vecsize) {
 
         int retVal = getOptimalDFTSize_0(vecsize);
+
+        return retVal;
+    }
+
+    //
+    // C++:  int getThreadNum()
+    //
+
+    /**
+     * <p>Returns the index of the currently executed thread within the current
+     * parallel region.
+     * Always returns 0 if called outside of parallel region.</p>
+     *
+     * <p>The exact meaning of return value depends on the threading framework used by
+     * OpenCV library:</p>
+     * <ul>
+     * <li> TBB – Unsupported with current 4.1 TBB release. May be will be
+     * supported in future.
+     * <li> OpenMP – The thread number, within the current team, of the calling
+     * thread.
+     * <li> Concurrency – An ID for the virtual processor that the current
+     * context is executing on (0 for master thread and unique number for others,
+     * but not necessary 1,2,3,...).
+     * <li> GCD – System calling thread's ID. Never returns 0 inside parallel
+     * region.
+     * <li> C= – The index of the current parallel task.
+     * </ul>
+     *
+     * @see <a href="http://docs.opencv.org/modules/core/doc/utility_and_system_functions_and_macros.html#getthreadnum">org.opencv.core.Core.getThreadNum</a>
+     * @see org.opencv.core.Core#getNumThreads
+     * @see org.opencv.core.Core#setNumThreads
+     */
+    public static int getThreadNum() {
+
+        int retVal = getThreadNum_0();
 
         return retVal;
     }
@@ -3700,10 +3830,10 @@ public class Core {
      * @param dst output array of the same size and type as <code>src</code>.
      * @param flags operation flags.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#idct">org.opencv.core.Core.idct</a>
-     * @see Core#dft
-     * @see Core#dct
-     * @see Core#getOptimalDFTSize
-     * @see Core#idft
+     * @see org.opencv.core.Core#dft
+     * @see org.opencv.core.Core#dct
+     * @see org.opencv.core.Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#idft
      */
     public static void idct(Mat src, Mat dst, int flags) {
 
@@ -3721,10 +3851,10 @@ public class Core {
      * @param src input floating-point single-channel array.
      * @param dst output array of the same size and type as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#idct">org.opencv.core.Core.idct</a>
-     * @see Core#dft
-     * @see Core#dct
-     * @see Core#getOptimalDFTSize
-     * @see Core#idft
+     * @see org.opencv.core.Core#dft
+     * @see org.opencv.core.Core#dct
+     * @see org.opencv.core.Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#idft
      */
     public static void idct(Mat src, Mat dst) {
 
@@ -3757,11 +3887,11 @@ public class Core {
      * the rows have undefined content (see the convolution sample in "dft"
      * description.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#idft">org.opencv.core.Core.idft</a>
-     * @see Core#dft
-     * @see Core#dct
-     * @see Core#getOptimalDFTSize
-     * @see Core#idct
-     * @see Core#mulSpectrums
+     * @see org.opencv.core.Core#dft
+     * @see org.opencv.core.Core#dct
+     * @see org.opencv.core.Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#idct
+     * @see org.opencv.core.Core#mulSpectrums
      */
     public static void idft(Mat src, Mat dst, int flags, int nonzeroRows) {
 
@@ -3786,11 +3916,11 @@ public class Core {
      * @param src input floating-point real or complex array.
      * @param dst output array whose size and type depend on the <code>flags</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#idft">org.opencv.core.Core.idft</a>
-     * @see Core#dft
-     * @see Core#dct
-     * @see Core#getOptimalDFTSize
-     * @see Core#idct
-     * @see Core#mulSpectrums
+     * @see org.opencv.core.Core#dft
+     * @see org.opencv.core.Core#dct
+     * @see org.opencv.core.Core#getOptimalDFTSize
+     * @see org.opencv.core.Core#idct
+     * @see org.opencv.core.Core#mulSpectrums
      */
     public static void idft(Mat src, Mat dst) {
 
@@ -3897,7 +4027,7 @@ public class Core {
      * and positively defined.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#invert">org.opencv.core.Core.invert</a>
-     * @see Core#solve
+     * @see org.opencv.core.Core#solve
      */
     public static double invert(Mat src, Mat dst, int flags) {
 
@@ -3934,7 +4064,7 @@ public class Core {
      * @param dst output matrix of <code>N x M</code> size and the same type as
      * <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#invert">org.opencv.core.Core.invert</a>
-     * @see Core#solve
+     * @see org.opencv.core.Core#solve
      */
     public static double invert(Mat src, Mat dst) {
 
@@ -3974,7 +4104,14 @@ public class Core {
      * opencv_source_code/samples/python2/kmeans.py
      * </ul>
      *
-     * @param data Data for clustering.
+     * @param data Data for clustering. An array of N-Dimensional points with float
+     * coordinates is needed. Examples of this array can be:
+     * <ul>
+     * <li> <code>Mat points(count, 2, CV_32F);</code>
+     * <li> <code>Mat points(count, 1, CV_32FC2);</code>
+     * <li> <code>Mat points(1, count, CV_32FC2);</code>
+     * <li> <code>std.vector<cv.Point2f> points(sampleCount);</code>
+     * </ul>
      * @param K Number of clusters to split the set by.
      * @param bestLabels a bestLabels
      * @param criteria The algorithm termination criteria, that is, the maximum
@@ -4037,7 +4174,14 @@ public class Core {
      * opencv_source_code/samples/python2/kmeans.py
      * </ul>
      *
-     * @param data Data for clustering.
+     * @param data Data for clustering. An array of N-Dimensional points with float
+     * coordinates is needed. Examples of this array can be:
+     * <ul>
+     * <li> <code>Mat points(count, 2, CV_32F);</code>
+     * <li> <code>Mat points(count, 1, CV_32FC2);</code>
+     * <li> <code>Mat points(1, count, CV_32FC2);</code>
+     * <li> <code>std.vector<cv.Point2f> points(sampleCount);</code>
+     * </ul>
      * @param K Number of clusters to split the set by.
      * @param bestLabels a bestLabels
      * @param criteria The algorithm termination criteria, that is, the maximum
@@ -4181,13 +4325,13 @@ public class Core {
      * @param src input array.
      * @param dst output array of the same size and type as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#log">org.opencv.core.Core.log</a>
-     * @see Core#cartToPolar
-     * @see Core#pow
-     * @see Core#sqrt
-     * @see Core#magnitude
-     * @see Core#polarToCart
-     * @see Core#exp
-     * @see Core#phase
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#pow
+     * @see org.opencv.core.Core#sqrt
+     * @see org.opencv.core.Core#magnitude
+     * @see org.opencv.core.Core#polarToCart
+     * @see org.opencv.core.Core#exp
+     * @see org.opencv.core.Core#phase
      */
     public static void log(Mat src, Mat dst) {
 
@@ -4214,10 +4358,10 @@ public class Core {
      * the same size as <code>x</code>.
      * @param magnitude output array of the same size and type as <code>x</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#magnitude">org.opencv.core.Core.magnitude</a>
-     * @see Core#cartToPolar
-     * @see Core#phase
-     * @see Core#sqrt
-     * @see Core#polarToCart
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#phase
+     * @see org.opencv.core.Core#sqrt
+     * @see org.opencv.core.Core#polarToCart
      */
     public static void magnitude(Mat x, Mat y, Mat magnitude) {
 
@@ -4253,10 +4397,10 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src1</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#max">org.opencv.core.Core.max</a>
-     * @see Core#compare
-     * @see Core#inRange
-     * @see Core#minMaxLoc
-     * @see Core#min
+     * @see org.opencv.core.Core#compare
+     * @see org.opencv.core.Core#inRange
+     * @see org.opencv.core.Core#minMaxLoc
+     * @see org.opencv.core.Core#min
      */
     public static void max(Mat src1, Mat src2, Mat dst) {
 
@@ -4292,10 +4436,10 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src1</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#max">org.opencv.core.Core.max</a>
-     * @see Core#compare
-     * @see Core#inRange
-     * @see Core#minMaxLoc
-     * @see Core#min
+     * @see org.opencv.core.Core#compare
+     * @see org.opencv.core.Core#inRange
+     * @see org.opencv.core.Core#minMaxLoc
+     * @see org.opencv.core.Core#min
      */
     public static void max(Mat src1, Scalar src2, Mat dst) {
 
@@ -4323,10 +4467,10 @@ public class Core {
      * result can be stored in "Scalar_".
      * @param mask optional operation mask.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#mean">org.opencv.core.Core.mean</a>
-     * @see Core#countNonZero
-     * @see Core#meanStdDev
-     * @see Core#norm
-     * @see Core#minMaxLoc
+     * @see org.opencv.core.Core#countNonZero
+     * @see org.opencv.core.Core#meanStdDev
+     * @see org.opencv.core.Core#norm
+     * @see org.opencv.core.Core#minMaxLoc
      */
     public static Scalar mean(Mat src, Mat mask) {
 
@@ -4349,10 +4493,10 @@ public class Core {
      * @param src input array that should have from 1 to 4 channels so that the
      * result can be stored in "Scalar_".
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#mean">org.opencv.core.Core.mean</a>
-     * @see Core#countNonZero
-     * @see Core#meanStdDev
-     * @see Core#norm
-     * @see Core#minMaxLoc
+     * @see org.opencv.core.Core#countNonZero
+     * @see org.opencv.core.Core#meanStdDev
+     * @see org.opencv.core.Core#norm
+     * @see org.opencv.core.Core#minMaxLoc
      */
     public static Scalar mean(Mat src) {
 
@@ -4390,11 +4534,11 @@ public class Core {
      * @param stddev output parameter: calculateded standard deviation.
      * @param mask optional operation mask.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#meanstddev">org.opencv.core.Core.meanStdDev</a>
-     * @see Core#countNonZero
-     * @see Core#calcCovarMatrix
-     * @see Core#minMaxLoc
-     * @see Core#norm
-     * @see Core#mean
+     * @see org.opencv.core.Core#countNonZero
+     * @see org.opencv.core.Core#calcCovarMatrix
+     * @see org.opencv.core.Core#minMaxLoc
+     * @see org.opencv.core.Core#norm
+     * @see org.opencv.core.Core#mean
      */
     public static void meanStdDev(Mat src, MatOfDouble mean, MatOfDouble stddev, Mat mask) {
         Mat mean_mat = mean;
@@ -4428,11 +4572,11 @@ public class Core {
      * @param mean output parameter: calculated mean value.
      * @param stddev output parameter: calculateded standard deviation.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#meanstddev">org.opencv.core.Core.meanStdDev</a>
-     * @see Core#countNonZero
-     * @see Core#calcCovarMatrix
-     * @see Core#minMaxLoc
-     * @see Core#norm
-     * @see Core#mean
+     * @see org.opencv.core.Core#countNonZero
+     * @see org.opencv.core.Core#calcCovarMatrix
+     * @see org.opencv.core.Core#minMaxLoc
+     * @see org.opencv.core.Core#norm
+     * @see org.opencv.core.Core#mean
      */
     public static void meanStdDev(Mat src, MatOfDouble mean, MatOfDouble stddev) {
         Mat mean_mat = mean;
@@ -4463,9 +4607,9 @@ public class Core {
      * <code>mv[0]</code>; The number of channels will be the total number of
      * channels in the matrix array.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#merge">org.opencv.core.Core.merge</a>
-     * @see Mat#reshape
-     * @see Core#mixChannels
-     * @see Core#split
+     * @see org.opencv.core.Mat#reshape
+     * @see org.opencv.core.Core#mixChannels
+     * @see org.opencv.core.Core#split
      */
     public static void merge(List<Mat> mv, Mat dst) {
         Mat mv_mat = Converters.vector_Mat_to_Mat(mv);
@@ -4501,10 +4645,10 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src1</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#min">org.opencv.core.Core.min</a>
-     * @see Core#max
-     * @see Core#compare
-     * @see Core#inRange
-     * @see Core#minMaxLoc
+     * @see org.opencv.core.Core#max
+     * @see org.opencv.core.Core#compare
+     * @see org.opencv.core.Core#inRange
+     * @see org.opencv.core.Core#minMaxLoc
      */
     public static void min(Mat src1, Mat src2, Mat dst) {
 
@@ -4540,10 +4684,10 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src1</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#min">org.opencv.core.Core.min</a>
-     * @see Core#max
-     * @see Core#compare
-     * @see Core#inRange
-     * @see Core#minMaxLoc
+     * @see org.opencv.core.Core#max
+     * @see org.opencv.core.Core#compare
+     * @see org.opencv.core.Core#inRange
+     * @see org.opencv.core.Core#minMaxLoc
      */
     public static void min(Mat src1, Scalar src2, Mat dst) {
 
@@ -4611,8 +4755,8 @@ public class Core {
      * image channels; as a special case, when <code>fromTo[k*2]</code> is negative,
      * the corresponding output channel is filled with zero.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#mixchannels">org.opencv.core.Core.mixChannels</a>
-     * @see Core#merge
-     * @see Core#split
+     * @see org.opencv.core.Core#merge
+     * @see org.opencv.core.Core#split
      * @see org.opencv.imgproc.Imgproc#cvtColor
      */
     public static void mixChannels(List<Mat> src, List<Mat> dst, MatOfInt fromTo) {
@@ -4647,7 +4791,8 @@ public class Core {
      * @param c a c
      * @param flags operation flags; currently, the only supported flag is
      * <code>DFT_ROWS</code>, which indicates that each row of <code>src1</code> and
-     * <code>src2</code> is an independent 1D Fourier spectrum.
+     * <code>src2</code> is an independent 1D Fourier spectrum. If you do not want
+     * to use this flag, then simply add a "0" as value.
      * @param conjB optional flag that conjugates the second input array before the
      * multiplication (true) or not (false).
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#mulspectrums">org.opencv.core.Core.mulSpectrums</a>
@@ -4678,7 +4823,8 @@ public class Core {
      * @param c a c
      * @param flags operation flags; currently, the only supported flag is
      * <code>DFT_ROWS</code>, which indicates that each row of <code>src1</code> and
-     * <code>src2</code> is an independent 1D Fourier spectrum.
+     * <code>src2</code> is an independent 1D Fourier spectrum. If you do not want
+     * to use this flag, then simply add a "0" as value.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#mulspectrums">org.opencv.core.Core.mulSpectrums</a>
      */
     public static void mulSpectrums(Mat a, Mat b, Mat c, int flags) {
@@ -4727,10 +4873,10 @@ public class Core {
      * be <code>type=CV_MAT_DEPTH(dtype)</code> that should be either
      * <code>CV_32F</code> or <code>CV_64F</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multransposed">org.opencv.core.Core.mulTransposed</a>
-     * @see Core#calcCovarMatrix
-     * @see Core#repeat
-     * @see Core#reduce
-     * @see Core#gemm
+     * @see org.opencv.core.Core#calcCovarMatrix
+     * @see org.opencv.core.Core#repeat
+     * @see org.opencv.core.Core#reduce
+     * @see org.opencv.core.Core#gemm
      */
     public static void mulTransposed(Mat src, Mat dst, boolean aTa, Mat delta, double scale,
         int dtype) {
@@ -4771,10 +4917,10 @@ public class Core {
      * description below.
      * @param scale Optional scale factor for the matrix product.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multransposed">org.opencv.core.Core.mulTransposed</a>
-     * @see Core#calcCovarMatrix
-     * @see Core#repeat
-     * @see Core#reduce
-     * @see Core#gemm
+     * @see org.opencv.core.Core#calcCovarMatrix
+     * @see org.opencv.core.Core#repeat
+     * @see org.opencv.core.Core#reduce
+     * @see org.opencv.core.Core#gemm
      */
     public static void mulTransposed(Mat src, Mat dst, boolean aTa, Mat delta, double scale) {
 
@@ -4805,10 +4951,10 @@ public class Core {
      * @param aTa Flag specifying the multiplication ordering. See the description
      * below.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multransposed">org.opencv.core.Core.mulTransposed</a>
-     * @see Core#calcCovarMatrix
-     * @see Core#repeat
-     * @see Core#reduce
-     * @see Core#gemm
+     * @see org.opencv.core.Core#calcCovarMatrix
+     * @see org.opencv.core.Core#repeat
+     * @see org.opencv.core.Core#reduce
+     * @see org.opencv.core.Core#gemm
      */
     public static void mulTransposed(Mat src, Mat dst, boolean aTa) {
 
@@ -4845,14 +4991,14 @@ public class Core {
      * @param scale optional scale factor.
      * @param dtype a dtype
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multiply">org.opencv.core.Core.multiply</a>
-     * @see Core#divide
-     * @see Mat#convertTo
-     * @see Core#addWeighted
-     * @see Core#add
+     * @see org.opencv.core.Core#divide
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
      * @see org.opencv.imgproc.Imgproc#accumulateSquare
      * @see org.opencv.imgproc.Imgproc#accumulate
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      * @see org.opencv.imgproc.Imgproc#accumulateProduct
      */
     public static void multiply(Mat src1, Mat src2, Mat dst, double scale, int dtype) {
@@ -4885,14 +5031,14 @@ public class Core {
      * @param dst output array of the same size and type as <code>src1</code>.
      * @param scale optional scale factor.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multiply">org.opencv.core.Core.multiply</a>
-     * @see Core#divide
-     * @see Mat#convertTo
-     * @see Core#addWeighted
-     * @see Core#add
+     * @see org.opencv.core.Core#divide
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
      * @see org.opencv.imgproc.Imgproc#accumulateSquare
      * @see org.opencv.imgproc.Imgproc#accumulate
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      * @see org.opencv.imgproc.Imgproc#accumulateProduct
      */
     public static void multiply(Mat src1, Mat src2, Mat dst, double scale) {
@@ -4924,14 +5070,14 @@ public class Core {
      * <code>src1</code>.
      * @param dst output array of the same size and type as <code>src1</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multiply">org.opencv.core.Core.multiply</a>
-     * @see Core#divide
-     * @see Mat#convertTo
-     * @see Core#addWeighted
-     * @see Core#add
+     * @see org.opencv.core.Core#divide
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
      * @see org.opencv.imgproc.Imgproc#accumulateSquare
      * @see org.opencv.imgproc.Imgproc#accumulate
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      * @see org.opencv.imgproc.Imgproc#accumulateProduct
      */
     public static void multiply(Mat src1, Mat src2, Mat dst) {
@@ -4969,14 +5115,14 @@ public class Core {
      * @param scale optional scale factor.
      * @param dtype a dtype
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multiply">org.opencv.core.Core.multiply</a>
-     * @see Core#divide
-     * @see Mat#convertTo
-     * @see Core#addWeighted
-     * @see Core#add
+     * @see org.opencv.core.Core#divide
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
      * @see org.opencv.imgproc.Imgproc#accumulateSquare
      * @see org.opencv.imgproc.Imgproc#accumulate
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      * @see org.opencv.imgproc.Imgproc#accumulateProduct
      */
     public static void multiply(Mat src1, Scalar src2, Mat dst, double scale, int dtype) {
@@ -5010,14 +5156,14 @@ public class Core {
      * @param dst output array of the same size and type as <code>src1</code>.
      * @param scale optional scale factor.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multiply">org.opencv.core.Core.multiply</a>
-     * @see Core#divide
-     * @see Mat#convertTo
-     * @see Core#addWeighted
-     * @see Core#add
+     * @see org.opencv.core.Core#divide
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
      * @see org.opencv.imgproc.Imgproc#accumulateSquare
      * @see org.opencv.imgproc.Imgproc#accumulate
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      * @see org.opencv.imgproc.Imgproc#accumulateProduct
      */
     public static void multiply(Mat src1, Scalar src2, Mat dst, double scale) {
@@ -5050,14 +5196,14 @@ public class Core {
      * <code>src1</code>.
      * @param dst output array of the same size and type as <code>src1</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#multiply">org.opencv.core.Core.multiply</a>
-     * @see Core#divide
-     * @see Mat#convertTo
-     * @see Core#addWeighted
-     * @see Core#add
+     * @see org.opencv.core.Core#divide
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
      * @see org.opencv.imgproc.Imgproc#accumulateSquare
      * @see org.opencv.imgproc.Imgproc#accumulate
-     * @see Core#scaleAdd
-     * @see Core#subtract
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Core#subtract
      * @see org.opencv.imgproc.Imgproc#accumulateProduct
      */
     public static void multiply(Mat src1, Scalar src2, Mat dst) {
@@ -5394,8 +5540,8 @@ public class Core {
      * <code>src</code> and the depth <code>=CV_MAT_DEPTH(dtype)</code>.
      * @param mask optional operation mask.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#normalize">org.opencv.core.Core.normalize</a>
-     * @see Mat#convertTo
-     * @see Core#norm
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#norm
      */
     public static void normalize(Mat src, Mat dst, double alpha, double beta, int norm_type,
         int dtype, Mat mask) {
@@ -5440,8 +5586,8 @@ public class Core {
      * <code>src</code>; otherwise, it has the same number of channels as
      * <code>src</code> and the depth <code>=CV_MAT_DEPTH(dtype)</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#normalize">org.opencv.core.Core.normalize</a>
-     * @see Mat#convertTo
-     * @see Core#norm
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#norm
      */
     public static void normalize(Mat src, Mat dst, double alpha, double beta, int norm_type,
         int dtype) {
@@ -5483,8 +5629,8 @@ public class Core {
      * not used for the norm normalization.
      * @param norm_type a norm_type
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#normalize">org.opencv.core.Core.normalize</a>
-     * @see Mat#convertTo
-     * @see Core#norm
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#norm
      */
     public static void normalize(Mat src, Mat dst, double alpha, double beta, int norm_type) {
 
@@ -5520,8 +5666,8 @@ public class Core {
      * @param src input array.
      * @param dst output array of the same size as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#normalize">org.opencv.core.Core.normalize</a>
-     * @see Mat#convertTo
-     * @see Core#norm
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#norm
      */
     public static void normalize(Mat src, Mat dst) {
 
@@ -5585,7 +5731,7 @@ public class Core {
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#perspectivetransform">org.opencv.core.Core.perspectiveTransform</a>
      * @see org.opencv.calib3d.Calib3d#findHomography
      * @see org.opencv.imgproc.Imgproc#warpPerspective
-     * @see Core#transform
+     * @see org.opencv.core.Core#transform
      * @see org.opencv.imgproc.Imgproc#getPerspectiveTransform
      */
     public static void perspectiveTransform(Mat src, Mat dst, Mat m) {
@@ -5682,13 +5828,13 @@ public class Core {
      * @param angleInDegrees when true, the input angles are measured in degrees,
      * otherwise, they are measured in radians.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#polartocart">org.opencv.core.Core.polarToCart</a>
-     * @see Core#log
-     * @see Core#cartToPolar
-     * @see Core#pow
-     * @see Core#sqrt
-     * @see Core#magnitude
-     * @see Core#exp
-     * @see Core#phase
+     * @see org.opencv.core.Core#log
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#pow
+     * @see org.opencv.core.Core#sqrt
+     * @see org.opencv.core.Core#magnitude
+     * @see org.opencv.core.Core#exp
+     * @see org.opencv.core.Core#phase
      */
     public static void polarToCart(Mat magnitude, Mat angle, Mat x, Mat y, boolean angleInDegrees) {
 
@@ -5721,13 +5867,13 @@ public class Core {
      * @param y output array of y-coordinates of 2D vectors; it has the same size
      * and type as <code>angle</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#polartocart">org.opencv.core.Core.polarToCart</a>
-     * @see Core#log
-     * @see Core#cartToPolar
-     * @see Core#pow
-     * @see Core#sqrt
-     * @see Core#magnitude
-     * @see Core#exp
-     * @see Core#phase
+     * @see org.opencv.core.Core#log
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#pow
+     * @see org.opencv.core.Core#sqrt
+     * @see org.opencv.core.Core#magnitude
+     * @see org.opencv.core.Core#exp
+     * @see org.opencv.core.Core#phase
      */
     public static void polarToCart(Mat magnitude, Mat angle, Mat x, Mat y) {
 
@@ -5846,11 +5992,11 @@ public class Core {
      * @param power exponent of power.
      * @param dst output array of the same size and type as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#pow">org.opencv.core.Core.pow</a>
-     * @see Core#cartToPolar
-     * @see Core#polarToCart
-     * @see Core#exp
-     * @see Core#sqrt
-     * @see Core#log
+     * @see org.opencv.core.Core#cartToPolar
+     * @see org.opencv.core.Core#polarToCart
+     * @see org.opencv.core.Core#exp
+     * @see org.opencv.core.Core#sqrt
+     * @see org.opencv.core.Core#log
      */
     public static void pow(Mat src, double power, Mat dst) {
 
@@ -5879,7 +6025,7 @@ public class Core {
      * <code>FONT_HERSHEY_COMPLEX</code>, <code>FONT_HERSHEY_TRIPLEX</code>,
      * <code>FONT_HERSHEY_COMPLEX_SMALL</code>, <code>FONT_HERSHEY_SCRIPT_SIMPLEX</code>,
      * or <code>FONT_HERSHEY_SCRIPT_COMPLEX</code>, where each of the font ID's can
-     * be combined with <code>FONT_HERSHEY_ITALIC</code> to get the slanted letters.
+     * be combined with <code>FONT_ITALIC</code> to get the slanted letters.
      * @param fontScale Font scale factor that is multiplied by the font-specific
      * base size.
      * @param color Text color.
@@ -5914,7 +6060,7 @@ public class Core {
      * <code>FONT_HERSHEY_COMPLEX</code>, <code>FONT_HERSHEY_TRIPLEX</code>,
      * <code>FONT_HERSHEY_COMPLEX_SMALL</code>, <code>FONT_HERSHEY_SCRIPT_SIMPLEX</code>,
      * or <code>FONT_HERSHEY_SCRIPT_COMPLEX</code>, where each of the font ID's can
-     * be combined with <code>FONT_HERSHEY_ITALIC</code> to get the slanted letters.
+     * be combined with <code>FONT_ITALIC</code> to get the slanted letters.
      * @param fontScale Font scale factor that is multiplied by the font-specific
      * base size.
      * @param color Text color.
@@ -5946,7 +6092,7 @@ public class Core {
      * <code>FONT_HERSHEY_COMPLEX</code>, <code>FONT_HERSHEY_TRIPLEX</code>,
      * <code>FONT_HERSHEY_COMPLEX_SMALL</code>, <code>FONT_HERSHEY_SCRIPT_SIMPLEX</code>,
      * or <code>FONT_HERSHEY_SCRIPT_COMPLEX</code>, where each of the font ID's can
-     * be combined with <code>FONT_HERSHEY_ITALIC</code> to get the slanted letters.
+     * be combined with <code>FONT_ITALIC</code> to get the slanted letters.
      * @param fontScale Font scale factor that is multiplied by the font-specific
      * base size.
      * @param color Text color.
@@ -5998,7 +6144,7 @@ public class Core {
      * either a vector (in which case a diagonal standard deviation matrix is
      * assumed) or a square matrix.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#randn">org.opencv.core.Core.randn</a>
-     * @see Core#randu
+     * @see org.opencv.core.Core#randu
      */
     public static void randn(Mat dst, double mean, double stddev) {
 
@@ -6030,7 +6176,7 @@ public class Core {
      * @param low inclusive lower boundary of the generated random numbers.
      * @param high exclusive upper boundary of the generated random numbers.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#randu">org.opencv.core.Core.randu</a>
-     * @see Core#randn
+     * @see org.opencv.core.Core#randn
      */
     public static void randu(Mat dst, double low, double high) {
 
@@ -6151,7 +6297,7 @@ public class Core {
      * input matrix, otherwise, its type will be <code>CV_MAKE_TYPE(CV_MAT_DEPTH(dtype),
      * src.channels())</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#reduce">org.opencv.core.Core.reduce</a>
-     * @see Core#repeat
+     * @see org.opencv.core.Core#repeat
      */
     public static void reduce(Mat src, Mat dst, int dim, int rtype, int dtype) {
 
@@ -6189,7 +6335,7 @@ public class Core {
      * rows/columns of the matrix.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#reduce">org.opencv.core.Core.reduce</a>
-     * @see Core#repeat
+     * @see org.opencv.core.Core#repeat
      */
     public static void reduce(Mat src, Mat dst, int dim, int rtype) {
 
@@ -6220,7 +6366,7 @@ public class Core {
      * along the horizontal axis.
      * @param dst output array of the same type as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#repeat">org.opencv.core.Core.repeat</a>
-     * @see Core#reduce
+     * @see org.opencv.core.Core#reduce
      */
     public static void repeat(Mat src, int ny, int nx, Mat dst) {
 
@@ -6255,11 +6401,11 @@ public class Core {
      * @param src2 second input array of the same size and type as <code>src1</code>.
      * @param dst output array of the same size and type as <code>src1</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#scaleadd">org.opencv.core.Core.scaleAdd</a>
-     * @see Mat#dot
-     * @see Mat#convertTo
-     * @see Core#addWeighted
-     * @see Core#add
-     * @see Core#subtract
+     * @see org.opencv.core.Mat#dot
+     * @see org.opencv.core.Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#subtract
      */
     public static void scaleAdd(Mat src1, double alpha, Mat src2, Mat dst) {
 
@@ -6301,9 +6447,9 @@ public class Core {
      * @param mtx matrix to initialize (not necessarily square).
      * @param s a s
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#setidentity">org.opencv.core.Core.setIdentity</a>
-     * @see Mat#setTo
-     * @see Mat#ones
-     * @see Mat#zeros
+     * @see org.opencv.core.Mat#setTo
+     * @see org.opencv.core.Mat#ones
+     * @see org.opencv.core.Mat#zeros
      */
     public static void setIdentity(Mat mtx, Scalar s) {
 
@@ -6329,13 +6475,49 @@ public class Core {
      *
      * @param mtx matrix to initialize (not necessarily square).
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#setidentity">org.opencv.core.Core.setIdentity</a>
-     * @see Mat#setTo
-     * @see Mat#ones
-     * @see Mat#zeros
+     * @see org.opencv.core.Mat#setTo
+     * @see org.opencv.core.Mat#ones
+     * @see org.opencv.core.Mat#zeros
      */
     public static void setIdentity(Mat mtx) {
 
         setIdentity_1(mtx.nativeObj);
+
+        return;
+    }
+
+    //
+    // C++:  void setNumThreads(int nthreads)
+    //
+
+    /**
+     * <p>OpenCV will try to set the number of threads for the next parallel region.
+     * If <code>threads == 0</code>, OpenCV will disable threading optimizations and
+     * run all it's functions sequentially. Passing <code>threads < 0</code> will
+     * reset threads number to system default.
+     * This function must be called outside of parallel region.</p>
+     *
+     * <p>OpenCV will try to run it's functions with specified threads number, but some
+     * behaviour differs from framework:</p>
+     * <ul>
+     * <li> TBB – User-defined parallel constructions will run with the same
+     * threads number, if another does not specified. If late on user creates own
+     * scheduler, OpenCV will be use it.
+     * <li> OpenMP – No special defined behaviour.
+     * <li> Concurrency – If <code>threads == 1</code>, OpenCV will disable
+     * threading optimizations and run it's functions sequentially.
+     * <li> GCD – Supports only values <= 0.
+     * <li> C= – No special defined behaviour.
+     * </ul>
+     *
+     * @param nthreads Number of threads used by OpenCV.
+     * @see <a href="http://docs.opencv.org/modules/core/doc/utility_and_system_functions_and_macros.html#setnumthreads">org.opencv.core.Core.setNumThreads</a>
+     * @see org.opencv.core.Core#getThreadNum
+     * @see org.opencv.core.Core#getNumThreads
+     */
+    public static void setNumThreads(int nthreads) {
+
+        setNumThreads_0(nthreads);
 
         return;
     }
@@ -6383,8 +6565,8 @@ public class Core {
      * the original system <em>src1*dst=src2</em>.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#solve">org.opencv.core.Core.solve</a>
-     * @see Core#invert
-     * @see Core#eigen
+     * @see org.opencv.core.Core#invert
+     * @see org.opencv.core.Core#eigen
      */
     public static boolean solve(Mat src1, Mat src2, Mat dst, int flags) {
 
@@ -6416,8 +6598,8 @@ public class Core {
      * @param src2 input matrix on the right-hand side of the system.
      * @param dst output solution.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#solve">org.opencv.core.Core.solve</a>
-     * @see Core#invert
-     * @see Core#eigen
+     * @see org.opencv.core.Core#invert
+     * @see org.opencv.core.Core#eigen
      */
     public static boolean solve(Mat src1, Mat src2, Mat dst) {
 
@@ -6530,8 +6712,8 @@ public class Core {
      * this flag and the previous one are also mutually exclusive.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#sort">org.opencv.core.Core.sort</a>
-     * @see Core#randShuffle
-     * @see Core#sortIdx
+     * @see org.opencv.core.Core#randShuffle
+     * @see org.opencv.core.Core#sortIdx
      */
     public static void sort(Mat src, Mat dst, int flags) {
 
@@ -6578,8 +6760,8 @@ public class Core {
      * his flag and the previous one are also mutually exclusive.
      * </ul>
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#sortidx">org.opencv.core.Core.sortIdx</a>
-     * @see Core#sort
-     * @see Core#randShuffle
+     * @see org.opencv.core.Core#sort
+     * @see org.opencv.core.Core#randShuffle
      */
     public static void sortIdx(Mat src, Mat dst, int flags) {
 
@@ -6608,9 +6790,9 @@ public class Core {
      * function the number of arrays must match <code>src.channels()</code>; the
      * arrays themselves are reallocated, if needed.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#split">org.opencv.core.Core.split</a>
-     * @see Core#merge
+     * @see org.opencv.core.Core#merge
      * @see org.opencv.imgproc.Imgproc#cvtColor
-     * @see Core#mixChannels
+     * @see org.opencv.core.Core#mixChannels
      */
     public static void split(Mat m, List<Mat> mv) {
         Mat mv_mat = new Mat();
@@ -6634,8 +6816,8 @@ public class Core {
      * @param src input floating-point array.
      * @param dst output array of the same size and type as <code>src</code>.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#sqrt">org.opencv.core.Core.sqrt</a>
-     * @see Core#pow
-     * @see Core#magnitude
+     * @see org.opencv.core.Core#pow
+     * @see org.opencv.core.Core#magnitude
      */
     public static void sqrt(Mat src, Mat dst) {
 
@@ -6716,10 +6898,10 @@ public class Core {
      * that specifies elements of the output array to be changed.
      * @param dtype optional depth of the output array (see the details below).
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#subtract">org.opencv.core.Core.subtract</a>
-     * @see Core#addWeighted
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void subtract(Mat src1, Mat src2, Mat dst, Mat mask, int dtype) {
 
@@ -6795,10 +6977,10 @@ public class Core {
      * @param mask optional operation mask; this is an 8-bit single channel array
      * that specifies elements of the output array to be changed.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#subtract">org.opencv.core.Core.subtract</a>
-     * @see Core#addWeighted
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void subtract(Mat src1, Mat src2, Mat dst, Mat mask) {
 
@@ -6872,10 +7054,10 @@ public class Core {
      * @param dst output array of the same size and the same number of channels as
      * the input array.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#subtract">org.opencv.core.Core.subtract</a>
-     * @see Core#addWeighted
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void subtract(Mat src1, Mat src2, Mat dst) {
 
@@ -6956,10 +7138,10 @@ public class Core {
      * that specifies elements of the output array to be changed.
      * @param dtype optional depth of the output array (see the details below).
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#subtract">org.opencv.core.Core.subtract</a>
-     * @see Core#addWeighted
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void subtract(Mat src1, Scalar src2, Mat dst, Mat mask, int dtype) {
 
@@ -7036,10 +7218,10 @@ public class Core {
      * @param mask optional operation mask; this is an 8-bit single channel array
      * that specifies elements of the output array to be changed.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#subtract">org.opencv.core.Core.subtract</a>
-     * @see Core#addWeighted
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void subtract(Mat src1, Scalar src2, Mat dst, Mat mask) {
 
@@ -7114,10 +7296,10 @@ public class Core {
      * @param dst output array of the same size and the same number of channels as
      * the input array.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#subtract">org.opencv.core.Core.subtract</a>
-     * @see Core#addWeighted
-     * @see Core#add
-     * @see Core#scaleAdd
-     * @see Mat#convertTo
+     * @see org.opencv.core.Core#addWeighted
+     * @see org.opencv.core.Core#add
+     * @see org.opencv.core.Core#scaleAdd
+     * @see org.opencv.core.Mat#convertTo
      */
     public static void subtract(Mat src1, Scalar src2, Mat dst) {
 
@@ -7139,12 +7321,12 @@ public class Core {
      *
      * @param src a src
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#sum">org.opencv.core.Core.sum</a>
-     * @see Core#meanStdDev
-     * @see Core#reduce
-     * @see Core#minMaxLoc
-     * @see Core#countNonZero
-     * @see Core#norm
-     * @see Core#mean
+     * @see org.opencv.core.Core#meanStdDev
+     * @see org.opencv.core.Core#reduce
+     * @see org.opencv.core.Core#minMaxLoc
+     * @see org.opencv.core.Core#countNonZero
+     * @see org.opencv.core.Core#norm
+     * @see org.opencv.core.Core#mean
      */
     public static Scalar sumElems(Mat src) {
 
@@ -7213,7 +7395,7 @@ public class Core {
      * matrix.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#transform">org.opencv.core.Core.transform</a>
      * @see org.opencv.imgproc.Imgproc#warpAffine
-     * @see Core#perspectiveTransform
+     * @see org.opencv.core.Core#perspectiveTransform
      * @see org.opencv.imgproc.Imgproc#warpPerspective
      * @see org.opencv.imgproc.Imgproc#getAffineTransform
      * @see org.opencv.video.Video#estimateRigidTransform
@@ -7294,13 +7476,13 @@ public class Core {
      * @param src input single-channel array.
      * @param mask optional mask used to select a sub-array.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#minmaxloc">org.opencv.core.Core.minMaxLoc</a>
-     * @see Core#compare
-     * @see Core#min
-     * @see Core#mixChannels
-     * @see Mat#reshape
-     * @see Core#split
-     * @see Core#max
-     * @see Core#inRange
+     * @see org.opencv.core.Core#compare
+     * @see org.opencv.core.Core#min
+     * @see org.opencv.core.Core#mixChannels
+     * @see org.opencv.core.Mat#reshape
+     * @see org.opencv.core.Core#split
+     * @see org.opencv.core.Core#max
+     * @see org.opencv.core.Core#inRange
      */
     public static MinMaxLocResult minMaxLoc(Mat src, Mat mask) {
         MinMaxLocResult res = new MinMaxLocResult();
@@ -7333,13 +7515,13 @@ public class Core {
      *
      * @param src input single-channel array.
      * @see <a href="http://docs.opencv.org/modules/core/doc/operations_on_arrays.html#minmaxloc">org.opencv.core.Core.minMaxLoc</a>
-     * @see Core#compare
-     * @see Core#min
-     * @see Core#mixChannels
-     * @see Mat#reshape
-     * @see Core#split
-     * @see Core#max
-     * @see Core#inRange
+     * @see org.opencv.core.Core#compare
+     * @see org.opencv.core.Core#min
+     * @see org.opencv.core.Core#mixChannels
+     * @see org.opencv.core.Mat#reshape
+     * @see org.opencv.core.Core#split
+     * @see org.opencv.core.Core#max
+     * @see org.opencv.core.Core#inRange
      */
     public static MinMaxLocResult minMaxLoc(Mat src) {
         return minMaxLoc(src, null);
@@ -7414,7 +7596,7 @@ public class Core {
     public static Size getTextSize(String text, int fontFace, double fontScale, int thickness,
         int[] baseLine) {
         if (baseLine != null && baseLine.length != 1) {
-            throw new IllegalArgumentException("'baseLine' must be 'int[1]' or 'null'.");
+            throw new java.lang.IllegalArgumentException("'baseLine' must be 'int[1]' or 'null'.");
         }
         Size retVal = new Size(n_getTextSize(text, fontFace, fontScale, thickness, baseLine));
         return retVal;
@@ -7493,6 +7675,15 @@ public class Core {
 
     private static native void addWeighted_1(long src1_nativeObj, double alpha, long src2_nativeObj,
         double beta, double gamma, long dst_nativeObj);
+
+    // C++:  void arrowedLine(Mat& img, Point pt1, Point pt2, Scalar color, int thickness = 1, int line_type = 8, int shift = 0, double tipLength = 0.1)
+    private static native void arrowedLine_0(long img_nativeObj, double pt1_x, double pt1_y,
+        double pt2_x, double pt2_y, double color_val0, double color_val1, double color_val2,
+        double color_val3, int thickness, int line_type, int shift, double tipLength);
+
+    private static native void arrowedLine_1(long img_nativeObj, double pt1_x, double pt1_y,
+        double pt2_x, double pt2_y, double color_val0, double color_val1, double color_val2,
+        double color_val3);
 
     // C++:  void batchDistance(Mat src1, Mat src2, Mat& dist, int dtype, Mat& nidx, int normType = NORM_L2, int K = 0, Mat mask = Mat(), int update = 0, bool crosscheck = false)
     private static native void batchDistance_0(long src1_nativeObj, long src2_nativeObj,
@@ -7701,12 +7892,12 @@ public class Core {
     // C++:  void flip(Mat src, Mat& dst, int flipCode)
     private static native void flip_0(long src_nativeObj, long dst_nativeObj, int flipCode);
 
-    // C++:  void gemm(Mat src1, Mat src2, double alpha, Mat src3, double gamma, Mat& dst, int flags = 0)
+    // C++:  void gemm(Mat src1, Mat src2, double alpha, Mat src3, double beta, Mat& dst, int flags = 0)
     private static native void gemm_0(long src1_nativeObj, long src2_nativeObj, double alpha,
-        long src3_nativeObj, double gamma, long dst_nativeObj, int flags);
+        long src3_nativeObj, double beta, long dst_nativeObj, int flags);
 
     private static native void gemm_1(long src1_nativeObj, long src2_nativeObj, double alpha,
-        long src3_nativeObj, double gamma, long dst_nativeObj);
+        long src3_nativeObj, double beta, long dst_nativeObj);
 
     // C++:  string getBuildInformation()
     private static native String getBuildInformation_0();
@@ -7714,11 +7905,17 @@ public class Core {
     // C++:  int64 getCPUTickCount()
     private static native long getCPUTickCount_0();
 
+    // C++:  int getNumThreads()
+    private static native int getNumThreads_0();
+
     // C++:  int getNumberOfCPUs()
     private static native int getNumberOfCPUs_0();
 
     // C++:  int getOptimalDFTSize(int vecsize)
     private static native int getOptimalDFTSize_0(int vecsize);
+
+    // C++:  int getThreadNum()
+    private static native int getThreadNum_0();
 
     // C++:  int64 getTickCount()
     private static native long getTickCount_0();
@@ -7973,6 +8170,9 @@ public class Core {
         double s_val2, double s_val3);
 
     private static native void setIdentity_1(long mtx_nativeObj);
+
+    // C++:  void setNumThreads(int nthreads)
+    private static native void setNumThreads_0(int nthreads);
 
     // C++:  bool solve(Mat src1, Mat src2, Mat& dst, int flags = DECOMP_LU)
     private static native boolean solve_0(long src1_nativeObj, long src2_nativeObj,

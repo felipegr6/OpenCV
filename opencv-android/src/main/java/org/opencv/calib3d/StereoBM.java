@@ -66,13 +66,14 @@ import org.opencv.core.Mat;
  */
 public class StereoBM {
 
-    public static final int PREFILTER_NORMALIZED_RESPONSE = 0, PREFILTER_XSOBEL = 1, BASIC_PRESET =
-        0, FISH_EYE_PRESET = 1, NARROW_PRESET = 2;
     protected final long nativeObj;
 
     protected StereoBM(long addr) {
         nativeObj = addr;
     }
+
+    public static final int PREFILTER_NORMALIZED_RESPONSE = 0, PREFILTER_XSOBEL = 1, BASIC_PRESET =
+        0, FISH_EYE_PRESET = 1, NARROW_PRESET = 2;
 
     //
     // C++:   StereoBM::StereoBM()
@@ -170,24 +171,6 @@ public class StereoBM {
     // C++:  void StereoBM::operator ()(Mat left, Mat right, Mat& disparity, int disptype = CV_16S)
     //
 
-    // C++:   StereoBM::StereoBM()
-    private static native long StereoBM_0();
-
-    // C++:   StereoBM::StereoBM(int preset, int ndisparities = 0, int SADWindowSize = 21)
-    private static native long StereoBM_1(int preset, int ndisparities, int SADWindowSize);
-
-    private static native long StereoBM_2(int preset);
-
-    // C++:  void StereoBM::operator ()(Mat left, Mat right, Mat& disparity, int disptype = CV_16S)
-    private static native void compute_0(long nativeObj, long left_nativeObj, long right_nativeObj,
-        long disparity_nativeObj, int disptype);
-
-    private static native void compute_1(long nativeObj, long left_nativeObj, long right_nativeObj,
-        long disparity_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     /**
      * <p>Computes disparity using the BM algorithm for a rectified stereo pair.</p>
      *
@@ -245,4 +228,22 @@ public class StereoBM {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   StereoBM::StereoBM()
+    private static native long StereoBM_0();
+
+    // C++:   StereoBM::StereoBM(int preset, int ndisparities = 0, int SADWindowSize = 21)
+    private static native long StereoBM_1(int preset, int ndisparities, int SADWindowSize);
+
+    private static native long StereoBM_2(int preset);
+
+    // C++:  void StereoBM::operator ()(Mat left, Mat right, Mat& disparity, int disptype = CV_16S)
+    private static native void compute_0(long nativeObj, long left_nativeObj, long right_nativeObj,
+        long disparity_nativeObj, int disptype);
+
+    private static native void compute_1(long nativeObj, long left_nativeObj, long right_nativeObj,
+        long disparity_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

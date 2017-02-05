@@ -82,12 +82,13 @@ import org.opencv.core.Mat;
  */
 public class StereoSGBM {
 
-    public static final int DISP_SHIFT = 4, DISP_SCALE = (1 << DISP_SHIFT);
     protected final long nativeObj;
 
     protected StereoSGBM(long addr) {
         nativeObj = addr;
     }
+
+    public static final int DISP_SHIFT = 4, DISP_SCALE = (1 << DISP_SHIFT);
 
     //
     // C++:   StereoSGBM::StereoSGBM()
@@ -206,162 +207,327 @@ public class StereoSGBM {
     // C++:  void StereoSGBM::operator ()(Mat left, Mat right, Mat& disp)
     //
 
-    // C++:   StereoSGBM::StereoSGBM()
-    private static native long StereoSGBM_0();
+    public void compute(Mat left, Mat right, Mat disp) {
+
+        compute_0(nativeObj, left.nativeObj, right.nativeObj, disp.nativeObj);
+
+        return;
+    }
 
     //
     // C++: int StereoSGBM::minDisparity
     //
+
+    public int get_minDisparity() {
+
+        int retVal = get_minDisparity_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::minDisparity
+    //
+
+    public void set_minDisparity(int minDisparity) {
+
+        set_minDisparity_0(nativeObj, minDisparity);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::numberOfDisparities
+    //
+
+    public int get_numberOfDisparities() {
+
+        int retVal = get_numberOfDisparities_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::numberOfDisparities
+    //
+
+    public void set_numberOfDisparities(int numberOfDisparities) {
+
+        set_numberOfDisparities_0(nativeObj, numberOfDisparities);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::SADWindowSize
+    //
+
+    public int get_SADWindowSize() {
+
+        int retVal = get_SADWindowSize_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::SADWindowSize
+    //
+
+    public void set_SADWindowSize(int SADWindowSize) {
+
+        set_SADWindowSize_0(nativeObj, SADWindowSize);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::preFilterCap
+    //
+
+    public int get_preFilterCap() {
+
+        int retVal = get_preFilterCap_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::preFilterCap
+    //
+
+    public void set_preFilterCap(int preFilterCap) {
+
+        set_preFilterCap_0(nativeObj, preFilterCap);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::uniquenessRatio
+    //
+
+    public int get_uniquenessRatio() {
+
+        int retVal = get_uniquenessRatio_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::uniquenessRatio
+    //
+
+    public void set_uniquenessRatio(int uniquenessRatio) {
+
+        set_uniquenessRatio_0(nativeObj, uniquenessRatio);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::P1
+    //
+
+    public int get_P1() {
+
+        int retVal = get_P1_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::P1
+    //
+
+    public void set_P1(int P1) {
+
+        set_P1_0(nativeObj, P1);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::P2
+    //
+
+    public int get_P2() {
+
+        int retVal = get_P2_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::P2
+    //
+
+    public void set_P2(int P2) {
+
+        set_P2_0(nativeObj, P2);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::speckleWindowSize
+    //
+
+    public int get_speckleWindowSize() {
+
+        int retVal = get_speckleWindowSize_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::speckleWindowSize
+    //
+
+    public void set_speckleWindowSize(int speckleWindowSize) {
+
+        set_speckleWindowSize_0(nativeObj, speckleWindowSize);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::speckleRange
+    //
+
+    public int get_speckleRange() {
+
+        int retVal = get_speckleRange_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::speckleRange
+    //
+
+    public void set_speckleRange(int speckleRange) {
+
+        set_speckleRange_0(nativeObj, speckleRange);
+
+        return;
+    }
+
+    //
+    // C++: int StereoSGBM::disp12MaxDiff
+    //
+
+    public int get_disp12MaxDiff() {
+
+        int retVal = get_disp12MaxDiff_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::disp12MaxDiff
+    //
+
+    public void set_disp12MaxDiff(int disp12MaxDiff) {
+
+        set_disp12MaxDiff_0(nativeObj, disp12MaxDiff);
+
+        return;
+    }
+
+    //
+    // C++: bool StereoSGBM::fullDP
+    //
+
+    public boolean get_fullDP() {
+
+        boolean retVal = get_fullDP_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoSGBM::fullDP
+    //
+
+    public void set_fullDP(boolean fullDP) {
+
+        set_fullDP_0(nativeObj, fullDP);
+
+        return;
+    }
+
+    @Override protected void finalize() throws Throwable {
+        delete(nativeObj);
+    }
+
+    // C++:   StereoSGBM::StereoSGBM()
+    private static native long StereoSGBM_0();
 
     // C++:   StereoSGBM::StereoSGBM(int minDisparity, int numDisparities, int SADWindowSize, int P1 = 0, int P2 = 0, int disp12MaxDiff = 0, int preFilterCap = 0, int uniquenessRatio = 0, int speckleWindowSize = 0, int speckleRange = 0, bool fullDP = false)
     private static native long StereoSGBM_1(int minDisparity, int numDisparities, int SADWindowSize,
         int P1, int P2, int disp12MaxDiff, int preFilterCap, int uniquenessRatio,
         int speckleWindowSize, int speckleRange, boolean fullDP);
 
-    //
-    // C++: void StereoSGBM::minDisparity
-    //
-
     private static native long StereoSGBM_2(int minDisparity, int numDisparities,
         int SADWindowSize);
-
-    //
-    // C++: int StereoSGBM::numberOfDisparities
-    //
 
     // C++:  void StereoSGBM::operator ()(Mat left, Mat right, Mat& disp)
     private static native void compute_0(long nativeObj, long left_nativeObj, long right_nativeObj,
         long disp_nativeObj);
 
-    //
-    // C++: void StereoSGBM::numberOfDisparities
-    //
-
     // C++: int StereoSGBM::minDisparity
     private static native int get_minDisparity_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::SADWindowSize
-    //
 
     // C++: void StereoSGBM::minDisparity
     private static native void set_minDisparity_0(long nativeObj, int minDisparity);
 
-    //
-    // C++: void StereoSGBM::SADWindowSize
-    //
-
     // C++: int StereoSGBM::numberOfDisparities
     private static native int get_numberOfDisparities_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::preFilterCap
-    //
 
     // C++: void StereoSGBM::numberOfDisparities
     private static native void set_numberOfDisparities_0(long nativeObj, int numberOfDisparities);
 
-    //
-    // C++: void StereoSGBM::preFilterCap
-    //
-
     // C++: int StereoSGBM::SADWindowSize
     private static native int get_SADWindowSize_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::uniquenessRatio
-    //
 
     // C++: void StereoSGBM::SADWindowSize
     private static native void set_SADWindowSize_0(long nativeObj, int SADWindowSize);
 
-    //
-    // C++: void StereoSGBM::uniquenessRatio
-    //
-
     // C++: int StereoSGBM::preFilterCap
     private static native int get_preFilterCap_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::P1
-    //
 
     // C++: void StereoSGBM::preFilterCap
     private static native void set_preFilterCap_0(long nativeObj, int preFilterCap);
 
-    //
-    // C++: void StereoSGBM::P1
-    //
-
     // C++: int StereoSGBM::uniquenessRatio
     private static native int get_uniquenessRatio_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::P2
-    //
 
     // C++: void StereoSGBM::uniquenessRatio
     private static native void set_uniquenessRatio_0(long nativeObj, int uniquenessRatio);
 
-    //
-    // C++: void StereoSGBM::P2
-    //
-
     // C++: int StereoSGBM::P1
     private static native int get_P1_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::speckleWindowSize
-    //
 
     // C++: void StereoSGBM::P1
     private static native void set_P1_0(long nativeObj, int P1);
 
-    //
-    // C++: void StereoSGBM::speckleWindowSize
-    //
-
     // C++: int StereoSGBM::P2
     private static native int get_P2_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::speckleRange
-    //
 
     // C++: void StereoSGBM::P2
     private static native void set_P2_0(long nativeObj, int P2);
 
-    //
-    // C++: void StereoSGBM::speckleRange
-    //
-
     // C++: int StereoSGBM::speckleWindowSize
     private static native int get_speckleWindowSize_0(long nativeObj);
-
-    //
-    // C++: int StereoSGBM::disp12MaxDiff
-    //
 
     // C++: void StereoSGBM::speckleWindowSize
     private static native void set_speckleWindowSize_0(long nativeObj, int speckleWindowSize);
 
-    //
-    // C++: void StereoSGBM::disp12MaxDiff
-    //
-
     // C++: int StereoSGBM::speckleRange
     private static native int get_speckleRange_0(long nativeObj);
 
-    //
-    // C++: bool StereoSGBM::fullDP
-    //
-
     // C++: void StereoSGBM::speckleRange
     private static native void set_speckleRange_0(long nativeObj, int speckleRange);
-
-    //
-    // C++: void StereoSGBM::fullDP
-    //
 
     // C++: int StereoSGBM::disp12MaxDiff
     private static native int get_disp12MaxDiff_0(long nativeObj);
@@ -377,169 +543,4 @@ public class StereoSGBM {
 
     // native support for java finalize()
     private static native void delete(long nativeObj);
-
-    public void compute(Mat left, Mat right, Mat disp) {
-
-        compute_0(nativeObj, left.nativeObj, right.nativeObj, disp.nativeObj);
-
-        return;
-    }
-
-    public int get_minDisparity() {
-
-        int retVal = get_minDisparity_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_minDisparity(int minDisparity) {
-
-        set_minDisparity_0(nativeObj, minDisparity);
-
-        return;
-    }
-
-    public int get_numberOfDisparities() {
-
-        int retVal = get_numberOfDisparities_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_numberOfDisparities(int numberOfDisparities) {
-
-        set_numberOfDisparities_0(nativeObj, numberOfDisparities);
-
-        return;
-    }
-
-    public int get_SADWindowSize() {
-
-        int retVal = get_SADWindowSize_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_SADWindowSize(int SADWindowSize) {
-
-        set_SADWindowSize_0(nativeObj, SADWindowSize);
-
-        return;
-    }
-
-    public int get_preFilterCap() {
-
-        int retVal = get_preFilterCap_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_preFilterCap(int preFilterCap) {
-
-        set_preFilterCap_0(nativeObj, preFilterCap);
-
-        return;
-    }
-
-    public int get_uniquenessRatio() {
-
-        int retVal = get_uniquenessRatio_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_uniquenessRatio(int uniquenessRatio) {
-
-        set_uniquenessRatio_0(nativeObj, uniquenessRatio);
-
-        return;
-    }
-
-    public int get_P1() {
-
-        int retVal = get_P1_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_P1(int P1) {
-
-        set_P1_0(nativeObj, P1);
-
-        return;
-    }
-
-    public int get_P2() {
-
-        int retVal = get_P2_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_P2(int P2) {
-
-        set_P2_0(nativeObj, P2);
-
-        return;
-    }
-
-    public int get_speckleWindowSize() {
-
-        int retVal = get_speckleWindowSize_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_speckleWindowSize(int speckleWindowSize) {
-
-        set_speckleWindowSize_0(nativeObj, speckleWindowSize);
-
-        return;
-    }
-
-    public int get_speckleRange() {
-
-        int retVal = get_speckleRange_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_speckleRange(int speckleRange) {
-
-        set_speckleRange_0(nativeObj, speckleRange);
-
-        return;
-    }
-
-    public int get_disp12MaxDiff() {
-
-        int retVal = get_disp12MaxDiff_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_disp12MaxDiff(int disp12MaxDiff) {
-
-        set_disp12MaxDiff_0(nativeObj, disp12MaxDiff);
-
-        return;
-    }
-
-    public boolean get_fullDP() {
-
-        boolean retVal = get_fullDP_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_fullDP(boolean fullDP) {
-
-        set_fullDP_0(nativeObj, fullDP);
-
-        return;
-    }
-
-    @Override protected void finalize() throws Throwable {
-        delete(nativeObj);
-    }
 }

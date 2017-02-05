@@ -47,70 +47,16 @@ public class CvGBTreesParams extends CvDTreeParams {
     // C++: int CvGBTreesParams::weak_count
     //
 
-    // C++:   CvGBTreesParams::CvGBTreesParams()
-    private static native long CvGBTreesParams_0();
-
-    //
-    // C++: void CvGBTreesParams::weak_count
-    //
-
-    // C++: int CvGBTreesParams::weak_count
-    private static native int get_weak_count_0(long nativeObj);
-
-    //
-    // C++: int CvGBTreesParams::loss_function_type
-    //
-
-    // C++: void CvGBTreesParams::weak_count
-    private static native void set_weak_count_0(long nativeObj, int weak_count);
-
-    //
-    // C++: void CvGBTreesParams::loss_function_type
-    //
-
-    // C++: int CvGBTreesParams::loss_function_type
-    private static native int get_loss_function_type_0(long nativeObj);
-
-    //
-    // C++: float CvGBTreesParams::subsample_portion
-    //
-
-    // C++: void CvGBTreesParams::loss_function_type
-    private static native void set_loss_function_type_0(long nativeObj, int loss_function_type);
-
-    //
-    // C++: void CvGBTreesParams::subsample_portion
-    //
-
-    // C++: float CvGBTreesParams::subsample_portion
-    private static native float get_subsample_portion_0(long nativeObj);
-
-    //
-    // C++: float CvGBTreesParams::shrinkage
-    //
-
-    // C++: void CvGBTreesParams::subsample_portion
-    private static native void set_subsample_portion_0(long nativeObj, float subsample_portion);
-
-    //
-    // C++: void CvGBTreesParams::shrinkage
-    //
-
-    // C++: float CvGBTreesParams::shrinkage
-    private static native float get_shrinkage_0(long nativeObj);
-
-    // C++: void CvGBTreesParams::shrinkage
-    private static native void set_shrinkage_0(long nativeObj, float shrinkage);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public int get_weak_count() {
 
         int retVal = get_weak_count_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvGBTreesParams::weak_count
+    //
 
     public void set_weak_count(int weak_count) {
 
@@ -119,12 +65,20 @@ public class CvGBTreesParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: int CvGBTreesParams::loss_function_type
+    //
+
     public int get_loss_function_type() {
 
         int retVal = get_loss_function_type_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvGBTreesParams::loss_function_type
+    //
 
     public void set_loss_function_type(int loss_function_type) {
 
@@ -133,12 +87,20 @@ public class CvGBTreesParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: float CvGBTreesParams::subsample_portion
+    //
+
     public float get_subsample_portion() {
 
         float retVal = get_subsample_portion_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvGBTreesParams::subsample_portion
+    //
 
     public void set_subsample_portion(float subsample_portion) {
 
@@ -147,12 +109,20 @@ public class CvGBTreesParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: float CvGBTreesParams::shrinkage
+    //
+
     public float get_shrinkage() {
 
         float retVal = get_shrinkage_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvGBTreesParams::shrinkage
+    //
 
     public void set_shrinkage(float shrinkage) {
 
@@ -164,4 +134,34 @@ public class CvGBTreesParams extends CvDTreeParams {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvGBTreesParams::CvGBTreesParams()
+    private static native long CvGBTreesParams_0();
+
+    // C++: int CvGBTreesParams::weak_count
+    private static native int get_weak_count_0(long nativeObj);
+
+    // C++: void CvGBTreesParams::weak_count
+    private static native void set_weak_count_0(long nativeObj, int weak_count);
+
+    // C++: int CvGBTreesParams::loss_function_type
+    private static native int get_loss_function_type_0(long nativeObj);
+
+    // C++: void CvGBTreesParams::loss_function_type
+    private static native void set_loss_function_type_0(long nativeObj, int loss_function_type);
+
+    // C++: float CvGBTreesParams::subsample_portion
+    private static native float get_subsample_portion_0(long nativeObj);
+
+    // C++: void CvGBTreesParams::subsample_portion
+    private static native void set_subsample_portion_0(long nativeObj, float subsample_portion);
+
+    // C++: float CvGBTreesParams::shrinkage
+    private static native float get_shrinkage_0(long nativeObj);
+
+    // C++: void CvGBTreesParams::shrinkage
+    private static native void set_shrinkage_0(long nativeObj, float shrinkage);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

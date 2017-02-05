@@ -80,6 +80,10 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
         return;
     }
 
+    @Override protected void finalize() throws Throwable {
+        delete(nativeObj);
+    }
+
     // C++:   BackgroundSubtractorMOG::BackgroundSubtractorMOG()
     private static native long BackgroundSubtractorMOG_0();
 
@@ -92,8 +96,4 @@ public class BackgroundSubtractorMOG extends BackgroundSubtractor {
 
     // native support for java finalize()
     private static native void delete(long nativeObj);
-
-    @Override protected void finalize() throws Throwable {
-        delete(nativeObj);
-    }
 }

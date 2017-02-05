@@ -123,195 +123,17 @@ import org.opencv.utils.Converters;
  */
 public class GenericDescriptorMatcher {
 
-    public static final int ONEWAY = 1, FERN = 2;
     protected final long nativeObj;
 
     protected GenericDescriptorMatcher(long addr) {
         nativeObj = addr;
     }
 
+    public static final int ONEWAY = 1, FERN = 2;
+
     //
     // C++:  void javaGenericDescriptorMatcher::add(vector_Mat images, vector_vector_KeyPoint keypoints)
     //
-
-    public static GenericDescriptorMatcher create(int matcherType) {
-
-        GenericDescriptorMatcher retVal = new GenericDescriptorMatcher(create_0(matcherType));
-
-        return retVal;
-    }
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints)
-    //
-
-    // C++:  void javaGenericDescriptorMatcher::add(vector_Mat images, vector_vector_KeyPoint keypoints)
-    private static native void add_0(long nativeObj, long images_mat_nativeObj,
-        long keypoints_mat_nativeObj);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints)
-    //
-
-    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints)
-    private static native void classify_0(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
-        long trainKeypoints_mat_nativeObj);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::clear()
-    //
-
-    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints)
-    private static native void classify_1(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj);
-
-    //
-    // C++:  javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::jclone(bool emptyTrainData = false)
-    //
-
-    // C++:  void javaGenericDescriptorMatcher::clear()
-    private static native void clear_0(long nativeObj);
-
-    // C++:  javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::jclone(bool emptyTrainData = false)
-    private static native long clone_0(long nativeObj, boolean emptyTrainData);
-
-    //
-    // C++: static javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::create(int matcherType)
-    //
-
-    private static native long clone_1(long nativeObj);
-
-    //
-    // C++:  bool javaGenericDescriptorMatcher::empty()
-    //
-
-    // C++: static javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::create(int matcherType)
-    private static native long create_0(int matcherType);
-
-    //
-    // C++:  vector_Mat javaGenericDescriptorMatcher::getTrainImages()
-    //
-
-    // C++:  bool javaGenericDescriptorMatcher::empty()
-    private static native boolean empty_0(long nativeObj);
-
-    //
-    // C++:  vector_vector_KeyPoint javaGenericDescriptorMatcher::getTrainKeypoints()
-    //
-
-    // C++:  vector_Mat javaGenericDescriptorMatcher::getTrainImages()
-    private static native long getTrainImages_0(long nativeObj);
-
-    //
-    // C++:  bool javaGenericDescriptorMatcher::isMaskSupported()
-    //
-
-    // C++:  vector_vector_KeyPoint javaGenericDescriptorMatcher::getTrainKeypoints()
-    private static native long getTrainKeypoints_0(long nativeObj);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, int k, Mat mask = Mat(), bool compactResult = false)
-    //
-
-    // C++:  bool javaGenericDescriptorMatcher::isMaskSupported()
-    private static native boolean isMaskSupported_0(long nativeObj);
-
-    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, int k, Mat mask = Mat(), bool compactResult = false)
-    private static native void knnMatch_0(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
-        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k, long mask_nativeObj,
-        boolean compactResult);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, int k, vector_Mat masks = vector<Mat>(), bool compactResult = false)
-    //
-
-    private static native void knnMatch_1(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
-        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k);
-
-    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, int k, vector_Mat masks = vector<Mat>(), bool compactResult = false)
-    private static native void knnMatch_2(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k,
-        long masks_mat_nativeObj, boolean compactResult);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_DMatch& matches, Mat mask = Mat())
-    //
-
-    private static native void knnMatch_3(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k);
-
-    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_DMatch& matches, Mat mask = Mat())
-    private static native void match_0(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
-        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, long mask_nativeObj);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, vector_DMatch& matches, vector_Mat masks = vector<Mat>())
-    //
-
-    private static native void match_1(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
-        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj);
-
-    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, vector_DMatch& matches, vector_Mat masks = vector<Mat>())
-    private static native void match_2(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, long masks_mat_nativeObj);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, float maxDistance, Mat mask = Mat(), bool compactResult = false)
-    //
-
-    private static native void match_3(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj);
-
-    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, float maxDistance, Mat mask = Mat(), bool compactResult = false)
-    private static native void radiusMatch_0(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
-        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance,
-        long mask_nativeObj, boolean compactResult);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, float maxDistance, vector_Mat masks = vector<Mat>(), bool compactResult = false)
-    //
-
-    private static native void radiusMatch_1(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
-        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance);
-
-    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, float maxDistance, vector_Mat masks = vector<Mat>(), bool compactResult = false)
-    private static native void radiusMatch_2(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance,
-        long masks_mat_nativeObj, boolean compactResult);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::read(string fileName)
-    //
-
-    private static native void radiusMatch_3(long nativeObj, long queryImage_nativeObj,
-        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::train()
-    //
-
-    // C++:  void javaGenericDescriptorMatcher::read(string fileName)
-    private static native void read_0(long nativeObj, String fileName);
-
-    //
-    // C++:  void javaGenericDescriptorMatcher::write(string fileName)
-    //
-
-    // C++:  void javaGenericDescriptorMatcher::train()
-    private static native void train_0(long nativeObj);
-
-    // C++:  void javaGenericDescriptorMatcher::write(string fileName)
-    private static native void write_0(long nativeObj, String fileName);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
 
     /**
      * <p>Adds images and their keypoints to the training collection stored in the
@@ -330,6 +152,10 @@ public class GenericDescriptorMatcher {
 
         return;
     }
+
+    //
+    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints)
+    //
 
     /**
      * <p>Classifies keypoints from a query set.</p>
@@ -364,6 +190,10 @@ public class GenericDescriptorMatcher {
         return;
     }
 
+    //
+    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints)
+    //
+
     /**
      * <p>Classifies keypoints from a query set.</p>
      *
@@ -392,6 +222,10 @@ public class GenericDescriptorMatcher {
         return;
     }
 
+    //
+    // C++:  void javaGenericDescriptorMatcher::clear()
+    //
+
     /**
      * <p>Clears a train collection (images and keypoints).</p>
      *
@@ -403,6 +237,10 @@ public class GenericDescriptorMatcher {
 
         return;
     }
+
+    //
+    // C++:  javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::jclone(bool emptyTrainData = false)
+    //
 
     public GenericDescriptorMatcher clone(boolean emptyTrainData) {
 
@@ -419,12 +257,31 @@ public class GenericDescriptorMatcher {
         return retVal;
     }
 
+    //
+    // C++: static javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::create(int matcherType)
+    //
+
+    public static GenericDescriptorMatcher create(int matcherType) {
+
+        GenericDescriptorMatcher retVal = new GenericDescriptorMatcher(create_0(matcherType));
+
+        return retVal;
+    }
+
+    //
+    // C++:  bool javaGenericDescriptorMatcher::empty()
+    //
+
     public boolean empty() {
 
         boolean retVal = empty_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++:  vector_Mat javaGenericDescriptorMatcher::getTrainImages()
+    //
 
     /**
      * <p>Returns a train image collection.</p>
@@ -438,6 +295,10 @@ public class GenericDescriptorMatcher {
         return retVal;
     }
 
+    //
+    // C++:  vector_vector_KeyPoint javaGenericDescriptorMatcher::getTrainKeypoints()
+    //
+
     /**
      * <p>Returns a train keypoints collection.</p>
      *
@@ -449,6 +310,10 @@ public class GenericDescriptorMatcher {
         Converters.Mat_to_vector_vector_KeyPoint(retValMat, retVal);
         return retVal;
     }
+
+    //
+    // C++:  bool javaGenericDescriptorMatcher::isMaskSupported()
+    //
 
     /**
      * <p>Returns <code>true</code> if a generic descriptor matcher supports masking
@@ -462,6 +327,10 @@ public class GenericDescriptorMatcher {
 
         return retVal;
     }
+
+    //
+    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, int k, Mat mask = Mat(), bool compactResult = false)
+    //
 
     /**
      * <p>Finds the <code>k</code> best matches for each query keypoint.</p>
@@ -519,6 +388,10 @@ public class GenericDescriptorMatcher {
         return;
     }
 
+    //
+    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, int k, vector_Mat masks = vector<Mat>(), bool compactResult = false)
+    //
+
     /**
      * <p>Finds the <code>k</code> best matches for each query keypoint.</p>
      *
@@ -567,6 +440,10 @@ public class GenericDescriptorMatcher {
         Converters.Mat_to_vector_vector_DMatch(matches_mat, matches);
         return;
     }
+
+    //
+    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_DMatch& matches, Mat mask = Mat())
+    //
 
     /**
      * <p>Finds the best match in the training set for each keypoint from the query
@@ -640,6 +517,10 @@ public class GenericDescriptorMatcher {
         return;
     }
 
+    //
+    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, vector_DMatch& matches, vector_Mat masks = vector<Mat>())
+    //
+
     /**
      * <p>Finds the best match in the training set for each keypoint from the query
      * set.</p>
@@ -703,6 +584,10 @@ public class GenericDescriptorMatcher {
         return;
     }
 
+    //
+    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, float maxDistance, Mat mask = Mat(), bool compactResult = false)
+    //
+
     /**
      * <p>For each query keypoint, finds the training keypoints not farther than the
      * specified distance.</p>
@@ -759,6 +644,10 @@ public class GenericDescriptorMatcher {
         return;
     }
 
+    //
+    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, float maxDistance, vector_Mat masks = vector<Mat>(), bool compactResult = false)
+    //
+
     /**
      * <p>For each query keypoint, finds the training keypoints not farther than the
      * specified distance.</p>
@@ -808,6 +697,10 @@ public class GenericDescriptorMatcher {
         return;
     }
 
+    //
+    // C++:  void javaGenericDescriptorMatcher::read(string fileName)
+    //
+
     /**
      * <p>Reads a matcher object from a file node.</p>
      *
@@ -820,6 +713,10 @@ public class GenericDescriptorMatcher {
 
         return;
     }
+
+    //
+    // C++:  void javaGenericDescriptorMatcher::train()
+    //
 
     /**
      * <p>Trains descriptor matcher</p>
@@ -835,6 +732,10 @@ public class GenericDescriptorMatcher {
 
         return;
     }
+
+    //
+    // C++:  void javaGenericDescriptorMatcher::write(string fileName)
+    //
 
     /**
      * <p>Writes a match object to a file storage.</p>
@@ -852,4 +753,104 @@ public class GenericDescriptorMatcher {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:  void javaGenericDescriptorMatcher::add(vector_Mat images, vector_vector_KeyPoint keypoints)
+    private static native void add_0(long nativeObj, long images_mat_nativeObj,
+        long keypoints_mat_nativeObj);
+
+    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints)
+    private static native void classify_0(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
+        long trainKeypoints_mat_nativeObj);
+
+    // C++:  void javaGenericDescriptorMatcher::classify(Mat queryImage, vector_KeyPoint& queryKeypoints)
+    private static native void classify_1(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj);
+
+    // C++:  void javaGenericDescriptorMatcher::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::jclone(bool emptyTrainData = false)
+    private static native long clone_0(long nativeObj, boolean emptyTrainData);
+
+    private static native long clone_1(long nativeObj);
+
+    // C++: static javaGenericDescriptorMatcher* javaGenericDescriptorMatcher::create(int matcherType)
+    private static native long create_0(int matcherType);
+
+    // C++:  bool javaGenericDescriptorMatcher::empty()
+    private static native boolean empty_0(long nativeObj);
+
+    // C++:  vector_Mat javaGenericDescriptorMatcher::getTrainImages()
+    private static native long getTrainImages_0(long nativeObj);
+
+    // C++:  vector_vector_KeyPoint javaGenericDescriptorMatcher::getTrainKeypoints()
+    private static native long getTrainKeypoints_0(long nativeObj);
+
+    // C++:  bool javaGenericDescriptorMatcher::isMaskSupported()
+    private static native boolean isMaskSupported_0(long nativeObj);
+
+    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, int k, Mat mask = Mat(), bool compactResult = false)
+    private static native void knnMatch_0(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
+        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k, long mask_nativeObj,
+        boolean compactResult);
+
+    private static native void knnMatch_1(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
+        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k);
+
+    // C++:  void javaGenericDescriptorMatcher::knnMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, int k, vector_Mat masks = vector<Mat>(), bool compactResult = false)
+    private static native void knnMatch_2(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k,
+        long masks_mat_nativeObj, boolean compactResult);
+
+    private static native void knnMatch_3(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, int k);
+
+    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_DMatch& matches, Mat mask = Mat())
+    private static native void match_0(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
+        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, long mask_nativeObj);
+
+    private static native void match_1(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
+        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj);
+
+    // C++:  void javaGenericDescriptorMatcher::match(Mat queryImage, vector_KeyPoint queryKeypoints, vector_DMatch& matches, vector_Mat masks = vector<Mat>())
+    private static native void match_2(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, long masks_mat_nativeObj);
+
+    private static native void match_3(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj);
+
+    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, Mat trainImage, vector_KeyPoint trainKeypoints, vector_vector_DMatch& matches, float maxDistance, Mat mask = Mat(), bool compactResult = false)
+    private static native void radiusMatch_0(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
+        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance,
+        long mask_nativeObj, boolean compactResult);
+
+    private static native void radiusMatch_1(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long trainImage_nativeObj,
+        long trainKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance);
+
+    // C++:  void javaGenericDescriptorMatcher::radiusMatch(Mat queryImage, vector_KeyPoint queryKeypoints, vector_vector_DMatch& matches, float maxDistance, vector_Mat masks = vector<Mat>(), bool compactResult = false)
+    private static native void radiusMatch_2(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance,
+        long masks_mat_nativeObj, boolean compactResult);
+
+    private static native void radiusMatch_3(long nativeObj, long queryImage_nativeObj,
+        long queryKeypoints_mat_nativeObj, long matches_mat_nativeObj, float maxDistance);
+
+    // C++:  void javaGenericDescriptorMatcher::read(string fileName)
+    private static native void read_0(long nativeObj, String fileName);
+
+    // C++:  void javaGenericDescriptorMatcher::train()
+    private static native void train_0(long nativeObj);
+
+    // C++:  void javaGenericDescriptorMatcher::write(string fileName)
+    private static native void write_0(long nativeObj, String fileName);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

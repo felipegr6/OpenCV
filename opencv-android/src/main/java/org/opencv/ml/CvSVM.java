@@ -25,13 +25,13 @@ import org.opencv.core.Mat;
  */
 public class CvSVM extends CvStatModel {
 
-    public static final int C_SVC = 100, NU_SVC = 101, ONE_CLASS = 102, EPS_SVR = 103, NU_SVR = 104,
-        LINEAR = 0, POLY = 1, RBF = 2, SIGMOID = 3, C = 0, GAMMA = 1, P = 2, NU = 3, COEF = 4,
-        DEGREE = 5;
-
     protected CvSVM(long addr) {
         super(addr);
     }
+
+    public static final int C_SVC = 100, NU_SVC = 101, ONE_CLASS = 102, EPS_SVR = 103, NU_SVR = 104,
+        LINEAR = 0, POLY = 1, RBF = 2, SIGMOID = 3, C = 0, GAMMA = 1, P = 2, NU = 3, COEF = 4,
+        DEGREE = 5;
 
     //
     // C++:   CvSVM::CvSVM()
@@ -99,80 +99,6 @@ public class CvSVM extends CvStatModel {
     // C++:  void CvSVM::clear()
     //
 
-    // C++:   CvSVM::CvSVM()
-    private static native long CvSVM_0();
-
-    //
-    // C++:  int CvSVM::get_support_vector_count()
-    //
-
-    // C++:   CvSVM::CvSVM(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), CvSVMParams params = CvSVMParams())
-    private static native long CvSVM_1(long trainData_nativeObj, long responses_nativeObj,
-        long varIdx_nativeObj, long sampleIdx_nativeObj, long params_nativeObj);
-
-    //
-    // C++:  int CvSVM::get_var_count()
-    //
-
-    private static native long CvSVM_2(long trainData_nativeObj, long responses_nativeObj);
-
-    //
-    // C++:  float CvSVM::predict(Mat sample, bool returnDFVal = false)
-    //
-
-    // C++:  void CvSVM::clear()
-    private static native void clear_0(long nativeObj);
-
-    // C++:  int CvSVM::get_support_vector_count()
-    private static native int get_support_vector_count_0(long nativeObj);
-
-    //
-    // C++:  void CvSVM::predict(Mat samples, Mat& results)
-    //
-
-    // C++:  int CvSVM::get_var_count()
-    private static native int get_var_count_0(long nativeObj);
-
-    //
-    // C++:  bool CvSVM::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), CvSVMParams params = CvSVMParams())
-    //
-
-    // C++:  float CvSVM::predict(Mat sample, bool returnDFVal = false)
-    private static native float predict_0(long nativeObj, long sample_nativeObj,
-        boolean returnDFVal);
-
-    private static native float predict_1(long nativeObj, long sample_nativeObj);
-
-    //
-    // C++:  bool CvSVM::train_auto(Mat trainData, Mat responses, Mat varIdx, Mat sampleIdx, CvSVMParams params, int k_fold = 10, CvParamGrid Cgrid = CvSVM::get_default_grid(CvSVM::C), CvParamGrid gammaGrid = CvSVM::get_default_grid(CvSVM::GAMMA), CvParamGrid pGrid = CvSVM::get_default_grid(CvSVM::P), CvParamGrid nuGrid = CvSVM::get_default_grid(CvSVM::NU), CvParamGrid coeffGrid = CvSVM::get_default_grid(CvSVM::COEF), CvParamGrid degreeGrid = CvSVM::get_default_grid(CvSVM::DEGREE), bool balanced = false)
-    //
-
-    // C++:  void CvSVM::predict(Mat samples, Mat& results)
-    private static native void predict_all_0(long nativeObj, long samples_nativeObj,
-        long results_nativeObj);
-
-    // C++:  bool CvSVM::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), CvSVMParams params = CvSVMParams())
-    private static native boolean train_0(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long params_nativeObj);
-
-    private static native boolean train_1(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj);
-
-    // C++:  bool CvSVM::train_auto(Mat trainData, Mat responses, Mat varIdx, Mat sampleIdx, CvSVMParams params, int k_fold = 10, CvParamGrid Cgrid = CvSVM::get_default_grid(CvSVM::C), CvParamGrid gammaGrid = CvSVM::get_default_grid(CvSVM::GAMMA), CvParamGrid pGrid = CvSVM::get_default_grid(CvSVM::P), CvParamGrid nuGrid = CvSVM::get_default_grid(CvSVM::NU), CvParamGrid coeffGrid = CvSVM::get_default_grid(CvSVM::COEF), CvParamGrid degreeGrid = CvSVM::get_default_grid(CvSVM::DEGREE), bool balanced = false)
-    private static native boolean train_auto_0(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long params_nativeObj, int k_fold, long Cgrid_nativeObj, long gammaGrid_nativeObj,
-        long pGrid_nativeObj, long nuGrid_nativeObj, long coeffGrid_nativeObj,
-        long degreeGrid_nativeObj, boolean balanced);
-
-    private static native boolean train_auto_1(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long params_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public void clear() {
 
         clear_0(nativeObj);
@@ -180,12 +106,20 @@ public class CvSVM extends CvStatModel {
         return;
     }
 
+    //
+    // C++:  int CvSVM::get_support_vector_count()
+    //
+
     public int get_support_vector_count() {
 
         int retVal = get_support_vector_count_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++:  int CvSVM::get_var_count()
+    //
 
     /**
      * <p>Returns the number of used features (variables count).</p>
@@ -198,6 +132,10 @@ public class CvSVM extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  float CvSVM::predict(Mat sample, bool returnDFVal = false)
+    //
 
     /**
      * <p>Predicts the response for input sample(s).</p>
@@ -242,6 +180,10 @@ public class CvSVM extends CvStatModel {
         return retVal;
     }
 
+    //
+    // C++:  void CvSVM::predict(Mat samples, Mat& results)
+    //
+
     /**
      * <p>Predicts the response for input sample(s).</p>
      *
@@ -261,6 +203,10 @@ public class CvSVM extends CvStatModel {
 
         return;
     }
+
+    //
+    // C++:  bool CvSVM::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), CvSVMParams params = CvSVMParams())
+    //
 
     /**
      * <p>Trains an SVM.</p>
@@ -323,6 +269,10 @@ public class CvSVM extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  bool CvSVM::train_auto(Mat trainData, Mat responses, Mat varIdx, Mat sampleIdx, CvSVMParams params, int k_fold = 10, CvParamGrid Cgrid = CvSVM::get_default_grid(CvSVM::C), CvParamGrid gammaGrid = CvSVM::get_default_grid(CvSVM::GAMMA), CvParamGrid pGrid = CvSVM::get_default_grid(CvSVM::P), CvParamGrid nuGrid = CvSVM::get_default_grid(CvSVM::NU), CvParamGrid coeffGrid = CvSVM::get_default_grid(CvSVM::COEF), CvParamGrid degreeGrid = CvSVM::get_default_grid(CvSVM::DEGREE), bool balanced = false)
+    //
 
     /**
      * <p>Trains an SVM with optimal parameters.</p>
@@ -432,4 +382,54 @@ public class CvSVM extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvSVM::CvSVM()
+    private static native long CvSVM_0();
+
+    // C++:   CvSVM::CvSVM(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), CvSVMParams params = CvSVMParams())
+    private static native long CvSVM_1(long trainData_nativeObj, long responses_nativeObj,
+        long varIdx_nativeObj, long sampleIdx_nativeObj, long params_nativeObj);
+
+    private static native long CvSVM_2(long trainData_nativeObj, long responses_nativeObj);
+
+    // C++:  void CvSVM::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  int CvSVM::get_support_vector_count()
+    private static native int get_support_vector_count_0(long nativeObj);
+
+    // C++:  int CvSVM::get_var_count()
+    private static native int get_var_count_0(long nativeObj);
+
+    // C++:  float CvSVM::predict(Mat sample, bool returnDFVal = false)
+    private static native float predict_0(long nativeObj, long sample_nativeObj,
+        boolean returnDFVal);
+
+    private static native float predict_1(long nativeObj, long sample_nativeObj);
+
+    // C++:  void CvSVM::predict(Mat samples, Mat& results)
+    private static native void predict_all_0(long nativeObj, long samples_nativeObj,
+        long results_nativeObj);
+
+    // C++:  bool CvSVM::train(Mat trainData, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), CvSVMParams params = CvSVMParams())
+    private static native boolean train_0(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long params_nativeObj);
+
+    private static native boolean train_1(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj);
+
+    // C++:  bool CvSVM::train_auto(Mat trainData, Mat responses, Mat varIdx, Mat sampleIdx, CvSVMParams params, int k_fold = 10, CvParamGrid Cgrid = CvSVM::get_default_grid(CvSVM::C), CvParamGrid gammaGrid = CvSVM::get_default_grid(CvSVM::GAMMA), CvParamGrid pGrid = CvSVM::get_default_grid(CvSVM::P), CvParamGrid nuGrid = CvSVM::get_default_grid(CvSVM::NU), CvParamGrid coeffGrid = CvSVM::get_default_grid(CvSVM::COEF), CvParamGrid degreeGrid = CvSVM::get_default_grid(CvSVM::DEGREE), bool balanced = false)
+    private static native boolean train_auto_0(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long params_nativeObj, int k_fold, long Cgrid_nativeObj, long gammaGrid_nativeObj,
+        long pGrid_nativeObj, long nuGrid_nativeObj, long coeffGrid_nativeObj,
+        long degreeGrid_nativeObj, boolean balanced);
+
+    private static native boolean train_auto_1(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long params_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

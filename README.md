@@ -12,33 +12,14 @@ I've uploaded the `.aar` in my maven repository. You only need to add following 
 ```groovy
 repositories {
     maven {
-        url 'https://raw.github.com/vRallev/mvn-repo/master/'
+        url  "http://dl.bintray.com/felipegr6/maven" 
     }
 }
 
 dependencies {
-    compile 'org.opencv:opencv-android:2.4.8'
+    compile 'org.opencv:opencv2-android:2.4.11'
 }
 ```
-
-Compiling the library
----------------------
-
-You can also clone the library and add it your local maven repository.
- 
- 1. Clone the repository.
- 2. In the root project folder (`opencv-library`) run `gradle uploadArchives`.
- 3. Add the same dependency as above:
-
-```groovy
-repositories {
-    mavenLocal()
-}
-
-dependencies {
-    compile 'org.opencv:opencv-android:2.4.8'
-}
-``` 
 
 License
 -------

@@ -58,8 +58,8 @@ import org.opencv.core.Mat;
  *
  * <p>};</p>
  *
- * <p>The class implements the modified S. G. Kosov algorithm [Publication] that
- * differs from the original one as follows: </code></p>
+ * <p>The class implements the modified S. G. Kosov algorithm [KTS09] that differs
+ * from the original one as follows: </code></p>
  * <ul>
  * <li> The automatic initialization of method's parameters is added.
  * <li> The method of Smart Iteration Distribution (SID) is implemented.
@@ -73,14 +73,15 @@ import org.opencv.core.Mat;
  */
 public class StereoVar {
 
-    public static final int USE_INITIAL_DISPARITY = 1, USE_EQUALIZE_HIST = 2, USE_SMART_ID = 4,
-        USE_AUTO_PARAMS = 8, USE_MEDIAN_FILTERING = 16, CYCLE_O = 0, CYCLE_V = 1,
-        PENALIZATION_TICHONOV = 0, PENALIZATION_CHARBONNIER = 1, PENALIZATION_PERONA_MALIK = 2;
     protected final long nativeObj;
 
     protected StereoVar(long addr) {
         nativeObj = addr;
     }
+
+    public static final int USE_INITIAL_DISPARITY = 1, USE_EQUALIZE_HIST = 2, USE_SMART_ID = 4,
+        USE_AUTO_PARAMS = 8, USE_MEDIAN_FILTERING = 16, CYCLE_O = 0, CYCLE_V = 1,
+        PENALIZATION_TICHONOV = 0, PENALIZATION_CHARBONNIER = 1, PENALIZATION_PERONA_MALIK = 2;
 
     //
     // C++:   StereoVar::StereoVar()
@@ -176,176 +177,355 @@ public class StereoVar {
     // C++:  void StereoVar::operator ()(Mat left, Mat right, Mat& disp)
     //
 
-    // C++:   StereoVar::StereoVar()
-    private static native long StereoVar_0();
+    public void compute(Mat left, Mat right, Mat disp) {
+
+        compute_0(nativeObj, left.nativeObj, right.nativeObj, disp.nativeObj);
+
+        return;
+    }
 
     //
     // C++: int StereoVar::levels
     //
+
+    public int get_levels() {
+
+        int retVal = get_levels_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::levels
+    //
+
+    public void set_levels(int levels) {
+
+        set_levels_0(nativeObj, levels);
+
+        return;
+    }
+
+    //
+    // C++: double StereoVar::pyrScale
+    //
+
+    public double get_pyrScale() {
+
+        double retVal = get_pyrScale_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::pyrScale
+    //
+
+    public void set_pyrScale(double pyrScale) {
+
+        set_pyrScale_0(nativeObj, pyrScale);
+
+        return;
+    }
+
+    //
+    // C++: int StereoVar::nIt
+    //
+
+    public int get_nIt() {
+
+        int retVal = get_nIt_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::nIt
+    //
+
+    public void set_nIt(int nIt) {
+
+        set_nIt_0(nativeObj, nIt);
+
+        return;
+    }
+
+    //
+    // C++: int StereoVar::minDisp
+    //
+
+    public int get_minDisp() {
+
+        int retVal = get_minDisp_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::minDisp
+    //
+
+    public void set_minDisp(int minDisp) {
+
+        set_minDisp_0(nativeObj, minDisp);
+
+        return;
+    }
+
+    //
+    // C++: int StereoVar::maxDisp
+    //
+
+    public int get_maxDisp() {
+
+        int retVal = get_maxDisp_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::maxDisp
+    //
+
+    public void set_maxDisp(int maxDisp) {
+
+        set_maxDisp_0(nativeObj, maxDisp);
+
+        return;
+    }
+
+    //
+    // C++: int StereoVar::poly_n
+    //
+
+    public int get_poly_n() {
+
+        int retVal = get_poly_n_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::poly_n
+    //
+
+    public void set_poly_n(int poly_n) {
+
+        set_poly_n_0(nativeObj, poly_n);
+
+        return;
+    }
+
+    //
+    // C++: double StereoVar::poly_sigma
+    //
+
+    public double get_poly_sigma() {
+
+        double retVal = get_poly_sigma_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::poly_sigma
+    //
+
+    public void set_poly_sigma(double poly_sigma) {
+
+        set_poly_sigma_0(nativeObj, poly_sigma);
+
+        return;
+    }
+
+    //
+    // C++: float StereoVar::fi
+    //
+
+    public float get_fi() {
+
+        float retVal = get_fi_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::fi
+    //
+
+    public void set_fi(float fi) {
+
+        set_fi_0(nativeObj, fi);
+
+        return;
+    }
+
+    //
+    // C++: float StereoVar::lambda
+    //
+
+    public float get_lambda() {
+
+        float retVal = get_lambda_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::lambda
+    //
+
+    public void set_lambda(float lambda) {
+
+        set_lambda_0(nativeObj, lambda);
+
+        return;
+    }
+
+    //
+    // C++: int StereoVar::penalization
+    //
+
+    public int get_penalization() {
+
+        int retVal = get_penalization_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::penalization
+    //
+
+    public void set_penalization(int penalization) {
+
+        set_penalization_0(nativeObj, penalization);
+
+        return;
+    }
+
+    //
+    // C++: int StereoVar::cycle
+    //
+
+    public int get_cycle() {
+
+        int retVal = get_cycle_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::cycle
+    //
+
+    public void set_cycle(int cycle) {
+
+        set_cycle_0(nativeObj, cycle);
+
+        return;
+    }
+
+    //
+    // C++: int StereoVar::flags
+    //
+
+    public int get_flags() {
+
+        int retVal = get_flags_0(nativeObj);
+
+        return retVal;
+    }
+
+    //
+    // C++: void StereoVar::flags
+    //
+
+    public void set_flags(int flags) {
+
+        set_flags_0(nativeObj, flags);
+
+        return;
+    }
+
+    @Override protected void finalize() throws Throwable {
+        delete(nativeObj);
+    }
+
+    // C++:   StereoVar::StereoVar()
+    private static native long StereoVar_0();
 
     // C++:   StereoVar::StereoVar(int levels, double pyrScale, int nIt, int minDisp, int maxDisp, int poly_n, double poly_sigma, float fi, float lambda, int penalization, int cycle, int flags)
     private static native long StereoVar_1(int levels, double pyrScale, int nIt, int minDisp,
         int maxDisp, int poly_n, double poly_sigma, float fi, float lambda, int penalization,
         int cycle, int flags);
 
-    //
-    // C++: void StereoVar::levels
-    //
-
     // C++:  void StereoVar::operator ()(Mat left, Mat right, Mat& disp)
     private static native void compute_0(long nativeObj, long left_nativeObj, long right_nativeObj,
         long disp_nativeObj);
 
-    //
-    // C++: double StereoVar::pyrScale
-    //
-
     // C++: int StereoVar::levels
     private static native int get_levels_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::pyrScale
-    //
 
     // C++: void StereoVar::levels
     private static native void set_levels_0(long nativeObj, int levels);
 
-    //
-    // C++: int StereoVar::nIt
-    //
-
     // C++: double StereoVar::pyrScale
     private static native double get_pyrScale_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::nIt
-    //
 
     // C++: void StereoVar::pyrScale
     private static native void set_pyrScale_0(long nativeObj, double pyrScale);
 
-    //
-    // C++: int StereoVar::minDisp
-    //
-
     // C++: int StereoVar::nIt
     private static native int get_nIt_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::minDisp
-    //
 
     // C++: void StereoVar::nIt
     private static native void set_nIt_0(long nativeObj, int nIt);
 
-    //
-    // C++: int StereoVar::maxDisp
-    //
-
     // C++: int StereoVar::minDisp
     private static native int get_minDisp_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::maxDisp
-    //
 
     // C++: void StereoVar::minDisp
     private static native void set_minDisp_0(long nativeObj, int minDisp);
 
-    //
-    // C++: int StereoVar::poly_n
-    //
-
     // C++: int StereoVar::maxDisp
     private static native int get_maxDisp_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::poly_n
-    //
 
     // C++: void StereoVar::maxDisp
     private static native void set_maxDisp_0(long nativeObj, int maxDisp);
 
-    //
-    // C++: double StereoVar::poly_sigma
-    //
-
     // C++: int StereoVar::poly_n
     private static native int get_poly_n_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::poly_sigma
-    //
 
     // C++: void StereoVar::poly_n
     private static native void set_poly_n_0(long nativeObj, int poly_n);
 
-    //
-    // C++: float StereoVar::fi
-    //
-
     // C++: double StereoVar::poly_sigma
     private static native double get_poly_sigma_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::fi
-    //
 
     // C++: void StereoVar::poly_sigma
     private static native void set_poly_sigma_0(long nativeObj, double poly_sigma);
 
-    //
-    // C++: float StereoVar::lambda
-    //
-
     // C++: float StereoVar::fi
     private static native float get_fi_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::lambda
-    //
 
     // C++: void StereoVar::fi
     private static native void set_fi_0(long nativeObj, float fi);
 
-    //
-    // C++: int StereoVar::penalization
-    //
-
     // C++: float StereoVar::lambda
     private static native float get_lambda_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::penalization
-    //
 
     // C++: void StereoVar::lambda
     private static native void set_lambda_0(long nativeObj, float lambda);
 
-    //
-    // C++: int StereoVar::cycle
-    //
-
     // C++: int StereoVar::penalization
     private static native int get_penalization_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::cycle
-    //
 
     // C++: void StereoVar::penalization
     private static native void set_penalization_0(long nativeObj, int penalization);
 
-    //
-    // C++: int StereoVar::flags
-    //
-
     // C++: int StereoVar::cycle
     private static native int get_cycle_0(long nativeObj);
-
-    //
-    // C++: void StereoVar::flags
-    //
 
     // C++: void StereoVar::cycle
     private static native void set_cycle_0(long nativeObj, int cycle);
@@ -358,183 +538,4 @@ public class StereoVar {
 
     // native support for java finalize()
     private static native void delete(long nativeObj);
-
-    public void compute(Mat left, Mat right, Mat disp) {
-
-        compute_0(nativeObj, left.nativeObj, right.nativeObj, disp.nativeObj);
-
-        return;
-    }
-
-    public int get_levels() {
-
-        int retVal = get_levels_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_levels(int levels) {
-
-        set_levels_0(nativeObj, levels);
-
-        return;
-    }
-
-    public double get_pyrScale() {
-
-        double retVal = get_pyrScale_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_pyrScale(double pyrScale) {
-
-        set_pyrScale_0(nativeObj, pyrScale);
-
-        return;
-    }
-
-    public int get_nIt() {
-
-        int retVal = get_nIt_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_nIt(int nIt) {
-
-        set_nIt_0(nativeObj, nIt);
-
-        return;
-    }
-
-    public int get_minDisp() {
-
-        int retVal = get_minDisp_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_minDisp(int minDisp) {
-
-        set_minDisp_0(nativeObj, minDisp);
-
-        return;
-    }
-
-    public int get_maxDisp() {
-
-        int retVal = get_maxDisp_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_maxDisp(int maxDisp) {
-
-        set_maxDisp_0(nativeObj, maxDisp);
-
-        return;
-    }
-
-    public int get_poly_n() {
-
-        int retVal = get_poly_n_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_poly_n(int poly_n) {
-
-        set_poly_n_0(nativeObj, poly_n);
-
-        return;
-    }
-
-    public double get_poly_sigma() {
-
-        double retVal = get_poly_sigma_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_poly_sigma(double poly_sigma) {
-
-        set_poly_sigma_0(nativeObj, poly_sigma);
-
-        return;
-    }
-
-    public float get_fi() {
-
-        float retVal = get_fi_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_fi(float fi) {
-
-        set_fi_0(nativeObj, fi);
-
-        return;
-    }
-
-    public float get_lambda() {
-
-        float retVal = get_lambda_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_lambda(float lambda) {
-
-        set_lambda_0(nativeObj, lambda);
-
-        return;
-    }
-
-    public int get_penalization() {
-
-        int retVal = get_penalization_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_penalization(int penalization) {
-
-        set_penalization_0(nativeObj, penalization);
-
-        return;
-    }
-
-    public int get_cycle() {
-
-        int retVal = get_cycle_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_cycle(int cycle) {
-
-        set_cycle_0(nativeObj, cycle);
-
-        return;
-    }
-
-    public int get_flags() {
-
-        int retVal = get_flags_0(nativeObj);
-
-        return retVal;
-    }
-
-    public void set_flags(int flags) {
-
-        set_flags_0(nativeObj, flags);
-
-        return;
-    }
-
-    @Override protected void finalize() throws Throwable {
-        delete(nativeObj);
-    }
 }

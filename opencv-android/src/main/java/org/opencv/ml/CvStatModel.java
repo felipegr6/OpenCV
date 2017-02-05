@@ -69,23 +69,6 @@ public class CvStatModel {
     // C++:  void CvStatModel::load(c_string filename, c_string name = 0)
     //
 
-    // C++:  void CvStatModel::load(c_string filename, c_string name = 0)
-    private static native void load_0(long nativeObj, String filename, String name);
-
-    private static native void load_1(long nativeObj, String filename);
-
-    //
-    // C++:  void CvStatModel::save(c_string filename, c_string name = 0)
-    //
-
-    // C++:  void CvStatModel::save(c_string filename, c_string name = 0)
-    private static native void save_0(long nativeObj, String filename, String name);
-
-    private static native void save_1(long nativeObj, String filename);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     /**
      * <p>Loads the model from a file.</p>
      *
@@ -120,6 +103,10 @@ public class CvStatModel {
 
         return;
     }
+
+    //
+    // C++:  void CvStatModel::save(c_string filename, c_string name = 0)
+    //
 
     /**
      * <p>Saves the model to a file.</p>
@@ -161,4 +148,17 @@ public class CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:  void CvStatModel::load(c_string filename, c_string name = 0)
+    private static native void load_0(long nativeObj, String filename, String name);
+
+    private static native void load_1(long nativeObj, String filename);
+
+    // C++:  void CvStatModel::save(c_string filename, c_string name = 0)
+    private static native void save_0(long nativeObj, String filename, String name);
+
+    private static native void save_1(long nativeObj, String filename);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

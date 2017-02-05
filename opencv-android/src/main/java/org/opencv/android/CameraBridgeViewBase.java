@@ -27,13 +27,17 @@ import org.opencv.highgui.Highgui;
  */
 public abstract class CameraBridgeViewBase extends SurfaceView implements SurfaceHolder.Callback {
 
-    public static final int CAMERA_ID_ANY = -1;
-    public static final int CAMERA_ID_BACK = 99;
-    public static final int CAMERA_ID_FRONT = 98;
     private static final String TAG = "CameraBridge";
     private static final int MAX_UNSPECIFIED = -1;
     private static final int STOPPED = 0;
     private static final int STARTED = 1;
+
+    private int mState = STOPPED;
+    private Bitmap mCacheBitmap;
+    private CvCameraViewListener2 mListener;
+    private boolean mSurfaceExist;
+    private Object mSyncObject = new Object();
+
     protected int mFrameWidth;
     protected int mFrameHeight;
     protected int mMaxHeight;
@@ -43,11 +47,10 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
     protected int mCameraIndex = CAMERA_ID_ANY;
     protected boolean mEnabled;
     protected FpsMeter mFpsMeter = null;
-    private int mState = STOPPED;
-    private Bitmap mCacheBitmap;
-    private CvCameraViewListener2 mListener;
-    private boolean mSurfaceExist;
-    private Object mSyncObject = new Object();
+
+    public static final int CAMERA_ID_ANY = -1;
+    public static final int CAMERA_ID_BACK = 99;
+    public static final int CAMERA_ID_FRONT = 98;
 
     public CameraBridgeViewBase(Context context, int cameraId) {
         super(context);
@@ -86,6 +89,116 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
         this.mCameraIndex = cameraIndex;
     }
 
+    public interface CvCameraViewListener {
+        /**
+         * This method is invoked when camera preview has started. After this method is invoked
+         * the frames will start to be delivered to client via the onCameraFrame() callback.
+         *
+         * @param width -  the width of the frames that will be delivered
+         * @param height - the height of the frames that will be delivered
+         */
+        public void onCameraViewStarted(int width, int height);
+
+        /**
+         * This method is invoked when camera preview has been stopped for some reason.
+         * No frames will be delivered via onCameraFrame() callback after this method is called.
+         */
+        public void onCameraViewStopped();
+
+        /**
+         * This method is invoked when delivery of the frame needs to be done.
+         * The returned values - is a modified frame which needs to be displayed on the screen.
+         * TODO: pass the parameters specifying the format of the frame (BPP, YUV or RGB and etc)
+         */
+        public Mat onCameraFrame(Mat inputFrame);
+    }
+
+    public interface CvCameraViewListener2 {
+        /**
+         * This method is invoked when camera preview has started. After this method is invoked
+         * the frames will start to be delivered to client via the onCameraFrame() callback.
+         *
+         * @param width -  the width of the frames that will be delivered
+         * @param height - the height of the frames that will be delivered
+         */
+        public void onCameraViewStarted(int width, int height);
+
+        /**
+         * This method is invoked when camera preview has been stopped for some reason.
+         * No frames will be delivered via onCameraFrame() callback after this method is called.
+         */
+        public void onCameraViewStopped();
+
+        /**
+         * This method is invoked when delivery of the frame needs to be done.
+         * The returned values - is a modified frame which needs to be displayed on the screen.
+         * TODO: pass the parameters specifying the format of the frame (BPP, YUV or RGB and etc)
+         */
+        public Mat onCameraFrame(CvCameraViewFrame inputFrame);
+    }
+
+    ;
+
+    protected class CvCameraViewListenerAdapter implements CvCameraViewListener2 {
+        public CvCameraViewListenerAdapter(CvCameraViewListener oldStypeListener) {
+            mOldStyleListener = oldStypeListener;
+        }
+
+        public void onCameraViewStarted(int width, int height) {
+            mOldStyleListener.onCameraViewStarted(width, height);
+        }
+
+        public void onCameraViewStopped() {
+            mOldStyleListener.onCameraViewStopped();
+        }
+
+        public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+            Mat result = null;
+            switch (mPreviewFormat) {
+                case Highgui.CV_CAP_ANDROID_COLOR_FRAME_RGBA:
+                    result = mOldStyleListener.onCameraFrame(inputFrame.rgba());
+                    break;
+                case Highgui.CV_CAP_ANDROID_GREY_FRAME:
+                    result = mOldStyleListener.onCameraFrame(inputFrame.gray());
+                    break;
+                default:
+                    Log.e(TAG, "Invalid frame format! Only RGBA and Gray Scale are supported!");
+            }
+            ;
+
+            return result;
+        }
+
+        public void setFrameFormat(int format) {
+            mPreviewFormat = format;
+        }
+
+        private int mPreviewFormat = Highgui.CV_CAP_ANDROID_COLOR_FRAME_RGBA;
+        private CvCameraViewListener mOldStyleListener;
+    }
+
+    ;
+
+    /**
+     * This class interface is abstract representation of single frame from camera for onCameraFrame
+     * callback
+     * Attention: Do not use objects, that represents this interface out of onCameraFrame callback!
+     */
+    public interface CvCameraViewFrame {
+
+        /**
+         * This method returns RGBA Mat with frame
+         */
+        public Mat rgba();
+
+        /**
+         * This method returns single channel gray scale Mat with frame
+         */
+        public Mat gray();
+    }
+
+    ;
+
     public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
         Log.d(TAG, "call surfaceChanged event");
         synchronized (mSyncObject) {
@@ -108,16 +221,12 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
         /* Do nothing. Wait until surfaceChanged delivered */
     }
 
-    ;
-
     public void surfaceDestroyed(SurfaceHolder holder) {
         synchronized (mSyncObject) {
             mSurfaceExist = false;
             checkCurrentState();
         }
     }
-
-    ;
 
     /**
      * This method is provided for clients, so they can enable the camera connection.
@@ -130,8 +239,6 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
             checkCurrentState();
         }
     }
-
-    ;
 
     /**
      * This method is provided for clients, so they can disable camera connection and stop
@@ -368,6 +475,14 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
         mCacheBitmap = Bitmap.createBitmap(mFrameWidth, mFrameHeight, Bitmap.Config.ARGB_8888);
     }
 
+    public interface ListItemAccessor {
+        public int getWidth(Object obj);
+
+        public int getHeight(Object obj);
+    }
+
+    ;
+
     /**
      * This helper method can be called by subclasses to select camera preview size.
      * It goes over the list of the supported preview sizes and selects the maximum one which
@@ -399,117 +514,5 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
         }
 
         return new Size(calcWidth, calcHeight);
-    }
-
-    public interface CvCameraViewListener {
-        /**
-         * This method is invoked when camera preview has started. After this method is invoked
-         * the frames will start to be delivered to client via the onCameraFrame() callback.
-         *
-         * @param width -  the width of the frames that will be delivered
-         * @param height - the height of the frames that will be delivered
-         */
-        public void onCameraViewStarted(int width, int height);
-
-        /**
-         * This method is invoked when camera preview has been stopped for some reason.
-         * No frames will be delivered via onCameraFrame() callback after this method is called.
-         */
-        public void onCameraViewStopped();
-
-        /**
-         * This method is invoked when delivery of the frame needs to be done.
-         * The returned values - is a modified frame which needs to be displayed on the screen.
-         * TODO: pass the parameters specifying the format of the frame (BPP, YUV or RGB and etc)
-         */
-        public Mat onCameraFrame(Mat inputFrame);
-    }
-
-    public interface CvCameraViewListener2 {
-        /**
-         * This method is invoked when camera preview has started. After this method is invoked
-         * the frames will start to be delivered to client via the onCameraFrame() callback.
-         *
-         * @param width -  the width of the frames that will be delivered
-         * @param height - the height of the frames that will be delivered
-         */
-        public void onCameraViewStarted(int width, int height);
-
-        /**
-         * This method is invoked when camera preview has been stopped for some reason.
-         * No frames will be delivered via onCameraFrame() callback after this method is called.
-         */
-        public void onCameraViewStopped();
-
-        /**
-         * This method is invoked when delivery of the frame needs to be done.
-         * The returned values - is a modified frame which needs to be displayed on the screen.
-         * TODO: pass the parameters specifying the format of the frame (BPP, YUV or RGB and etc)
-         */
-        public Mat onCameraFrame(CvCameraViewFrame inputFrame);
-    }
-
-    /**
-     * This class interface is abstract representation of single frame from camera for onCameraFrame
-     * callback
-     * Attention: Do not use objects, that represents this interface out of onCameraFrame callback!
-     */
-    public interface CvCameraViewFrame {
-
-        /**
-         * This method returns RGBA Mat with frame
-         */
-        public Mat rgba();
-
-        /**
-         * This method returns single channel gray scale Mat with frame
-         */
-        public Mat gray();
-    }
-
-    public interface ListItemAccessor {
-        public int getWidth(Object obj);
-
-        public int getHeight(Object obj);
-    }
-
-    ;
-
-    protected class CvCameraViewListenerAdapter implements CvCameraViewListener2 {
-        private int mPreviewFormat = Highgui.CV_CAP_ANDROID_COLOR_FRAME_RGBA;
-        private CvCameraViewListener mOldStyleListener;
-
-        public CvCameraViewListenerAdapter(CvCameraViewListener oldStypeListener) {
-            mOldStyleListener = oldStypeListener;
-        }
-
-        public void onCameraViewStarted(int width, int height) {
-            mOldStyleListener.onCameraViewStarted(width, height);
-        }
-
-        public void onCameraViewStopped() {
-            mOldStyleListener.onCameraViewStopped();
-        }
-
-        public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-            Mat result = null;
-            switch (mPreviewFormat) {
-                case Highgui.CV_CAP_ANDROID_COLOR_FRAME_RGBA:
-                    result = mOldStyleListener.onCameraFrame(inputFrame.rgba());
-                    break;
-                case Highgui.CV_CAP_ANDROID_GREY_FRAME:
-                    result = mOldStyleListener.onCameraFrame(inputFrame.gray());
-                    break;
-                default:
-                    Log.e(TAG, "Invalid frame format! Only RGBA and Gray Scale are supported!");
-            }
-            ;
-
-            return result;
-        }
-
-        public void setFrameFormat(int format) {
-            mPreviewFormat = format;
-        }
     }
 }

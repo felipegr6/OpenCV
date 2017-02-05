@@ -80,13 +80,14 @@ public class DescriptorExtractor {
      *
      * @param image Image.
      * @param keypoints Input collection of keypoints. Keypoints for which a
-     * descriptor cannot be computed are removed. Sometimes new keypoints can be
-     * added, for example: <code>SIFT</code> duplicates keypoint with several
-     * dominant orientations (for each orientation).
+     * descriptor cannot be computed are removed and the remaining ones may be
+     * reordered. Sometimes new keypoints can be added, for example:
+     * <code>SIFT</code> duplicates a keypoint with several dominant orientations
+     * (for each orientation).
      * @param descriptors Computed descriptors. In the second variant of the method
-     * <code>descriptors[i]</code> are descriptors computed for a <code>keypoints[i]".
-     * Row </code>j<code> is the </code>keypoints<code> (or </code>keypoints[i]<code>)
-     * is the descriptor for keypoint </code>j"-th keypoint.
+     * <code>descriptors[i]</code> are descriptors computed for a <code>keypoints[i]</code>.
+     * Row <code>j</code> is the <code>keypoints</code> (or <code>keypoints[i]</code>)
+     * is the descriptor for keypoint <code>j</code>-th keypoint.
      * @see <a href="http://docs.opencv.org/modules/features2d/doc/common_interfaces_of_descriptor_extractors.html#descriptorextractor-compute">org.opencv.features2d.DescriptorExtractor.compute</a>
      */
     public void compute(Mat image, MatOfKeyPoint keypoints, Mat descriptors) {
@@ -106,13 +107,14 @@ public class DescriptorExtractor {
      *
      * @param images Image set.
      * @param keypoints Input collection of keypoints. Keypoints for which a
-     * descriptor cannot be computed are removed. Sometimes new keypoints can be
-     * added, for example: <code>SIFT</code> duplicates keypoint with several
-     * dominant orientations (for each orientation).
+     * descriptor cannot be computed are removed and the remaining ones may be
+     * reordered. Sometimes new keypoints can be added, for example:
+     * <code>SIFT</code> duplicates a keypoint with several dominant orientations
+     * (for each orientation).
      * @param descriptors Computed descriptors. In the second variant of the method
-     * <code>descriptors[i]</code> are descriptors computed for a <code>keypoints[i]".
-     * Row </code>j<code> is the </code>keypoints<code> (or </code>keypoints[i]<code>)
-     * is the descriptor for keypoint </code>j"-th keypoint.
+     * <code>descriptors[i]</code> are descriptors computed for a <code>keypoints[i]</code>.
+     * Row <code>j</code> is the <code>keypoints</code> (or <code>keypoints[i]</code>)
+     * is the descriptor for keypoint <code>j</code>-th keypoint.
      * @see <a href="http://docs.opencv.org/modules/features2d/doc/common_interfaces_of_descriptor_extractors.html#descriptorextractor-compute">org.opencv.features2d.DescriptorExtractor.compute</a>
      */
     public void compute(List<Mat> images, List<MatOfKeyPoint> keypoints, List<Mat> descriptors) {

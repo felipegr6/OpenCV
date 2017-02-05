@@ -16,12 +16,12 @@ import org.opencv.core.Range;
  */
 public class CvBoost extends CvStatModel {
 
-    public static final int DISCRETE = 0, REAL = 1, LOGIT = 2, GENTLE = 3, DEFAULT = 0, GINI = 1,
-        MISCLASS = 3, SQERR = 4;
-
     protected CvBoost(long addr) {
         super(addr);
     }
+
+    public static final int DISCRETE = 0, REAL = 1, LOGIT = 2, GENTLE = 3, DEFAULT = 0, GINI = 1,
+        MISCLASS = 3, SQERR = 4;
 
     //
     // C++:   CvBoost::CvBoost()
@@ -93,59 +93,16 @@ public class CvBoost extends CvStatModel {
     // C++:  void CvBoost::clear()
     //
 
-    // C++:   CvBoost::CvBoost()
-    private static native long CvBoost_0();
-
-    //
-    // C++:  float CvBoost::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), bool rawMode = false, bool returnSum = false)
-    //
-
-    // C++:   CvBoost::CvBoost(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvBoostParams params = CvBoostParams())
-    private static native long CvBoost_1(long trainData_nativeObj, int tflag,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
-
-    private static native long CvBoost_2(long trainData_nativeObj, int tflag,
-        long responses_nativeObj);
-
-    //
-    // C++:  void CvBoost::prune(CvSlice slice)
-    //
-
-    // C++:  void CvBoost::clear()
-    private static native void clear_0(long nativeObj);
-
-    //
-    // C++:  bool CvBoost::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvBoostParams params = CvBoostParams(), bool update = false)
-    //
-
-    // C++:  float CvBoost::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), bool rawMode = false, bool returnSum = false)
-    private static native float predict_0(long nativeObj, long sample_nativeObj,
-        long missing_nativeObj, int slice_start, int slice_end, boolean rawMode, boolean returnSum);
-
-    private static native float predict_1(long nativeObj, long sample_nativeObj);
-
-    // C++:  void CvBoost::prune(CvSlice slice)
-    private static native void prune_0(long nativeObj, int slice_start, int slice_end);
-
-    // C++:  bool CvBoost::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvBoostParams params = CvBoostParams(), bool update = false)
-    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj,
-        boolean update);
-
-    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public void clear() {
 
         clear_0(nativeObj);
 
         return;
     }
+
+    //
+    // C++:  float CvBoost::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), bool rawMode = false, bool returnSum = false)
+    //
 
     /**
      * <p>Predicts a response for an input sample.</p>
@@ -189,6 +146,10 @@ public class CvBoost extends CvStatModel {
         return retVal;
     }
 
+    //
+    // C++:  void CvBoost::prune(CvSlice slice)
+    //
+
     /**
      * <p>Removes the specified weak classifiers.</p>
      *
@@ -207,6 +168,10 @@ public class CvBoost extends CvStatModel {
 
         return;
     }
+
+    //
+    // C++:  bool CvBoost::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvBoostParams params = CvBoostParams(), bool update = false)
+    //
 
     /**
      * <p>Trains a boosted tree classifier.</p>
@@ -262,4 +227,39 @@ public class CvBoost extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvBoost::CvBoost()
+    private static native long CvBoost_0();
+
+    // C++:   CvBoost::CvBoost(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvBoostParams params = CvBoostParams())
+    private static native long CvBoost_1(long trainData_nativeObj, int tflag,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
+
+    private static native long CvBoost_2(long trainData_nativeObj, int tflag,
+        long responses_nativeObj);
+
+    // C++:  void CvBoost::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  float CvBoost::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), bool rawMode = false, bool returnSum = false)
+    private static native float predict_0(long nativeObj, long sample_nativeObj,
+        long missing_nativeObj, int slice_start, int slice_end, boolean rawMode, boolean returnSum);
+
+    private static native float predict_1(long nativeObj, long sample_nativeObj);
+
+    // C++:  void CvBoost::prune(CvSlice slice)
+    private static native void prune_0(long nativeObj, int slice_start, int slice_end);
+
+    // C++:  bool CvBoost::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvBoostParams params = CvBoostParams(), bool update = false)
+    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj,
+        boolean update);
+
+    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

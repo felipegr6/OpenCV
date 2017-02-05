@@ -44,15 +44,6 @@ public class BackgroundSubtractor extends Algorithm {
     // C++:  void BackgroundSubtractor::operator ()(Mat image, Mat& fgmask, double learningRate = 0)
     //
 
-    // C++:  void BackgroundSubtractor::operator ()(Mat image, Mat& fgmask, double learningRate = 0)
-    private static native void apply_0(long nativeObj, long image_nativeObj, long fgmask_nativeObj,
-        double learningRate);
-
-    private static native void apply_1(long nativeObj, long image_nativeObj, long fgmask_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     /**
      * <p>Computes a foreground mask.</p>
      *
@@ -85,4 +76,13 @@ public class BackgroundSubtractor extends Algorithm {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:  void BackgroundSubtractor::operator ()(Mat image, Mat& fgmask, double learningRate = 0)
+    private static native void apply_0(long nativeObj, long image_nativeObj, long fgmask_nativeObj,
+        double learningRate);
+
+    private static native void apply_1(long nativeObj, long image_nativeObj, long fgmask_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

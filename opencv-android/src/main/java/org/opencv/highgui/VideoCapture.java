@@ -130,77 +130,6 @@ public class VideoCapture {
     // C++: double VideoCapture::get(int propId)
     //
 
-    // C++: VideoCapture::VideoCapture()
-    private static native long n_VideoCapture();
-
-    // C++: VideoCapture::VideoCapture(string filename)
-    private static native long n_VideoCapture(String filename);
-
-    //
-    // C++: bool VideoCapture::grab()
-    //
-
-    // C++: VideoCapture::VideoCapture(int device)
-    private static native long n_VideoCapture(int device);
-
-    //
-    // C++: bool VideoCapture::isOpened()
-    //
-
-    // C++: double VideoCapture::get(int propId)
-    private static native double n_get(long nativeObj, int propId);
-
-    //
-    // C++: bool VideoCapture::open(int device)
-    //
-
-    // C++: bool VideoCapture::grab()
-    private static native boolean n_grab(long nativeObj);
-
-    //
-    // C++: bool VideoCapture::read(Mat image)
-    //
-
-    // C++: bool VideoCapture::isOpened()
-    private static native boolean n_isOpened(long nativeObj);
-
-    //
-    // C++: void VideoCapture::release()
-    //
-
-    // C++: bool VideoCapture::open(string filename)
-    private static native boolean n_open(long nativeObj, String filename);
-
-    //
-    // C++: bool VideoCapture::retrieve(Mat image, int channel = 0)
-    //
-
-    // C++: bool VideoCapture::open(int device)
-    private static native boolean n_open(long nativeObj, int device);
-
-    // C++: bool VideoCapture::read(Mat image)
-    private static native boolean n_read(long nativeObj, long image_nativeObj);
-
-    //
-    // C++: bool VideoCapture::set(int propId, double value)
-    //
-
-    // C++: void VideoCapture::release()
-    private static native void n_release(long nativeObj);
-
-    // C++: bool VideoCapture::retrieve(Mat image, int channel = 0)
-    private static native boolean n_retrieve(long nativeObj, long image_nativeObj, int channel);
-
-    private static native boolean n_retrieve(long nativeObj, long image_nativeObj);
-
-    // C++: bool VideoCapture::set(int propId, double value)
-    private static native boolean n_set(long nativeObj, int propId, double value);
-
-    private static native String n_getSupportedPreviewSizes(long nativeObj);
-
-    // native support for java finalize()
-    private static native void n_delete(long nativeObj);
-
     /**
      * Returns the specified "VideoCapture" property.
      *
@@ -231,6 +160,10 @@ public class VideoCapture {
         return sizes;
     }
 
+    //
+    // C++: bool VideoCapture::grab()
+    //
+
     /**
      * <p>Grabs the next frame from video file or capturing device.</p>
      *
@@ -260,6 +193,10 @@ public class VideoCapture {
         return retVal;
     }
 
+    //
+    // C++: bool VideoCapture::isOpened()
+    //
+
     /**
      * <p>Returns true if video capturing has been initialized already.</p>
      *
@@ -274,6 +211,10 @@ public class VideoCapture {
 
         return retVal;
     }
+
+    //
+    // C++: bool VideoCapture::open(int device)
+    //
 
     /**
      * <p>Open video file or a capturing device for video capturing</p>
@@ -290,6 +231,10 @@ public class VideoCapture {
 
         return retVal;
     }
+
+    //
+    // C++: bool VideoCapture::read(Mat image)
+    //
 
     /**
      * <p>Grabs, decodes and returns the next video frame.</p>
@@ -316,6 +261,10 @@ public class VideoCapture {
         return retVal;
     }
 
+    //
+    // C++: void VideoCapture::release()
+    //
+
     /**
      * <p>Closes video file or capturing device.</p>
      *
@@ -333,6 +282,10 @@ public class VideoCapture {
 
         return;
     }
+
+    //
+    // C++: bool VideoCapture::retrieve(Mat image, int channel = 0)
+    //
 
     /**
      * <p>Decodes and returns the grabbed video frame.</p>
@@ -381,6 +334,10 @@ public class VideoCapture {
         return retVal;
     }
 
+    //
+    // C++: bool VideoCapture::set(int propId, double value)
+    //
+
     /**
      * Sets a property in the "VideoCapture".
      *
@@ -401,4 +358,47 @@ public class VideoCapture {
         n_delete(nativeObj);
         super.finalize();
     }
+
+    // C++: VideoCapture::VideoCapture()
+    private static native long n_VideoCapture();
+
+    // C++: VideoCapture::VideoCapture(string filename)
+    private static native long n_VideoCapture(java.lang.String filename);
+
+    // C++: VideoCapture::VideoCapture(int device)
+    private static native long n_VideoCapture(int device);
+
+    // C++: double VideoCapture::get(int propId)
+    private static native double n_get(long nativeObj, int propId);
+
+    // C++: bool VideoCapture::grab()
+    private static native boolean n_grab(long nativeObj);
+
+    // C++: bool VideoCapture::isOpened()
+    private static native boolean n_isOpened(long nativeObj);
+
+    // C++: bool VideoCapture::open(string filename)
+    private static native boolean n_open(long nativeObj, java.lang.String filename);
+
+    // C++: bool VideoCapture::open(int device)
+    private static native boolean n_open(long nativeObj, int device);
+
+    // C++: bool VideoCapture::read(Mat image)
+    private static native boolean n_read(long nativeObj, long image_nativeObj);
+
+    // C++: void VideoCapture::release()
+    private static native void n_release(long nativeObj);
+
+    // C++: bool VideoCapture::retrieve(Mat image, int channel = 0)
+    private static native boolean n_retrieve(long nativeObj, long image_nativeObj, int channel);
+
+    private static native boolean n_retrieve(long nativeObj, long image_nativeObj);
+
+    // C++: bool VideoCapture::set(int propId, double value)
+    private static native boolean n_set(long nativeObj, int propId, double value);
+
+    private static native String n_getSupportedPreviewSizes(long nativeObj);
+
+    // native support for java finalize()
+    private static native void n_delete(long nativeObj);
 }

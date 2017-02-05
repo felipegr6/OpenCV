@@ -23,12 +23,12 @@ import org.opencv.core.Mat;
  */
 public class CvANN_MLP extends CvStatModel {
 
-    public static final int IDENTITY = 0, SIGMOID_SYM = 1, GAUSSIAN = 2, UPDATE_WEIGHTS = 1,
-        NO_INPUT_SCALE = 2, NO_OUTPUT_SCALE = 4;
-
     protected CvANN_MLP(long addr) {
         super(addr);
     }
+
+    public static final int IDENTITY = 0, SIGMOID_SYM = 1, GAUSSIAN = 2, UPDATE_WEIGHTS = 1,
+        NO_INPUT_SCALE = 2, NO_OUTPUT_SCALE = 4;
 
     //
     // C++:   CvANN_MLP::CvANN_MLP()
@@ -92,56 +92,16 @@ public class CvANN_MLP extends CvStatModel {
     // C++:  void CvANN_MLP::clear()
     //
 
-    // C++:   CvANN_MLP::CvANN_MLP()
-    private static native long CvANN_MLP_0();
-
-    //
-    // C++:  void CvANN_MLP::create(Mat layerSizes, int activateFunc = CvANN_MLP::SIGMOID_SYM, double fparam1 = 0, double fparam2 = 0)
-    //
-
-    // C++:   CvANN_MLP::CvANN_MLP(Mat layerSizes, int activateFunc = CvANN_MLP::SIGMOID_SYM, double fparam1 = 0, double fparam2 = 0)
-    private static native long CvANN_MLP_1(long layerSizes_nativeObj, int activateFunc,
-        double fparam1, double fparam2);
-
-    private static native long CvANN_MLP_2(long layerSizes_nativeObj);
-
-    //
-    // C++:  float CvANN_MLP::predict(Mat inputs, Mat& outputs)
-    //
-
-    // C++:  void CvANN_MLP::clear()
-    private static native void clear_0(long nativeObj);
-
-    //
-    // C++:  int CvANN_MLP::train(Mat inputs, Mat outputs, Mat sampleWeights, Mat sampleIdx = cv::Mat(), CvANN_MLP_TrainParams params = CvANN_MLP_TrainParams(), int flags = 0)
-    //
-
-    // C++:  void CvANN_MLP::create(Mat layerSizes, int activateFunc = CvANN_MLP::SIGMOID_SYM, double fparam1 = 0, double fparam2 = 0)
-    private static native void create_0(long nativeObj, long layerSizes_nativeObj, int activateFunc,
-        double fparam1, double fparam2);
-
-    private static native void create_1(long nativeObj, long layerSizes_nativeObj);
-
-    // C++:  float CvANN_MLP::predict(Mat inputs, Mat& outputs)
-    private static native float predict_0(long nativeObj, long inputs_nativeObj,
-        long outputs_nativeObj);
-
-    // C++:  int CvANN_MLP::train(Mat inputs, Mat outputs, Mat sampleWeights, Mat sampleIdx = cv::Mat(), CvANN_MLP_TrainParams params = CvANN_MLP_TrainParams(), int flags = 0)
-    private static native int train_0(long nativeObj, long inputs_nativeObj, long outputs_nativeObj,
-        long sampleWeights_nativeObj, long sampleIdx_nativeObj, long params_nativeObj, int flags);
-
-    private static native int train_1(long nativeObj, long inputs_nativeObj, long outputs_nativeObj,
-        long sampleWeights_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public void clear() {
 
         clear_0(nativeObj);
 
         return;
     }
+
+    //
+    // C++:  void CvANN_MLP::create(Mat layerSizes, int activateFunc = CvANN_MLP::SIGMOID_SYM, double fparam1 = 0, double fparam2 = 0)
+    //
 
     /**
      * <p>Constructs MLP with the specified topology.</p>
@@ -184,10 +144,19 @@ public class CvANN_MLP extends CvStatModel {
         return;
     }
 
+    //
+    // C++:  float CvANN_MLP::predict(Mat inputs, Mat& outputs)
+    //
+
     /**
      * <p>Predicts responses for input samples.</p>
      *
      * <p>The method returns a dummy value which should be ignored.</p>
+     *
+     * <p>If you are using the default <code>cvANN_MLP.SIGMOID_SYM</code> activation
+     * function with the default parameter values fparam1=0 and fparam2=0 then the
+     * function used is y = 1.7159*tanh(2/3 * x), so the output will range from
+     * [-1.7159, 1.7159], instead of [0,1].</p>
      *
      * @param inputs Input samples.
      * @param outputs Predicted responses for corresponding samples.
@@ -200,6 +169,10 @@ public class CvANN_MLP extends CvStatModel {
         return retVal;
     }
 
+    //
+    // C++:  int CvANN_MLP::train(Mat inputs, Mat outputs, Mat sampleWeights, Mat sampleIdx = cv::Mat(), CvANN_MLP_TrainParams params = CvANN_MLP_TrainParams(), int flags = 0)
+    //
+
     /**
      * <p>Trains/updates MLP.</p>
      *
@@ -207,6 +180,10 @@ public class CvANN_MLP extends CvStatModel {
      * the network weights. It returns the number of done iterations.</p>
      *
      * <p>The RPROP training algorithm is parallelized with the TBB library.</p>
+     *
+     * <p>If you are using the default <code>cvANN_MLP.SIGMOID_SYM</code> activation
+     * function then the output should be in the range [-1,1], instead of [0,1], for
+     * optimal results.</p>
      *
      * @param inputs Floating-point matrix of input vectors, one vector per row.
      * @param outputs Floating-point matrix of the corresponding output vectors, one
@@ -256,6 +233,10 @@ public class CvANN_MLP extends CvStatModel {
      *
      * <p>The RPROP training algorithm is parallelized with the TBB library.</p>
      *
+     * <p>If you are using the default <code>cvANN_MLP.SIGMOID_SYM</code> activation
+     * function then the output should be in the range [-1,1], instead of [0,1], for
+     * optimal results.</p>
+     *
      * @param inputs Floating-point matrix of input vectors, one vector per row.
      * @param outputs Floating-point matrix of the corresponding output vectors, one
      * vector per row.
@@ -276,4 +257,36 @@ public class CvANN_MLP extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvANN_MLP::CvANN_MLP()
+    private static native long CvANN_MLP_0();
+
+    // C++:   CvANN_MLP::CvANN_MLP(Mat layerSizes, int activateFunc = CvANN_MLP::SIGMOID_SYM, double fparam1 = 0, double fparam2 = 0)
+    private static native long CvANN_MLP_1(long layerSizes_nativeObj, int activateFunc,
+        double fparam1, double fparam2);
+
+    private static native long CvANN_MLP_2(long layerSizes_nativeObj);
+
+    // C++:  void CvANN_MLP::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  void CvANN_MLP::create(Mat layerSizes, int activateFunc = CvANN_MLP::SIGMOID_SYM, double fparam1 = 0, double fparam2 = 0)
+    private static native void create_0(long nativeObj, long layerSizes_nativeObj, int activateFunc,
+        double fparam1, double fparam2);
+
+    private static native void create_1(long nativeObj, long layerSizes_nativeObj);
+
+    // C++:  float CvANN_MLP::predict(Mat inputs, Mat& outputs)
+    private static native float predict_0(long nativeObj, long inputs_nativeObj,
+        long outputs_nativeObj);
+
+    // C++:  int CvANN_MLP::train(Mat inputs, Mat outputs, Mat sampleWeights, Mat sampleIdx = cv::Mat(), CvANN_MLP_TrainParams params = CvANN_MLP_TrainParams(), int flags = 0)
+    private static native int train_0(long nativeObj, long inputs_nativeObj, long outputs_nativeObj,
+        long sampleWeights_nativeObj, long sampleIdx_nativeObj, long params_nativeObj, int flags);
+
+    private static native int train_1(long nativeObj, long inputs_nativeObj, long outputs_nativeObj,
+        long sampleWeights_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

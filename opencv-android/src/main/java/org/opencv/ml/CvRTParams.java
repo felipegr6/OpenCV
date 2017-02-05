@@ -39,58 +39,16 @@ public class CvRTParams extends CvDTreeParams {
     // C++: bool CvRTParams::calc_var_importance
     //
 
-    // C++:   CvRTParams::CvRTParams()
-    private static native long CvRTParams_0();
-
-    //
-    // C++: void CvRTParams::calc_var_importance
-    //
-
-    // C++: bool CvRTParams::calc_var_importance
-    private static native boolean get_calc_var_importance_0(long nativeObj);
-
-    //
-    // C++: int CvRTParams::nactive_vars
-    //
-
-    // C++: void CvRTParams::calc_var_importance
-    private static native void set_calc_var_importance_0(long nativeObj,
-        boolean calc_var_importance);
-
-    //
-    // C++: void CvRTParams::nactive_vars
-    //
-
-    // C++: int CvRTParams::nactive_vars
-    private static native int get_nactive_vars_0(long nativeObj);
-
-    //
-    // C++: TermCriteria CvRTParams::term_crit
-    //
-
-    // C++: void CvRTParams::nactive_vars
-    private static native void set_nactive_vars_0(long nativeObj, int nactive_vars);
-
-    //
-    // C++: void CvRTParams::term_crit
-    //
-
-    // C++: TermCriteria CvRTParams::term_crit
-    private static native double[] get_term_crit_0(long nativeObj);
-
-    // C++: void CvRTParams::term_crit
-    private static native void set_term_crit_0(long nativeObj, int term_crit_type,
-        int term_crit_maxCount, double term_crit_epsilon);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public boolean get_calc_var_importance() {
 
         boolean retVal = get_calc_var_importance_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvRTParams::calc_var_importance
+    //
 
     public void set_calc_var_importance(boolean calc_var_importance) {
 
@@ -99,12 +57,20 @@ public class CvRTParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: int CvRTParams::nactive_vars
+    //
+
     public int get_nactive_vars() {
 
         int retVal = get_nactive_vars_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvRTParams::nactive_vars
+    //
 
     public void set_nactive_vars(int nactive_vars) {
 
@@ -113,12 +79,20 @@ public class CvRTParams extends CvDTreeParams {
         return;
     }
 
+    //
+    // C++: TermCriteria CvRTParams::term_crit
+    //
+
     public TermCriteria get_term_crit() {
 
         TermCriteria retVal = new TermCriteria(get_term_crit_0(nativeObj));
 
         return retVal;
     }
+
+    //
+    // C++: void CvRTParams::term_crit
+    //
 
     public void set_term_crit(TermCriteria term_crit) {
 
@@ -130,4 +104,30 @@ public class CvRTParams extends CvDTreeParams {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvRTParams::CvRTParams()
+    private static native long CvRTParams_0();
+
+    // C++: bool CvRTParams::calc_var_importance
+    private static native boolean get_calc_var_importance_0(long nativeObj);
+
+    // C++: void CvRTParams::calc_var_importance
+    private static native void set_calc_var_importance_0(long nativeObj,
+        boolean calc_var_importance);
+
+    // C++: int CvRTParams::nactive_vars
+    private static native int get_nactive_vars_0(long nativeObj);
+
+    // C++: void CvRTParams::nactive_vars
+    private static native void set_nactive_vars_0(long nativeObj, int nactive_vars);
+
+    // C++: TermCriteria CvRTParams::term_crit
+    private static native double[] get_term_crit_0(long nativeObj);
+
+    // C++: void CvRTParams::term_crit
+    private static native void set_term_crit_0(long nativeObj, int term_crit_type,
+        int term_crit_maxCount, double term_crit_epsilon);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

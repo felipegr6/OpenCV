@@ -101,30 +101,6 @@ public class KalmanFilter {
     // C++:  Mat KalmanFilter::correct(Mat measurement)
     //
 
-    // C++:   KalmanFilter::KalmanFilter()
-    private static native long KalmanFilter_0();
-
-    //
-    // C++:  Mat KalmanFilter::predict(Mat control = Mat())
-    //
-
-    // C++:   KalmanFilter::KalmanFilter(int dynamParams, int measureParams, int controlParams = 0, int type = CV_32F)
-    private static native long KalmanFilter_1(int dynamParams, int measureParams, int controlParams,
-        int type);
-
-    private static native long KalmanFilter_2(int dynamParams, int measureParams);
-
-    // C++:  Mat KalmanFilter::correct(Mat measurement)
-    private static native long correct_0(long nativeObj, long measurement_nativeObj);
-
-    // C++:  Mat KalmanFilter::predict(Mat control = Mat())
-    private static native long predict_0(long nativeObj, long control_nativeObj);
-
-    private static native long predict_1(long nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     /**
      * <p>Updates the predicted state from the measurement.</p>
      *
@@ -137,6 +113,10 @@ public class KalmanFilter {
 
         return retVal;
     }
+
+    //
+    // C++:  Mat KalmanFilter::predict(Mat control = Mat())
+    //
 
     /**
      * <p>Computes a predicted state.</p>
@@ -166,4 +146,24 @@ public class KalmanFilter {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   KalmanFilter::KalmanFilter()
+    private static native long KalmanFilter_0();
+
+    // C++:   KalmanFilter::KalmanFilter(int dynamParams, int measureParams, int controlParams = 0, int type = CV_32F)
+    private static native long KalmanFilter_1(int dynamParams, int measureParams, int controlParams,
+        int type);
+
+    private static native long KalmanFilter_2(int dynamParams, int measureParams);
+
+    // C++:  Mat KalmanFilter::correct(Mat measurement)
+    private static native long correct_0(long nativeObj, long measurement_nativeObj);
+
+    // C++:  Mat KalmanFilter::predict(Mat control = Mat())
+    private static native long predict_0(long nativeObj, long control_nativeObj);
+
+    private static native long predict_1(long nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

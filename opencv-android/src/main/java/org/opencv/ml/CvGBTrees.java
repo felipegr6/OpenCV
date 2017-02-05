@@ -17,12 +17,12 @@ import org.opencv.core.Range;
  */
 public class CvGBTrees extends CvStatModel {
 
-    public static final int SQUARED_LOSS = 0, ABSOLUTE_LOSS = 0 + 1, HUBER_LOSS = 3, DEVIANCE_LOSS =
-        3 + 1;
-
     protected CvGBTrees(long addr) {
         super(addr);
     }
+
+    public static final int SQUARED_LOSS = 0, ABSOLUTE_LOSS = 0 + 1, HUBER_LOSS = 3, DEVIANCE_LOSS =
+        3 + 1;
 
     //
     // C++:   CvGBTrees::CvGBTrees()
@@ -94,46 +94,6 @@ public class CvGBTrees extends CvStatModel {
     // C++:  void CvGBTrees::clear()
     //
 
-    // C++:   CvGBTrees::CvGBTrees()
-    private static native long CvGBTrees_0();
-
-    //
-    // C++:  float CvGBTrees::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), int k = -1)
-    //
-
-    // C++:   CvGBTrees::CvGBTrees(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvGBTreesParams params = CvGBTreesParams())
-    private static native long CvGBTrees_1(long trainData_nativeObj, int tflag,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
-
-    private static native long CvGBTrees_2(long trainData_nativeObj, int tflag,
-        long responses_nativeObj);
-
-    //
-    // C++:  bool CvGBTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvGBTreesParams params = CvGBTreesParams(), bool update = false)
-    //
-
-    // C++:  void CvGBTrees::clear()
-    private static native void clear_0(long nativeObj);
-
-    // C++:  float CvGBTrees::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), int k = -1)
-    private static native float predict_0(long nativeObj, long sample_nativeObj,
-        long missing_nativeObj, int slice_start, int slice_end, int k);
-
-    private static native float predict_1(long nativeObj, long sample_nativeObj);
-
-    // C++:  bool CvGBTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvGBTreesParams params = CvGBTreesParams(), bool update = false)
-    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj,
-        boolean update);
-
-    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     /**
      * <p>Clears the model.</p>
      *
@@ -149,6 +109,10 @@ public class CvGBTrees extends CvStatModel {
 
         return;
     }
+
+    //
+    // C++:  float CvGBTrees::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), int k = -1)
+    //
 
     /**
      * <p>Predicts a response for an input sample.</p>
@@ -208,6 +172,10 @@ public class CvGBTrees extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  bool CvGBTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvGBTreesParams params = CvGBTreesParams(), bool update = false)
+    //
 
     /**
      * <p>Trains a Gradient boosted tree model.</p>
@@ -286,4 +254,36 @@ public class CvGBTrees extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvGBTrees::CvGBTrees()
+    private static native long CvGBTrees_0();
+
+    // C++:   CvGBTrees::CvGBTrees(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvGBTreesParams params = CvGBTreesParams())
+    private static native long CvGBTrees_1(long trainData_nativeObj, int tflag,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
+
+    private static native long CvGBTrees_2(long trainData_nativeObj, int tflag,
+        long responses_nativeObj);
+
+    // C++:  void CvGBTrees::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  float CvGBTrees::predict(Mat sample, Mat missing = cv::Mat(), Range slice = cv::Range::all(), int k = -1)
+    private static native float predict_0(long nativeObj, long sample_nativeObj,
+        long missing_nativeObj, int slice_start, int slice_end, int k);
+
+    private static native float predict_1(long nativeObj, long sample_nativeObj);
+
+    // C++:  bool CvGBTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvGBTreesParams params = CvGBTreesParams(), bool update = false)
+    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj,
+        boolean update);
+
+    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

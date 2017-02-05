@@ -93,34 +93,6 @@ public class CvKNearest extends CvStatModel {
     // C++:  float CvKNearest::find_nearest(Mat samples, int k, Mat& results, Mat& neighborResponses, Mat& dists)
     //
 
-    // C++:   CvKNearest::CvKNearest()
-    private static native long CvKNearest_0();
-
-    //
-    // C++:  bool CvKNearest::train(Mat trainData, Mat responses, Mat sampleIdx = cv::Mat(), bool isRegression = false, int maxK = 32, bool updateBase = false)
-    //
-
-    // C++:   CvKNearest::CvKNearest(Mat trainData, Mat responses, Mat sampleIdx = cv::Mat(), bool isRegression = false, int max_k = 32)
-    private static native long CvKNearest_1(long trainData_nativeObj, long responses_nativeObj,
-        long sampleIdx_nativeObj, boolean isRegression, int max_k);
-
-    private static native long CvKNearest_2(long trainData_nativeObj, long responses_nativeObj);
-
-    // C++:  float CvKNearest::find_nearest(Mat samples, int k, Mat& results, Mat& neighborResponses, Mat& dists)
-    private static native float find_nearest_0(long nativeObj, long samples_nativeObj, int k,
-        long results_nativeObj, long neighborResponses_nativeObj, long dists_nativeObj);
-
-    // C++:  bool CvKNearest::train(Mat trainData, Mat responses, Mat sampleIdx = cv::Mat(), bool isRegression = false, int maxK = 32, bool updateBase = false)
-    private static native boolean train_0(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj, long sampleIdx_nativeObj, boolean isRegression, int maxK,
-        boolean updateBase);
-
-    private static native boolean train_1(long nativeObj, long trainData_nativeObj,
-        long responses_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     /**
      * <p>Finds the neighbors and predicts responses for input vectors.</p>
      *
@@ -161,6 +133,10 @@ public class CvKNearest extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  bool CvKNearest::train(Mat trainData, Mat responses, Mat sampleIdx = cv::Mat(), bool isRegression = false, int maxK = 32, bool updateBase = false)
+    //
 
     /**
      * <p>Trains the model.</p>
@@ -227,4 +203,28 @@ public class CvKNearest extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvKNearest::CvKNearest()
+    private static native long CvKNearest_0();
+
+    // C++:   CvKNearest::CvKNearest(Mat trainData, Mat responses, Mat sampleIdx = cv::Mat(), bool isRegression = false, int max_k = 32)
+    private static native long CvKNearest_1(long trainData_nativeObj, long responses_nativeObj,
+        long sampleIdx_nativeObj, boolean isRegression, int max_k);
+
+    private static native long CvKNearest_2(long trainData_nativeObj, long responses_nativeObj);
+
+    // C++:  float CvKNearest::find_nearest(Mat samples, int k, Mat& results, Mat& neighborResponses, Mat& dists)
+    private static native float find_nearest_0(long nativeObj, long samples_nativeObj, int k,
+        long results_nativeObj, long neighborResponses_nativeObj, long dists_nativeObj);
+
+    // C++:  bool CvKNearest::train(Mat trainData, Mat responses, Mat sampleIdx = cv::Mat(), bool isRegression = false, int maxK = 32, bool updateBase = false)
+    private static native boolean train_0(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj, long sampleIdx_nativeObj, boolean isRegression, int maxK,
+        boolean updateBase);
+
+    private static native boolean train_1(long nativeObj, long trainData_nativeObj,
+        long responses_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

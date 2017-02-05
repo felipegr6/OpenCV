@@ -34,13 +34,14 @@ package org.opencv.ml;
  */
 public class CvParamGrid {
 
-    public static final int SVM_C = 0, SVM_GAMMA = 1, SVM_P = 2, SVM_NU = 3, SVM_COEF = 4,
-        SVM_DEGREE = 5;
     protected final long nativeObj;
 
     protected CvParamGrid(long addr) {
         nativeObj = addr;
     }
+
+    public static final int SVM_C = 0, SVM_GAMMA = 1, SVM_P = 2, SVM_NU = 3, SVM_COEF = 4,
+        SVM_DEGREE = 5;
 
     //
     // C++:   CvParamGrid::CvParamGrid()
@@ -74,56 +75,16 @@ public class CvParamGrid {
     // C++: double CvParamGrid::min_val
     //
 
-    // C++:   CvParamGrid::CvParamGrid()
-    private static native long CvParamGrid_0();
-
-    //
-    // C++: void CvParamGrid::min_val
-    //
-
-    // C++: double CvParamGrid::min_val
-    private static native double get_min_val_0(long nativeObj);
-
-    //
-    // C++: double CvParamGrid::max_val
-    //
-
-    // C++: void CvParamGrid::min_val
-    private static native void set_min_val_0(long nativeObj, double min_val);
-
-    //
-    // C++: void CvParamGrid::max_val
-    //
-
-    // C++: double CvParamGrid::max_val
-    private static native double get_max_val_0(long nativeObj);
-
-    //
-    // C++: double CvParamGrid::step
-    //
-
-    // C++: void CvParamGrid::max_val
-    private static native void set_max_val_0(long nativeObj, double max_val);
-
-    //
-    // C++: void CvParamGrid::step
-    //
-
-    // C++: double CvParamGrid::step
-    private static native double get_step_0(long nativeObj);
-
-    // C++: void CvParamGrid::step
-    private static native void set_step_0(long nativeObj, double step);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public double get_min_val() {
 
         double retVal = get_min_val_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvParamGrid::min_val
+    //
 
     public void set_min_val(double min_val) {
 
@@ -132,12 +93,20 @@ public class CvParamGrid {
         return;
     }
 
+    //
+    // C++: double CvParamGrid::max_val
+    //
+
     public double get_max_val() {
 
         double retVal = get_max_val_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvParamGrid::max_val
+    //
 
     public void set_max_val(double max_val) {
 
@@ -146,12 +115,20 @@ public class CvParamGrid {
         return;
     }
 
+    //
+    // C++: double CvParamGrid::step
+    //
+
     public double get_step() {
 
         double retVal = get_step_0(nativeObj);
 
         return retVal;
     }
+
+    //
+    // C++: void CvParamGrid::step
+    //
 
     public void set_step(double step) {
 
@@ -163,4 +140,28 @@ public class CvParamGrid {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvParamGrid::CvParamGrid()
+    private static native long CvParamGrid_0();
+
+    // C++: double CvParamGrid::min_val
+    private static native double get_min_val_0(long nativeObj);
+
+    // C++: void CvParamGrid::min_val
+    private static native void set_min_val_0(long nativeObj, double min_val);
+
+    // C++: double CvParamGrid::max_val
+    private static native double get_max_val_0(long nativeObj);
+
+    // C++: void CvParamGrid::max_val
+    private static native void set_max_val_0(long nativeObj, double max_val);
+
+    // C++: double CvParamGrid::step
+    private static native double get_step_0(long nativeObj);
+
+    // C++: void CvParamGrid::step
+    private static native void set_step_0(long nativeObj, double step);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

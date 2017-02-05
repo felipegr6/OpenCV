@@ -35,46 +35,16 @@ public class CvDTree extends CvStatModel {
     // C++:  void CvDTree::clear()
     //
 
-    // C++:   CvDTree::CvDTree()
-    private static native long CvDTree_0();
-
-    //
-    // C++:  Mat CvDTree::getVarImportance()
-    //
-
-    // C++:  void CvDTree::clear()
-    private static native void clear_0(long nativeObj);
-
-    //
-    // C++:  CvDTreeNode* CvDTree::predict(Mat sample, Mat missingDataMask = cv::Mat(), bool preprocessedInput = false)
-    //
-
-    // Return type 'CvDTreeNode*' is not supported, skipping the function
-
-    //
-    // C++:  bool CvDTree::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvDTreeParams params = CvDTreeParams())
-    //
-
-    // C++:  Mat CvDTree::getVarImportance()
-    private static native long getVarImportance_0(long nativeObj);
-
-    // C++:  bool CvDTree::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvDTreeParams params = CvDTreeParams())
-    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
-
-    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public void clear() {
 
         clear_0(nativeObj);
 
         return;
     }
+
+    //
+    // C++:  Mat CvDTree::getVarImportance()
+    //
 
     /**
      * <p>Returns the variable importance array.</p>
@@ -87,6 +57,16 @@ public class CvDTree extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  CvDTreeNode* CvDTree::predict(Mat sample, Mat missingDataMask = cv::Mat(), bool preprocessedInput = false)
+    //
+
+    // Return type 'CvDTreeNode*' is not supported, skipping the function
+
+    //
+    // C++:  bool CvDTree::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvDTreeParams params = CvDTreeParams())
+    //
 
     /**
      * <p>Trains a decision tree.</p>
@@ -174,4 +154,24 @@ public class CvDTree extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvDTree::CvDTree()
+    private static native long CvDTree_0();
+
+    // C++:  void CvDTree::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  Mat CvDTree::getVarImportance()
+    private static native long getVarImportance_0(long nativeObj);
+
+    // C++:  bool CvDTree::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvDTreeParams params = CvDTreeParams())
+    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
+
+    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

@@ -28,14 +28,29 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
 
     private static final int MAGIC_TEXTURE_ID = 10;
     private static final String TAG = "JavaCameraView";
-    protected Camera mCamera;
-    protected JavaCameraFrame[] mCameraFrame;
+
     private byte mBuffer[];
     private Mat[] mFrameChain;
     private int mChainIdx = 0;
     private Thread mThread;
     private boolean mStopThread;
+
+    protected Camera mCamera;
+    protected JavaCameraFrame[] mCameraFrame;
     private SurfaceTexture mSurfaceTexture;
+
+    public static class JavaCameraSizeAccessor implements ListItemAccessor {
+
+        @Override public int getWidth(Object obj) {
+            Camera.Size size = (Camera.Size) obj;
+            return size.width;
+        }
+
+        @Override public int getHeight(Object obj) {
+            Camera.Size size = (Camera.Size) obj;
+            return size.height;
+        }
+    }
 
     public JavaCameraView(Context context, int cameraId) {
         super(context, cameraId);
@@ -124,7 +139,7 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
             try {
                 Camera.Parameters params = mCamera.getParameters();
                 Log.d(TAG, "getSupportedPreviewSizes()");
-                List<Camera.Size> sizes = params.getSupportedPreviewSizes();
+                List<android.hardware.Camera.Size> sizes = params.getSupportedPreviewSizes();
 
                 if (sizes != null) {
                     /* Select the size that fits surface considering maximum size allowed */
@@ -139,7 +154,8 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
                         + Integer.valueOf((int) frameSize.height));
                     params.setPreviewSize((int) frameSize.width, (int) frameSize.height);
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH
+                        && !android.os.Build.MODEL.equals("GT-I9100")) {
                         params.setRecordingHint(true);
                     }
 
@@ -230,6 +246,8 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
         }
     }
 
+    private boolean mCameraFrameReady = false;
+
     @Override protected boolean connectCamera(int width, int height) {
 
         /* 1. We need to instantiate camera
@@ -238,6 +256,8 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
         /* First step - initialize camera connection */
         Log.d(TAG, "Connecting to camera");
         if (!initializeCamera(width, height)) return false;
+
+        mCameraFrameReady = false;
 
         /* now we can start update thread */
         Log.d(TAG, "Starting processing thread");
@@ -248,7 +268,7 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
         return true;
     }
 
-    protected void disconnectCamera() {
+    @Override protected void disconnectCamera() {
         /* 1. We need to stop thread which updating the frames
          * 2. Stop camera and release it
          */
@@ -269,35 +289,29 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
 
         /* Now release camera */
         releaseCamera();
+
+        mCameraFrameReady = false;
     }
 
-    public void onPreviewFrame(byte[] frame, Camera arg1) {
+    @Override public void onPreviewFrame(byte[] frame, Camera arg1) {
         Log.d(TAG, "Preview Frame received. Frame size: " + frame.length);
         synchronized (this) {
-            mFrameChain[1 - mChainIdx].put(0, 0, frame);
+            mFrameChain[mChainIdx].put(0, 0, frame);
+            mCameraFrameReady = true;
             this.notify();
         }
         if (mCamera != null) mCamera.addCallbackBuffer(mBuffer);
     }
 
-    public static class JavaCameraSizeAccessor implements ListItemAccessor {
-
-        public int getWidth(Object obj) {
-            Camera.Size size = (Camera.Size) obj;
-            return size.width;
-        }
-
-        public int getHeight(Object obj) {
-            Camera.Size size = (Camera.Size) obj;
-            return size.height;
-        }
-    }
-
     private class JavaCameraFrame implements CvCameraViewFrame {
-        private Mat mYuvFrameData;
-        private Mat mRgba;
-        private int mWidth;
-        private int mHeight;
+        @Override public Mat gray() {
+            return mYuvFrameData.submat(0, mHeight, 0, mWidth);
+        }
+
+        @Override public Mat rgba() {
+            Imgproc.cvtColor(mYuvFrameData, mRgba, Imgproc.COLOR_YUV2RGBA_NV21, 4);
+            return mRgba;
+        }
 
         public JavaCameraFrame(Mat Yuv420sp, int width, int height) {
             super();
@@ -307,40 +321,38 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
             mRgba = new Mat();
         }
 
-        public Mat gray() {
-            return mYuvFrameData.submat(0, mHeight, 0, mWidth);
-        }
-
-        public Mat rgba() {
-            Imgproc.cvtColor(mYuvFrameData, mRgba, Imgproc.COLOR_YUV2BGR_NV12, 4);
-            return mRgba;
-        }
-
         public void release() {
             mRgba.release();
         }
+
+        private Mat mYuvFrameData;
+        private Mat mRgba;
+        private int mWidth;
+        private int mHeight;
     }
 
     ;
 
     private class CameraWorker implements Runnable {
 
-        public void run() {
+        @Override public void run() {
             do {
                 synchronized (JavaCameraView.this) {
                     try {
-                        JavaCameraView.this.wait();
+                        while (!mCameraFrameReady && !mStopThread) {
+                            JavaCameraView.this.wait();
+                        }
                     } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
+                    if (mCameraFrameReady) mChainIdx = 1 - mChainIdx;
                 }
 
-                if (!mStopThread) {
-                    if (!mFrameChain[mChainIdx].empty()) {
-                        deliverAndDrawFrame(mCameraFrame[mChainIdx]);
+                if (!mStopThread && mCameraFrameReady) {
+                    mCameraFrameReady = false;
+                    if (!mFrameChain[1 - mChainIdx].empty()) {
+                        deliverAndDrawFrame(mCameraFrame[1 - mChainIdx]);
                     }
-                    mChainIdx = 1 - mChainIdx;
                 }
             } while (!mStopThread);
             Log.d(TAG, "Finish processing thread");

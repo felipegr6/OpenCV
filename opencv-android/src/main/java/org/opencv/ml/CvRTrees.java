@@ -35,60 +35,16 @@ public class CvRTrees extends CvStatModel {
     // C++:  void CvRTrees::clear()
     //
 
-    // C++:   CvRTrees::CvRTrees()
-    private static native long CvRTrees_0();
-
-    //
-    // C++:  Mat CvRTrees::getVarImportance()
-    //
-
-    // C++:  void CvRTrees::clear()
-    private static native void clear_0(long nativeObj);
-
-    //
-    // C++:  float CvRTrees::predict(Mat sample, Mat missing = cv::Mat())
-    //
-
-    // C++:  Mat CvRTrees::getVarImportance()
-    private static native long getVarImportance_0(long nativeObj);
-
-    // C++:  float CvRTrees::predict(Mat sample, Mat missing = cv::Mat())
-    private static native float predict_0(long nativeObj, long sample_nativeObj,
-        long missing_nativeObj);
-
-    //
-    // C++:  float CvRTrees::predict_prob(Mat sample, Mat missing = cv::Mat())
-    //
-
-    private static native float predict_1(long nativeObj, long sample_nativeObj);
-
-    // C++:  float CvRTrees::predict_prob(Mat sample, Mat missing = cv::Mat())
-    private static native float predict_prob_0(long nativeObj, long sample_nativeObj,
-        long missing_nativeObj);
-
-    //
-    // C++:  bool CvRTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvRTParams params = CvRTParams())
-    //
-
-    private static native float predict_prob_1(long nativeObj, long sample_nativeObj);
-
-    // C++:  bool CvRTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvRTParams params = CvRTParams())
-    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
-        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
-
-    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
-        long responses_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
-
     public void clear() {
 
         clear_0(nativeObj);
 
         return;
     }
+
+    //
+    // C++:  Mat CvRTrees::getVarImportance()
+    //
 
     /**
      * <p>Returns the variable importance array.</p>
@@ -107,6 +63,10 @@ public class CvRTrees extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  float CvRTrees::predict(Mat sample, Mat missing = cv::Mat())
+    //
 
     /**
      * <p>Predicts the output for an input sample.</p>
@@ -147,6 +107,10 @@ public class CvRTrees extends CvStatModel {
         return retVal;
     }
 
+    //
+    // C++:  float CvRTrees::predict_prob(Mat sample, Mat missing = cv::Mat())
+    //
+
     /**
      * <p>Returns a fuzzy-predicted class label.</p>
      *
@@ -183,6 +147,10 @@ public class CvRTrees extends CvStatModel {
 
         return retVal;
     }
+
+    //
+    // C++:  bool CvRTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvRTParams params = CvRTParams())
+    //
 
     /**
      * <p>Trains the Random Trees model.</p>
@@ -242,4 +210,36 @@ public class CvRTrees extends CvStatModel {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:   CvRTrees::CvRTrees()
+    private static native long CvRTrees_0();
+
+    // C++:  void CvRTrees::clear()
+    private static native void clear_0(long nativeObj);
+
+    // C++:  Mat CvRTrees::getVarImportance()
+    private static native long getVarImportance_0(long nativeObj);
+
+    // C++:  float CvRTrees::predict(Mat sample, Mat missing = cv::Mat())
+    private static native float predict_0(long nativeObj, long sample_nativeObj,
+        long missing_nativeObj);
+
+    private static native float predict_1(long nativeObj, long sample_nativeObj);
+
+    // C++:  float CvRTrees::predict_prob(Mat sample, Mat missing = cv::Mat())
+    private static native float predict_prob_0(long nativeObj, long sample_nativeObj,
+        long missing_nativeObj);
+
+    private static native float predict_prob_1(long nativeObj, long sample_nativeObj);
+
+    // C++:  bool CvRTrees::train(Mat trainData, int tflag, Mat responses, Mat varIdx = cv::Mat(), Mat sampleIdx = cv::Mat(), Mat varType = cv::Mat(), Mat missingDataMask = cv::Mat(), CvRTParams params = CvRTParams())
+    private static native boolean train_0(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj, long varIdx_nativeObj, long sampleIdx_nativeObj,
+        long varType_nativeObj, long missingDataMask_nativeObj, long params_nativeObj);
+
+    private static native boolean train_1(long nativeObj, long trainData_nativeObj, int tflag,
+        long responses_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }

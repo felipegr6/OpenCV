@@ -134,6 +134,10 @@ public class BackgroundSubtractorMOG2 extends BackgroundSubtractor {
         return;
     }
 
+    @Override protected void finalize() throws Throwable {
+        delete(nativeObj);
+    }
+
     // C++:   BackgroundSubtractorMOG2::BackgroundSubtractorMOG2()
     private static native long BackgroundSubtractorMOG2_0();
 
@@ -145,8 +149,4 @@ public class BackgroundSubtractorMOG2 extends BackgroundSubtractor {
 
     // native support for java finalize()
     private static native void delete(long nativeObj);
-
-    @Override protected void finalize() throws Throwable {
-        delete(nativeObj);
-    }
 }

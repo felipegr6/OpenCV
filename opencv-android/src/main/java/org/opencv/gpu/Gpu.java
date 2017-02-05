@@ -40,22 +40,13 @@ public class Gpu {
     // C++:  void printCudaDeviceInfo(int device)
     //
 
-    public static void setDevice(int device) {
-        setDevice_0(device);
-        return;
-    }
-
-    //
-    // C++:  void printShortCudaDeviceInfo(int device)
-    //
-
     public static void printCudaDeviceInfo(int device) {
         printCudaDeviceInfo_0(device);
         return;
     }
 
     //
-    // C++:  void resetDevice()
+    // C++:  void printShortCudaDeviceInfo(int device)
     //
 
     public static void printShortCudaDeviceInfo(int device) {
@@ -64,11 +55,20 @@ public class Gpu {
     }
 
     //
-    // C++:  void setDevice(int device)
+    // C++:  void resetDevice()
     //
 
     public static void resetDevice() {
         resetDevice_0();
+        return;
+    }
+
+    //
+    // C++:  void setDevice(int device)
+    //
+
+    public static void setDevice(int device) {
+        setDevice_0(device);
         return;
     }
 
@@ -81,9 +81,6 @@ public class Gpu {
     // C++:  int getDevice()
     private static native int getDevice_0();
 
-    // C++:  void setDevice(int device)
-    private static native void setDevice_0(int device);
-
     // C++:  void printCudaDeviceInfo(int device)
     private static native void printCudaDeviceInfo_0(int device);
 
@@ -92,4 +89,7 @@ public class Gpu {
 
     // C++:  void resetDevice()
     private static native void resetDevice_0();
+
+    // C++:  void setDevice(int device)
+    private static native void setDevice_0(int device);
 }

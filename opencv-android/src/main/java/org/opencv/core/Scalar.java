@@ -85,10 +85,6 @@ public class Scalar {
         }
     }
 
-    public static Scalar all(double v) {
-        return new Scalar(v, v, v, v);
-    }
-
     public void set(double[] vals) {
         if (vals != null) {
             val[0] = vals.length > 0 ? vals[0] : 0;
@@ -98,6 +94,10 @@ public class Scalar {
         } else {
             val[0] = val[1] = val[2] = val[3] = 0;
         }
+    }
+
+    public static Scalar all(double v) {
+        return new Scalar(v, v, v, v);
     }
 
     public Scalar clone() {

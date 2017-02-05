@@ -1,6 +1,7 @@
 package org.opencv.core;
 
 // C++: class Mat
+
 /**
  * <p>OpenCV C++ n-dimensional dense array class</p>
  *
@@ -23,7 +24,7 @@ package org.opencv.core;
  *
  * <p>- number of channels</p>
  * <ul>
- *   <li> /
+ * <li> /
  * </ul>
  *
  * <p>int flags;</p>
@@ -87,7 +88,7 @@ package org.opencv.core;
  * <p>There are many different ways to create a <code>Mat</code> object. The most
  * popular options are listed below:</p>
  * <ul>
- *   <li> Use the <code>create(nrows, ncols, type)</code> method or the similar
+ * <li> Use the <code>create(nrows, ncols, type)</code> method or the similar
  * <code>Mat(nrows, ncols, type[, fillValue])</code> constructor. A new array of
  * the specified size and type is allocated. <code>type</code> has the same
  * meaning as in the <code>cvCreateMat</code> method.
@@ -116,7 +117,7 @@ package org.opencv.core;
  * only a new array when the shape or type of the current array are different
  * from the specified ones.</p>
  * <ul>
- *   <li> Create a multi-dimensional array:
+ * <li> Create a multi-dimensional array:
  * </ul>
  *
  * <p><code></p>
@@ -136,12 +137,12 @@ package org.opencv.core;
  * So, <code>Mat.dims</code> is always >= 2 (can also be 0 when the array is
  * empty).</p>
  * <ul>
- *   <li> Use a copy constructor or assignment operator where there can be an
+ * <li> Use a copy constructor or assignment operator where there can be an
  * array or expression on the right side (see below). As noted in the
  * introduction, the array assignment is an O(1) operation because it only
  * copies the header and increases the reference counter. The <code>Mat.clone()</code>
  * method can be used to get a full (deep) copy of the array when you need it.
- *   <li> Construct a header for a part of another array. It can be a single
+ * <li> Construct a header for a part of another array. It can be a single
  * row, single column, several rows, several columns, rectangular region in the
  * array (called a *minor* in algebra) or a diagonal. Such operations are also
  * O(1) because the new header references the same data. You can actually modify
@@ -211,9 +212,9 @@ package org.opencv.core;
  * <p>As in case of whole matrices, if you need a deep copy, use the
  * <code>clone()</code> method of the extracted sub-matrices.</p>
  * <ul>
- *   <li> Make a header for user-allocated data. It can be useful to do the
+ * <li> Make a header for user-allocated data. It can be useful to do the
  * following:
- *   <li> Process "foreign" data using OpenCV (for example, when you implement a
+ * <li> Process "foreign" data using OpenCV (for example, when you implement a
  * DirectShow* filter or a processing module for <code>gstreamer</code>, and so
  * on). For example:
  * </ul>
@@ -234,7 +235,7 @@ package org.opencv.core;
  *
  * <p></code></p>
  * <ul>
- *   <li> Quickly initialize small matrices and/or get a super-fast element
+ * <li> Quickly initialize small matrices and/or get a super-fast element
  * access.
  * </ul>
  *
@@ -275,7 +276,7 @@ package org.opencv.core;
  *
  * <p></code></p>
  * <ul>
- *   <li> Use MATLAB-style array initializers, <code>zeros(), ones(),
+ * <li> Use MATLAB-style array initializers, <code>zeros(), ones(),
  * eye()</code>, for example:
  * </ul>
  *
@@ -289,7 +290,7 @@ package org.opencv.core;
  *
  * <p></code></p>
  * <ul>
- *   <li> Use a comma-separated initializer:
+ * <li> Use a comma-separated initializer:
  * </ul>
  *
  * <p><code></p>
@@ -408,7 +409,7 @@ package org.opencv.core;
  *
  * <p>Note:</p>
  * <ul>
- *   <li> An example demonstrating the serial out capabilities of cv.Mat can be
+ * <li> An example demonstrating the serial out capabilities of cv.Mat can be
  * found at opencv_source_code/samples/cpp/cout_mat.cpp
  * </ul>
  *
@@ -418,10 +419,10 @@ public class Mat {
 
     public final long nativeObj;
 
-    public Mat(long addr)
-    {
-        if (addr == 0)
-            throw new UnsupportedOperationException("Native object address is NULL");
+    public Mat(long addr) {
+        if (addr == 0) {
+            throw new java.lang.UnsupportedOperationException("Native object address is NULL");
+        }
         nativeObj = addr;
     }
 
@@ -441,8 +442,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat()
-    {
+    public Mat() {
 
         nativeObj = n_Mat();
 
@@ -468,11 +468,9 @@ public class Mat {
      * @param type Array type. Use <code>CV_8UC1,..., CV_64FC4</code> to create 1-4
      * channel matrices, or <code>CV_8UC(n),..., CV_64FC(n)</code> to create
      * multi-channel (up to <code>CV_CN_MAX</code> channels) matrices.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat(int rows, int cols, int type)
-    {
+    public Mat(int rows, int cols, int type) {
 
         nativeObj = n_Mat(rows, cols, type);
 
@@ -499,11 +497,9 @@ public class Mat {
      * @param type Array type. Use <code>CV_8UC1,..., CV_64FC4</code> to create 1-4
      * channel matrices, or <code>CV_8UC(n),..., CV_64FC(n)</code> to create
      * multi-channel (up to <code>CV_CN_MAX</code> channels) matrices.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat(Size size, int type)
-    {
+    public Mat(Size size, int type) {
 
         nativeObj = n_Mat(size.width, size.height, type);
 
@@ -532,11 +528,9 @@ public class Mat {
      * @param s An optional value to initialize each matrix element with. To set all
      * the matrix elements to the particular value after the construction, use the
      * assignment operator <code>Mat.operator=(const Scalar& value)</code>.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat(int rows, int cols, int type, Scalar s)
-    {
+    public Mat(int rows, int cols, int type, Scalar s) {
 
         nativeObj = n_Mat(rows, cols, type, s.val[0], s.val[1], s.val[2], s.val[3]);
 
@@ -566,11 +560,9 @@ public class Mat {
      * @param s An optional value to initialize each matrix element with. To set all
      * the matrix elements to the particular value after the construction, use the
      * assignment operator <code>Mat.operator=(const Scalar& value)</code>.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat(Size size, int type, Scalar s)
-    {
+    public Mat(Size size, int type, Scalar s) {
 
         nativeObj = n_Mat(size.width, size.height, type, s.val[0], s.val[1], s.val[2], s.val[3]);
 
@@ -603,11 +595,9 @@ public class Mat {
      * to take all the rows.
      * @param colRange Range of the <code>m</code> columns to take. Use
      * <code>Range.all()</code> to take all the columns.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat(Mat m, Range rowRange, Range colRange)
-    {
+    public Mat(Mat m, Range rowRange, Range colRange) {
 
         nativeObj = n_Mat(m.nativeObj, rowRange.start, rowRange.end, colRange.start, colRange.end);
 
@@ -634,11 +624,9 @@ public class Mat {
      * @param rowRange Range of the <code>m</code> rows to take. As usual, the range
      * start is inclusive and the range end is exclusive. Use <code>Range.all()</code>
      * to take all the rows.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat(Mat m, Range rowRange)
-    {
+    public Mat(Mat m, Range rowRange) {
 
         nativeObj = n_Mat(m.nativeObj, rowRange.start, rowRange.end);
 
@@ -667,11 +655,9 @@ public class Mat {
      * elements of <code>m</code>. If you want to have an independent copy of the
      * sub-array, use <code>Mat.clone()</code>.
      * @param roi Region of interest.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mat">org.opencv.core.Mat.Mat</a>
      */
-    public Mat(Mat m, Rect roi)
-    {
+    public Mat(Mat m, Rect roi) {
 
         nativeObj = n_Mat(m.nativeObj, roi.y, roi.y + roi.height, roi.x, roi.x + roi.width);
 
@@ -715,12 +701,10 @@ public class Mat {
      * @param dbottom Shift of the bottom submatrix boundary downwards.
      * @param dleft Shift of the left submatrix boundary to the left.
      * @param dright Shift of the right submatrix boundary to the right.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-adjustroi">org.opencv.core.Mat.adjustROI</a>
      * @see org.opencv.imgproc.Imgproc#copyMakeBorder
      */
-    public Mat adjustROI(int dtop, int dbottom, int dleft, int dright)
-    {
+    public Mat adjustROI(int dtop, int dbottom, int dleft, int dright) {
 
         Mat retVal = new Mat(n_adjustROI(nativeObj, dtop, dbottom, dleft, dright));
 
@@ -739,11 +723,9 @@ public class Mat {
      * @param m Destination array.
      * @param type Desired destination array depth (or -1 if it should be the same
      * as the source type).
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-assignto">org.opencv.core.Mat.assignTo</a>
      */
-    public void assignTo(Mat m, int type)
-    {
+    public void assignTo(Mat m, int type) {
 
         n_assignTo(nativeObj, m.nativeObj, type);
 
@@ -756,11 +738,9 @@ public class Mat {
      * <p>This is an internally used method called by the "MatrixExpressions" engine.</p>
      *
      * @param m Destination array.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-assignto">org.opencv.core.Mat.assignTo</a>
      */
-    public void assignTo(Mat m)
-    {
+    public void assignTo(Mat m) {
 
         n_assignTo(nativeObj, m.nativeObj);
 
@@ -778,8 +758,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-channels">org.opencv.core.Mat.channels</a>
      */
-    public int channels()
-    {
+    public int channels() {
 
         int retVal = n_channels(nativeObj);
 
@@ -791,24 +770,21 @@ public class Mat {
     // requireContinuous = true)
     //
 
-    public int checkVector(int elemChannels, int depth, boolean requireContinuous)
-    {
+    public int checkVector(int elemChannels, int depth, boolean requireContinuous) {
 
         int retVal = n_checkVector(nativeObj, elemChannels, depth, requireContinuous);
 
         return retVal;
     }
 
-    public int checkVector(int elemChannels, int depth)
-    {
+    public int checkVector(int elemChannels, int depth) {
 
         int retVal = n_checkVector(nativeObj, elemChannels, depth);
 
         return retVal;
     }
 
-    public int checkVector(int elemChannels)
-    {
+    public int checkVector(int elemChannels) {
 
         int retVal = n_checkVector(nativeObj, elemChannels);
 
@@ -828,8 +804,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-clone">org.opencv.core.Mat.clone</a>
      */
-    public Mat clone()
-    {
+    public Mat clone() {
 
         Mat retVal = new Mat(n_clone(nativeObj));
 
@@ -849,11 +824,9 @@ public class Mat {
      * description.</p>
      *
      * @param x A 0-based column index.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-col">org.opencv.core.Mat.col</a>
      */
-    public Mat col(int x)
-    {
+    public Mat col(int x) {
 
         Mat retVal = new Mat(n_col(nativeObj, x));
 
@@ -872,11 +845,9 @@ public class Mat {
      *
      * @param startcol An inclusive 0-based start index of the column span.
      * @param endcol An exclusive 0-based ending index of the column span.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-colrange">org.opencv.core.Mat.colRange</a>
      */
-    public Mat colRange(int startcol, int endcol)
-    {
+    public Mat colRange(int startcol, int endcol) {
 
         Mat retVal = new Mat(n_colRange(nativeObj, startcol, endcol));
 
@@ -894,11 +865,9 @@ public class Mat {
      * Similarly to "Mat.row" and "Mat.col", this is an O(1) operation.</p>
      *
      * @param r "Range" structure containing both the start and the end indices.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-colrange">org.opencv.core.Mat.colRange</a>
      */
-    public Mat colRange(Range r)
-    {
+    public Mat colRange(Range r) {
 
         Mat retVal = new Mat(n_colRange(nativeObj, r.start, r.end));
 
@@ -909,8 +878,7 @@ public class Mat {
     // C++: int Mat::dims()
     //
 
-    public int dims()
-    {
+    public int dims() {
 
         int retVal = n_dims(nativeObj);
 
@@ -921,8 +889,7 @@ public class Mat {
     // C++: int Mat::cols()
     //
 
-    public int cols()
-    {
+    public int cols() {
 
         int retVal = n_cols(nativeObj);
 
@@ -950,11 +917,9 @@ public class Mat {
      * negative, the output matrix will have the same type as the input.
      * @param alpha optional scale factor.
      * @param beta optional delta added to the scaled values.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-convertto">org.opencv.core.Mat.convertTo</a>
      */
-    public void convertTo(Mat m, int rtype, double alpha, double beta)
-    {
+    public void convertTo(Mat m, int rtype, double alpha, double beta) {
 
         n_convertTo(nativeObj, m.nativeObj, rtype, alpha, beta);
 
@@ -976,11 +941,9 @@ public class Mat {
      * number of channels are the same as the input has; if <code>rtype</code> is
      * negative, the output matrix will have the same type as the input.
      * @param alpha optional scale factor.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-convertto">org.opencv.core.Mat.convertTo</a>
      */
-    public void convertTo(Mat m, int rtype, double alpha)
-    {
+    public void convertTo(Mat m, int rtype, double alpha) {
 
         n_convertTo(nativeObj, m.nativeObj, rtype, alpha);
 
@@ -1001,11 +964,9 @@ public class Mat {
      * @param rtype desired output matrix type or, rather, the depth since the
      * number of channels are the same as the input has; if <code>rtype</code> is
      * negative, the output matrix will have the same type as the input.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-convertto">org.opencv.core.Mat.convertTo</a>
      */
-    public void convertTo(Mat m, int rtype)
-    {
+    public void convertTo(Mat m, int rtype) {
 
         n_convertTo(nativeObj, m.nativeObj, rtype);
 
@@ -1024,24 +985,22 @@ public class Mat {
      *
      * <p>// C++ code:</p>
      *
-     * <p>m.create(this->size(), this->type);</p>
+     * <p>m.create(this->size(), this->type());</p>
      *
      * <p>so that the destination matrix is reallocated if needed. While
      * <code>m.copyTo(m);</code> works flawlessly, the function does not handle the
      * case of a partial overlap between the source and the destination matrices.
      * </code></p>
      *
-     * <p>When the operation mask is specified, and the <code>Mat.create</code> call
-     * shown above reallocated the matrix, the newly allocated matrix is initialized
+     * <p>When the operation mask is specified, if the <code>Mat.create</code> call
+     * shown above reallocates the matrix, the newly allocated matrix is initialized
      * with all zeros before copying the data.</p>
      *
      * @param m Destination matrix. If it does not have a proper size or type before
      * the operation, it is reallocated.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-copyto">org.opencv.core.Mat.copyTo</a>
      */
-    public void copyTo(Mat m)
-    {
+    public void copyTo(Mat m) {
 
         n_copyTo(nativeObj, m.nativeObj);
 
@@ -1060,26 +1019,24 @@ public class Mat {
      *
      * <p>// C++ code:</p>
      *
-     * <p>m.create(this->size(), this->type);</p>
+     * <p>m.create(this->size(), this->type());</p>
      *
      * <p>so that the destination matrix is reallocated if needed. While
      * <code>m.copyTo(m);</code> works flawlessly, the function does not handle the
      * case of a partial overlap between the source and the destination matrices.
      * </code></p>
      *
-     * <p>When the operation mask is specified, and the <code>Mat.create</code> call
-     * shown above reallocated the matrix, the newly allocated matrix is initialized
+     * <p>When the operation mask is specified, if the <code>Mat.create</code> call
+     * shown above reallocates the matrix, the newly allocated matrix is initialized
      * with all zeros before copying the data.</p>
      *
      * @param m Destination matrix. If it does not have a proper size or type before
      * the operation, it is reallocated.
      * @param mask Operation mask. Its non-zero elements indicate which matrix
      * elements need to be copied.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-copyto">org.opencv.core.Mat.copyTo</a>
      */
-    public void copyTo(Mat m, Mat mask)
-    {
+    public void copyTo(Mat m, Mat mask) {
 
         n_copyTo(nativeObj, m.nativeObj, mask.nativeObj);
 
@@ -1097,12 +1054,12 @@ public class Mat {
      * functions and methods that produce arrays call this method for each output
      * array. The method uses the following algorithm:</p>
      * <ul>
-     *   <li> If the current array shape and the type match the new ones, return
+     * <li> If the current array shape and the type match the new ones, return
      * immediately. Otherwise, de-reference the previous data by calling
      * "Mat.release".
-     *   <li> Initialize the new header.
-     *   <li> Allocate the new data of <code>total()*elemSize()</code> bytes.
-     *   <li> Allocate the new, associated with the data, reference counter and set
+     * <li> Initialize the new header.
+     * <li> Allocate the new data of <code>total()*elemSize()</code> bytes.
+     * <li> Allocate the new, associated with the data, reference counter and set
      * it to 1.
      * </ul>
      * <p>Such a scheme makes the memory management robust and efficient at the same
@@ -1133,11 +1090,9 @@ public class Mat {
      * @param rows New number of rows.
      * @param cols New number of columns.
      * @param type New matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-create">org.opencv.core.Mat.create</a>
      */
-    public void create(int rows, int cols, int type)
-    {
+    public void create(int rows, int cols, int type) {
 
         n_create(nativeObj, rows, cols, type);
 
@@ -1155,12 +1110,12 @@ public class Mat {
      * functions and methods that produce arrays call this method for each output
      * array. The method uses the following algorithm:</p>
      * <ul>
-     *   <li> If the current array shape and the type match the new ones, return
+     * <li> If the current array shape and the type match the new ones, return
      * immediately. Otherwise, de-reference the previous data by calling
      * "Mat.release".
-     *   <li> Initialize the new header.
-     *   <li> Allocate the new data of <code>total()*elemSize()</code> bytes.
-     *   <li> Allocate the new, associated with the data, reference counter and set
+     * <li> Initialize the new header.
+     * <li> Allocate the new data of <code>total()*elemSize()</code> bytes.
+     * <li> Allocate the new, associated with the data, reference counter and set
      * it to 1.
      * </ul>
      * <p>Such a scheme makes the memory management robust and efficient at the same
@@ -1191,11 +1146,9 @@ public class Mat {
      * @param size Alternative new matrix size specification: <code>Size(cols,
      * rows)</code>
      * @param type New matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-create">org.opencv.core.Mat.create</a>
      */
-    public void create(Size size, int type)
-    {
+    public void create(Size size, int type) {
 
         n_create(nativeObj, size.width, size.height, type);
 
@@ -1214,11 +1167,9 @@ public class Mat {
      * result is another 3-element vector of the same shape and type as operands.</p>
      *
      * @param m Another cross-product operand.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-cross">org.opencv.core.Mat.cross</a>
      */
-    public Mat cross(Mat m)
-    {
+    public Mat cross(Mat m) {
 
         Mat retVal = new Mat(n_cross(nativeObj, m.nativeObj));
 
@@ -1229,8 +1180,7 @@ public class Mat {
     // C++: long Mat::dataAddr()
     //
 
-    public long dataAddr()
-    {
+    public long dataAddr() {
 
         long retVal = n_dataAddr(nativeObj);
 
@@ -1249,21 +1199,20 @@ public class Mat {
      * method returns <code>CV_16S</code>. A complete list of matrix types contains
      * the following values:</p>
      * <ul>
-     *   <li> <code>CV_8U</code> - 8-bit unsigned integers (<code>0..255</code>)
-     *   <li> <code>CV_8S</code> - 8-bit signed integers (<code>-128..127</code>)
-     *   <li> <code>CV_16U</code> - 16-bit unsigned integers (<code>0..65535</code>)
-     *   <li> <code>CV_16S</code> - 16-bit signed integers (<code>-32768..32767</code>)
-     *   <li> <code>CV_32S</code> - 32-bit signed integers (<code>-2147483648..2147483647</code>)
-     *   <li> <code>CV_32F</code> - 32-bit floating-point numbers (<code>-FLT_MAX..FLT_MAX,
+     * <li> <code>CV_8U</code> - 8-bit unsigned integers (<code>0..255</code>)
+     * <li> <code>CV_8S</code> - 8-bit signed integers (<code>-128..127</code>)
+     * <li> <code>CV_16U</code> - 16-bit unsigned integers (<code>0..65535</code>)
+     * <li> <code>CV_16S</code> - 16-bit signed integers (<code>-32768..32767</code>)
+     * <li> <code>CV_32S</code> - 32-bit signed integers (<code>-2147483648..2147483647</code>)
+     * <li> <code>CV_32F</code> - 32-bit floating-point numbers (<code>-FLT_MAX..FLT_MAX,
      * INF, NAN</code>)
-     *   <li> <code>CV_64F</code> - 64-bit floating-point numbers (<code>-DBL_MAX..DBL_MAX,
+     * <li> <code>CV_64F</code> - 64-bit floating-point numbers (<code>-DBL_MAX..DBL_MAX,
      * INF, NAN</code>)
      * </ul>
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-depth">org.opencv.core.Mat.depth</a>
      */
-    public int depth()
-    {
+    public int depth() {
 
         int retVal = n_depth(nativeObj);
 
@@ -1284,17 +1233,15 @@ public class Mat {
      * @param d Single-column matrix that forms a diagonal matrix or index of the
      * diagonal, with the following values:
      * <ul>
-     *   <li> d=0 is the main diagonal.
-     *   <li> d>0 is a diagonal from the lower half. For example, <code>d=1</code>
+     * <li> d=0 is the main diagonal.
+     * <li> d>0 is a diagonal from the lower half. For example, <code>d=1</code>
      * means the diagonal is set immediately below the main one.
-     *   <li> d<0 is a diagonal from the upper half. For example, <code>d=1</code>
+     * <li> d<0 is a diagonal from the upper half. For example, <code>d=1</code>
      * means the diagonal is set immediately above the main one.
      * </ul>
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-diag">org.opencv.core.Mat.diag</a>
      */
-    public Mat diag(int d)
-    {
+    public Mat diag(int d) {
 
         Mat retVal = new Mat(n_diag(nativeObj, d));
 
@@ -1310,8 +1257,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-diag">org.opencv.core.Mat.diag</a>
      */
-    public Mat diag()
-    {
+    public Mat diag() {
 
         Mat retVal = new Mat(n_diag(nativeObj, 0));
 
@@ -1332,17 +1278,15 @@ public class Mat {
      * @param d Single-column matrix that forms a diagonal matrix or index of the
      * diagonal, with the following values:
      * <ul>
-     *   <li> d=0 is the main diagonal.
-     *   <li> d>0 is a diagonal from the lower half. For example, <code>d=1</code>
+     * <li> d=0 is the main diagonal.
+     * <li> d>0 is a diagonal from the lower half. For example, <code>d=1</code>
      * means the diagonal is set immediately below the main one.
-     *   <li> d<0 is a diagonal from the upper half. For example, <code>d=1</code>
+     * <li> d<0 is a diagonal from the upper half. For example, <code>d=1</code>
      * means the diagonal is set immediately above the main one.
      * </ul>
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-diag">org.opencv.core.Mat.diag</a>
      */
-    public static Mat diag(Mat d)
-    {
+    public static Mat diag(Mat d) {
 
         Mat retVal = new Mat(n_diag(d.nativeObj));
 
@@ -1363,11 +1307,9 @@ public class Mat {
      * from all the channels are summed together.</p>
      *
      * @param m another dot-product operand.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-dot">org.opencv.core.Mat.dot</a>
      */
-    public double dot(Mat m)
-    {
+    public double dot(Mat m) {
 
         double retVal = n_dot(nativeObj, m.nativeObj);
 
@@ -1387,8 +1329,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-elemsize">org.opencv.core.Mat.elemSize</a>
      */
-    public long elemSize()
-    {
+    public long elemSize() {
 
         long retVal = n_elemSize(nativeObj);
 
@@ -1408,8 +1349,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-elemsize1">org.opencv.core.Mat.elemSize1</a>
      */
-    public long elemSize1()
-    {
+    public long elemSize1() {
 
         long retVal = n_elemSize1(nativeObj);
 
@@ -1430,8 +1370,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-empty">org.opencv.core.Mat.empty</a>
      */
-    public boolean empty()
-    {
+    public boolean empty() {
 
         boolean retVal = n_empty(nativeObj);
 
@@ -1458,11 +1397,9 @@ public class Mat {
      * @param rows Number of rows.
      * @param cols Number of columns.
      * @param type Created matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-eye">org.opencv.core.Mat.eye</a>
      */
-    public static Mat eye(int rows, int cols, int type)
-    {
+    public static Mat eye(int rows, int cols, int type) {
 
         Mat retVal = new Mat(n_eye(rows, cols, type));
 
@@ -1489,11 +1426,9 @@ public class Mat {
      * @param size Alternative matrix size specification as <code>Size(cols,
      * rows)</code>.
      * @param type Created matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-eye">org.opencv.core.Mat.eye</a>
      */
-    public static Mat eye(Size size, int type)
-    {
+    public static Mat eye(Size size, int type) {
 
         Mat retVal = new Mat(n_eye(size.width, size.height, type));
 
@@ -1514,18 +1449,16 @@ public class Mat {
      *
      * @param method Matrix inversion method. Possible values are the following:
      * <ul>
-     *   <li> DECOMP_LU is the LU decomposition. The matrix must be non-singular.
-     *   <li> DECOMP_CHOLESKY is the Cholesky <em>LL^T</em> decomposition for
+     * <li> DECOMP_LU is the LU decomposition. The matrix must be non-singular.
+     * <li> DECOMP_CHOLESKY is the Cholesky <em>LL^T</em> decomposition for
      * symmetrical positively defined matrices only. This type is about twice faster
      * than LU on big matrices.
-     *   <li> DECOMP_SVD is the SVD decomposition. If the matrix is singular or even
+     * <li> DECOMP_SVD is the SVD decomposition. If the matrix is singular or even
      * non-square, the pseudo inversion is computed.
      * </ul>
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-inv">org.opencv.core.Mat.inv</a>
      */
-    public Mat inv(int method)
-    {
+    public Mat inv(int method) {
 
         Mat retVal = new Mat(n_inv(nativeObj, method));
 
@@ -1542,8 +1475,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-inv">org.opencv.core.Mat.inv</a>
      */
-    public Mat inv()
-    {
+    public Mat inv() {
 
         Mat retVal = new Mat(n_inv(nativeObj));
 
@@ -1666,8 +1598,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-iscontinuous">org.opencv.core.Mat.isContinuous</a>
      */
-    public boolean isContinuous()
-    {
+    public boolean isContinuous() {
 
         boolean retVal = n_isContinuous(nativeObj);
 
@@ -1678,8 +1609,7 @@ public class Mat {
     // C++: bool Mat::isSubmatrix()
     //
 
-    public boolean isSubmatrix()
-    {
+    public boolean isSubmatrix() {
 
         boolean retVal = n_isSubmatrix(nativeObj);
 
@@ -1705,16 +1635,20 @@ public class Mat {
      * containing <code>*this</code> as a part.
      * @param ofs Output parameter that contains an offset of <code>*this</code>
      * inside the whole matrix.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-locateroi">org.opencv.core.Mat.locateROI</a>
      */
-    public void locateROI(Size wholeSize, Point ofs)
-    {
+    public void locateROI(Size wholeSize, Point ofs) {
         double[] wholeSize_out = new double[2];
         double[] ofs_out = new double[2];
         locateROI_0(nativeObj, wholeSize_out, ofs_out);
-        if(wholeSize!=null){ wholeSize.width = wholeSize_out[0]; wholeSize.height = wholeSize_out[1]; }
-        if(ofs!=null){ ofs.x = ofs_out[0]; ofs.y = ofs_out[1]; }
+        if (wholeSize != null) {
+            wholeSize.width = wholeSize_out[0];
+            wholeSize.height = wholeSize_out[1];
+        }
+        if (ofs != null) {
+            ofs.x = ofs_out[0];
+            ofs.y = ofs_out[1];
+        }
         return;
     }
 
@@ -1737,11 +1671,9 @@ public class Mat {
      * @param m Another array of the same type and the same size as
      * <code>*this</code>, or a matrix expression.
      * @param scale Optional scale factor.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mul">org.opencv.core.Mat.mul</a>
      */
-    public Mat mul(Mat m, double scale)
-    {
+    public Mat mul(Mat m, double scale) {
 
         Mat retVal = new Mat(n_mul(nativeObj, m.nativeObj, scale));
 
@@ -1762,11 +1694,9 @@ public class Mat {
      *
      * @param m Another array of the same type and the same size as
      * <code>*this</code>, or a matrix expression.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-mul">org.opencv.core.Mat.mul</a>
      */
-    public Mat mul(Mat m)
-    {
+    public Mat mul(Mat m) {
 
         Mat retVal = new Mat(n_mul(nativeObj, m.nativeObj));
 
@@ -1796,11 +1726,9 @@ public class Mat {
      * @param rows Number of rows.
      * @param cols Number of columns.
      * @param type Created matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-ones">org.opencv.core.Mat.ones</a>
      */
-    public static Mat ones(int rows, int cols, int type)
-    {
+    public static Mat ones(int rows, int cols, int type) {
 
         Mat retVal = new Mat(n_ones(rows, cols, type));
 
@@ -1830,11 +1758,9 @@ public class Mat {
      * @param size Alternative to the matrix size specification <code>Size(cols,
      * rows)</code>.
      * @param type Created matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-ones">org.opencv.core.Mat.ones</a>
      */
-    public static Mat ones(Size size, int type)
-    {
+    public static Mat ones(Size size, int type) {
 
         Mat retVal = new Mat(n_ones(size.width, size.height, type));
 
@@ -1854,11 +1780,9 @@ public class Mat {
      * must be the same as in the container matrix.</p>
      *
      * @param m Added line(s).
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-push-back">org.opencv.core.Mat.push_back</a>
      */
-    public void push_back(Mat m)
-    {
+    public void push_back(Mat m) {
 
         n_push_back(nativeObj, m.nativeObj);
 
@@ -1887,8 +1811,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-release">org.opencv.core.Mat.release</a>
      */
-    public void release()
-    {
+    public void release() {
 
         n_release(nativeObj);
 
@@ -1907,10 +1830,10 @@ public class Mat {
      * matrix may have a different size and/or different number of channels. Any
      * combination is possible if:</p>
      * <ul>
-     *   <li> No extra elements are included into the new matrix and no elements are
+     * <li> No extra elements are included into the new matrix and no elements are
      * excluded. Consequently, the product <code>rows*cols*channels()</code> must
      * stay the same after the transformation.
-     *   <li> No data is copied. That is, this is an O(1) operation. Consequently,
+     * <li> No data is copied. That is, this is an O(1) operation. Consequently,
      * if you change the number of rows, or the operation changes the indices of
      * elements row in some other way, the matrix must be continuous. See
      * "Mat.isContinuous".
@@ -1937,11 +1860,9 @@ public class Mat {
      * channels remains the same.
      * @param rows New number of rows. If the parameter is 0, the number of rows
      * remains the same.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-reshape">org.opencv.core.Mat.reshape</a>
      */
-    public Mat reshape(int cn, int rows)
-    {
+    public Mat reshape(int cn, int rows) {
 
         Mat retVal = new Mat(n_reshape(nativeObj, cn, rows));
 
@@ -1956,10 +1877,10 @@ public class Mat {
      * matrix may have a different size and/or different number of channels. Any
      * combination is possible if:</p>
      * <ul>
-     *   <li> No extra elements are included into the new matrix and no elements are
+     * <li> No extra elements are included into the new matrix and no elements are
      * excluded. Consequently, the product <code>rows*cols*channels()</code> must
      * stay the same after the transformation.
-     *   <li> No data is copied. That is, this is an O(1) operation. Consequently,
+     * <li> No data is copied. That is, this is an O(1) operation. Consequently,
      * if you change the number of rows, or the operation changes the indices of
      * elements row in some other way, the matrix must be continuous. See
      * "Mat.isContinuous".
@@ -1984,11 +1905,9 @@ public class Mat {
      *
      * @param cn New number of channels. If the parameter is 0, the number of
      * channels remains the same.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-reshape">org.opencv.core.Mat.reshape</a>
      */
-    public Mat reshape(int cn)
-    {
+    public Mat reshape(int cn) {
 
         Mat retVal = new Mat(n_reshape(nativeObj, cn));
 
@@ -2045,11 +1964,9 @@ public class Mat {
      * <p>A.row(j).copyTo(A.row(i));</p>
      *
      * @param y A 0-based row index.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-row">org.opencv.core.Mat.row</a>
      */
-    public Mat row(int y)
-    {
+    public Mat row(int y) {
 
         Mat retVal = new Mat(n_row(nativeObj, y));
 
@@ -2068,11 +1985,9 @@ public class Mat {
      *
      * @param startrow An inclusive 0-based start index of the row span.
      * @param endrow An exclusive 0-based ending index of the row span.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-rowrange">org.opencv.core.Mat.rowRange</a>
      */
-    public Mat rowRange(int startrow, int endrow)
-    {
+    public Mat rowRange(int startrow, int endrow) {
 
         Mat retVal = new Mat(n_rowRange(nativeObj, startrow, endrow));
 
@@ -2090,11 +2005,9 @@ public class Mat {
      * Similarly to "Mat.row" and "Mat.col", this is an O(1) operation.</p>
      *
      * @param r "Range" structure containing both the start and the end indices.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-rowrange">org.opencv.core.Mat.rowRange</a>
      */
-    public Mat rowRange(Range r)
-    {
+    public Mat rowRange(Range r) {
 
         Mat retVal = new Mat(n_rowRange(nativeObj, r.start, r.end));
 
@@ -2105,8 +2018,7 @@ public class Mat {
     // C++: int Mat::rows()
     //
 
-    public int rows()
-    {
+    public int rows() {
 
         int retVal = n_rows(nativeObj);
 
@@ -2117,8 +2029,7 @@ public class Mat {
     // C++: Mat Mat::operator =(Scalar s)
     //
 
-    public Mat setTo(Scalar s)
-    {
+    public Mat setTo(Scalar s) {
 
         Mat retVal = new Mat(n_setTo(nativeObj, s.val[0], s.val[1], s.val[2], s.val[3]));
 
@@ -2136,13 +2047,13 @@ public class Mat {
      * @param mask Operation mask of the same size as <code>*this</code>. This is an
      * advanced variant of the <code>Mat.operator=(const Scalar& s)</code>
      * operator.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-setto">org.opencv.core.Mat.setTo</a>
      */
-    public Mat setTo(Scalar value, Mat mask)
-    {
+    public Mat setTo(Scalar value, Mat mask) {
 
-        Mat retVal = new Mat(n_setTo(nativeObj, value.val[0], value.val[1], value.val[2], value.val[3], mask.nativeObj));
+        Mat retVal = new Mat(
+            n_setTo(nativeObj, value.val[0], value.val[1], value.val[2], value.val[3],
+                mask.nativeObj));
 
         return retVal;
     }
@@ -2158,11 +2069,9 @@ public class Mat {
      * @param mask Operation mask of the same size as <code>*this</code>. This is an
      * advanced variant of the <code>Mat.operator=(const Scalar& s)</code>
      * operator.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-setto">org.opencv.core.Mat.setTo</a>
      */
-    public Mat setTo(Mat value, Mat mask)
-    {
+    public Mat setTo(Mat value, Mat mask) {
 
         Mat retVal = new Mat(n_setTo(nativeObj, value.nativeObj, mask.nativeObj));
 
@@ -2173,11 +2082,9 @@ public class Mat {
      * <p>Sets all or some of the array elements to the specified value.</p>
      *
      * @param value Assigned scalar converted to the actual array type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-setto">org.opencv.core.Mat.setTo</a>
      */
-    public Mat setTo(Mat value)
-    {
+    public Mat setTo(Mat value) {
 
         Mat retVal = new Mat(n_setTo(nativeObj, value.nativeObj));
 
@@ -2196,8 +2103,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-size">org.opencv.core.Mat.size</a>
      */
-    public Size size()
-    {
+    public Size size() {
 
         Size retVal = new Size(n_size(nativeObj));
 
@@ -2215,11 +2121,9 @@ public class Mat {
      * useful to quickly access an arbitrary matrix element.</p>
      *
      * @param i a i
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-step1">org.opencv.core.Mat.step1</a>
      */
-    public long step1(int i)
-    {
+    public long step1(int i) {
 
         long retVal = n_step1(nativeObj, i);
 
@@ -2234,8 +2138,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-step1">org.opencv.core.Mat.step1</a>
      */
-    public long step1()
-    {
+    public long step1() {
 
         long retVal = n_step1(nativeObj);
 
@@ -2261,11 +2164,9 @@ public class Mat {
      * @param rowEnd a rowEnd
      * @param colStart a colStart
      * @param colEnd a colEnd
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-operator">org.opencv.core.Mat.operator()</a>
      */
-    public Mat submat(int rowStart, int rowEnd, int colStart, int colEnd)
-    {
+    public Mat submat(int rowStart, int rowEnd, int colStart, int colEnd) {
 
         Mat retVal = new Mat(n_submat_rr(nativeObj, rowStart, rowEnd, colStart, colEnd));
 
@@ -2290,13 +2191,12 @@ public class Mat {
      * boundary is not included. To select all the rows, use <code>Range.all()</code>.
      * @param colRange Start and end column of the extracted submatrix. The upper
      * boundary is not included. To select all the columns, use <code>Range.all()</code>.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-operator">org.opencv.core.Mat.operator()</a>
      */
-    public Mat submat(Range rowRange, Range colRange)
-    {
+    public Mat submat(Range rowRange, Range colRange) {
 
-        Mat retVal = new Mat(n_submat_rr(nativeObj, rowRange.start, rowRange.end, colRange.start, colRange.end));
+        Mat retVal = new Mat(
+            n_submat_rr(nativeObj, rowRange.start, rowRange.end, colRange.start, colRange.end));
 
         return retVal;
     }
@@ -2316,11 +2216,9 @@ public class Mat {
      * that is, no matrix data is copied.</p>
      *
      * @param roi Extracted submatrix specified as a rectangle.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-operator">org.opencv.core.Mat.operator()</a>
      */
-    public Mat submat(Rect roi)
-    {
+    public Mat submat(Rect roi) {
 
         Mat retVal = new Mat(n_submat(nativeObj, roi.x, roi.y, roi.width, roi.height));
 
@@ -2341,14 +2239,13 @@ public class Mat {
      *
      * <p>// C++ code:</p>
      *
-     * <p>Mat A1 = A + Mat.eye(A.size(), A.type)*lambda;</p>
+     * <p>Mat A1 = A + Mat.eye(A.size(), A.type())*lambda;</p>
      *
      * <p>Mat C = A1.t()*A1; // compute (A + lambda*I)^t * (A + lamda*I)</p>
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-t">org.opencv.core.Mat.t</a>
      */
-    public Mat t()
-    {
+    public Mat t() {
 
         Mat retVal = new Mat(n_t(nativeObj));
 
@@ -2367,8 +2264,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-total">org.opencv.core.Mat.total</a>
      */
-    public long total()
-    {
+    public long total() {
 
         long retVal = n_total(nativeObj);
 
@@ -2388,8 +2284,7 @@ public class Mat {
      *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-type">org.opencv.core.Mat.type</a>
      */
-    public int type()
-    {
+    public int type() {
 
         int retVal = n_type(nativeObj);
 
@@ -2422,11 +2317,9 @@ public class Mat {
      * @param rows Number of rows.
      * @param cols Number of columns.
      * @param type Created matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-zeros">org.opencv.core.Mat.zeros</a>
      */
-    public static Mat zeros(int rows, int cols, int type)
-    {
+    public static Mat zeros(int rows, int cols, int type) {
 
         Mat retVal = new Mat(n_zeros(rows, cols, type));
 
@@ -2459,31 +2352,36 @@ public class Mat {
      * @param size Alternative to the matrix size specification <code>Size(cols,
      * rows)</code>.
      * @param type Created matrix type.
-     *
      * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#mat-zeros">org.opencv.core.Mat.zeros</a>
      */
-    public static Mat zeros(Size size, int type)
-    {
+    public static Mat zeros(Size size, int type) {
 
         Mat retVal = new Mat(n_zeros(size.width, size.height, type));
 
         return retVal;
     }
 
-    @Override
-    protected void finalize() throws Throwable {
+    @Override protected void finalize() throws Throwable {
         n_delete(nativeObj);
         super.finalize();
     }
 
-    @Override
-    public String toString() {
-        return "Mat [ " +
-            rows() + "*" + cols() + "*" + CvType.typeToString(type()) +
-            ", isCont=" + isContinuous() + ", isSubmat=" + isSubmatrix() +
-            ", nativeObj=0x" + Long.toHexString(nativeObj) +
-            ", dataAddr=0x" + Long.toHexString(dataAddr()) +
-            " ]";
+    @Override public String toString() {
+        return "Mat [ "
+            + rows()
+            + "*"
+            + cols()
+            + "*"
+            + CvType.typeToString(type())
+            + ", isCont="
+            + isContinuous()
+            + ", isSubmat="
+            + isSubmatrix()
+            + ", nativeObj=0x"
+            + Long.toHexString(nativeObj)
+            + ", dataAddr=0x"
+            + Long.toHexString(dataAddr())
+            + " ]";
     }
 
     public String dump() {
@@ -2492,139 +2390,149 @@ public class Mat {
 
     public int put(int row, int col, double... data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         return nPutD(nativeObj, row, col, data.length, data);
     }
 
     public int put(int row, int col, float[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_32F) {
             return nPutF(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int put(int row, int col, int[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_32S) {
             return nPutI(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int put(int row, int col, short[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_16U || CvType.depth(t) == CvType.CV_16S) {
             return nPutS(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int put(int row, int col, byte[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_8U || CvType.depth(t) == CvType.CV_8S) {
             return nPutB(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int get(int row, int col, byte[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_8U || CvType.depth(t) == CvType.CV_8S) {
             return nGetB(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int get(int row, int col, short[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_16U || CvType.depth(t) == CvType.CV_16S) {
             return nGetS(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int get(int row, int col, int[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_32S) {
             return nGetI(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int get(int row, int col, float[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_32F) {
             return nGetF(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public int get(int row, int col, double[] data) {
         int t = type();
-        if (data == null || data.length % CvType.channels(t) != 0)
-            throw new UnsupportedOperationException(
-                "Provided data element number (" +
-                    (data == null ? 0 : data.length) +
-                    ") should be multiple of the Mat channels count (" +
-                    CvType.channels(t) + ")");
+        if (data == null || data.length % CvType.channels(t) != 0) {
+            throw new java.lang.UnsupportedOperationException("Provided data element number ("
+                + (data == null ? 0 : data.length)
+                + ") should be multiple of the Mat channels count ("
+                + CvType.channels(t)
+                + ")");
+        }
         if (CvType.depth(t) == CvType.CV_64F) {
             return nGetD(nativeObj, row, col, data.length, data);
         }
-        throw new UnsupportedOperationException("Mat data type is not compatible: " + t);
+        throw new java.lang.UnsupportedOperationException("Mat data type is not compatible: " + t);
     }
 
     public double[] get(int row, int col) {
@@ -2653,18 +2561,22 @@ public class Mat {
     private static native long n_Mat(double size_width, double size_height, int type);
 
     // C++: Mat::Mat(int rows, int cols, int type, Scalar s)
-    private static native long n_Mat(int rows, int cols, int type, double s_val0, double s_val1, double s_val2, double s_val3);
+    private static native long n_Mat(int rows, int cols, int type, double s_val0, double s_val1,
+        double s_val2, double s_val3);
 
     // C++: Mat::Mat(Size size, int type, Scalar s)
-    private static native long n_Mat(double size_width, double size_height, int type, double s_val0, double s_val1, double s_val2, double s_val3);
+    private static native long n_Mat(double size_width, double size_height, int type, double s_val0,
+        double s_val1, double s_val2, double s_val3);
 
     // C++: Mat::Mat(Mat m, Range rowRange, Range colRange = Range::all())
-    private static native long n_Mat(long m_nativeObj, int rowRange_start, int rowRange_end, int colRange_start, int colRange_end);
+    private static native long n_Mat(long m_nativeObj, int rowRange_start, int rowRange_end,
+        int colRange_start, int colRange_end);
 
     private static native long n_Mat(long m_nativeObj, int rowRange_start, int rowRange_end);
 
     // C++: Mat Mat::adjustROI(int dtop, int dbottom, int dleft, int dright)
-    private static native long n_adjustROI(long nativeObj, int dtop, int dbottom, int dleft, int dright);
+    private static native long n_adjustROI(long nativeObj, int dtop, int dbottom, int dleft,
+        int dright);
 
     // C++: void Mat::assignTo(Mat m, int type = -1)
     private static native void n_assignTo(long nativeObj, long m_nativeObj, int type);
@@ -2676,7 +2588,8 @@ public class Mat {
 
     // C++: int Mat::checkVector(int elemChannels, int depth = -1, bool
     // requireContinuous = true)
-    private static native int n_checkVector(long nativeObj, int elemChannels, int depth, boolean requireContinuous);
+    private static native int n_checkVector(long nativeObj, int elemChannels, int depth,
+        boolean requireContinuous);
 
     private static native int n_checkVector(long nativeObj, int elemChannels, int depth);
 
@@ -2699,9 +2612,11 @@ public class Mat {
 
     // C++: void Mat::convertTo(Mat& m, int rtype, double alpha = 1, double beta
     // = 0)
-    private static native void n_convertTo(long nativeObj, long m_nativeObj, int rtype, double alpha, double beta);
+    private static native void n_convertTo(long nativeObj, long m_nativeObj, int rtype,
+        double alpha, double beta);
 
-    private static native void n_convertTo(long nativeObj, long m_nativeObj, int rtype, double alpha);
+    private static native void n_convertTo(long nativeObj, long m_nativeObj, int rtype,
+        double alpha);
 
     private static native void n_convertTo(long nativeObj, long m_nativeObj, int rtype);
 
@@ -2715,7 +2630,8 @@ public class Mat {
     private static native void n_create(long nativeObj, int rows, int cols, int type);
 
     // C++: void Mat::create(Size size, int type)
-    private static native void n_create(long nativeObj, double size_width, double size_height, int type);
+    private static native void n_create(long nativeObj, double size_width, double size_height,
+        int type);
 
     // C++: Mat Mat::cross(Mat m)
     private static native long n_cross(long nativeObj, long m_nativeObj);
@@ -2762,7 +2678,8 @@ public class Mat {
     private static native boolean n_isSubmatrix(long nativeObj);
 
     // C++: void Mat::locateROI(Size wholeSize, Point ofs)
-    private static native void locateROI_0(long nativeObj, double[] wholeSize_out, double[] ofs_out);
+    private static native void locateROI_0(long nativeObj, double[] wholeSize_out,
+        double[] ofs_out);
 
     // C++: Mat Mat::mul(Mat m, double scale = 1)
     private static native long n_mul(long nativeObj, long m_nativeObj, double scale);
@@ -2796,10 +2713,12 @@ public class Mat {
     private static native int n_rows(long nativeObj);
 
     // C++: Mat Mat::operator =(Scalar s)
-    private static native long n_setTo(long nativeObj, double s_val0, double s_val1, double s_val2, double s_val3);
+    private static native long n_setTo(long nativeObj, double s_val0, double s_val1, double s_val2,
+        double s_val3);
 
     // C++: Mat Mat::setTo(Scalar value, Mat mask = Mat())
-    private static native long n_setTo(long nativeObj, double s_val0, double s_val1, double s_val2, double s_val3, long mask_nativeObj);
+    private static native long n_setTo(long nativeObj, double s_val0, double s_val1, double s_val2,
+        double s_val3, long mask_nativeObj);
 
     // C++: Mat Mat::setTo(Mat value, Mat mask = Mat())
     private static native long n_setTo(long nativeObj, long value_nativeObj, long mask_nativeObj);
@@ -2815,10 +2734,12 @@ public class Mat {
     private static native long n_step1(long nativeObj);
 
     // C++: Mat Mat::operator()(Range rowRange, Range colRange)
-    private static native long n_submat_rr(long nativeObj, int rowRange_start, int rowRange_end, int colRange_start, int colRange_end);
+    private static native long n_submat_rr(long nativeObj, int rowRange_start, int rowRange_end,
+        int colRange_start, int colRange_end);
 
     // C++: Mat Mat::operator()(Rect roi)
-    private static native long n_submat(long nativeObj, int roi_x, int roi_y, int roi_width, int roi_height);
+    private static native long n_submat(long nativeObj, int roi_x, int roi_y, int roi_width,
+        int roi_height);
 
     // C++: Mat Mat::t()
     private static native long n_t(long nativeObj);

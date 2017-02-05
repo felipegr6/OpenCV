@@ -87,8 +87,8 @@ public class Utils {
      * one; this flag is ignored for 'RGB_565' bitmaps.
      */
     public static void bitmapToMat(Bitmap bmp, Mat mat, boolean unPremultiplyAlpha) {
-        if (bmp == null) throw new IllegalArgumentException("bmp == null");
-        if (mat == null) throw new IllegalArgumentException("mat == null");
+        if (bmp == null) throw new java.lang.IllegalArgumentException("bmp == null");
+        if (mat == null) throw new java.lang.IllegalArgumentException("mat == null");
         nBitmapToMat2(bmp, mat.nativeObj, unPremultiplyAlpha);
     }
 
@@ -121,8 +121,8 @@ public class Utils {
      * 'RGB_565' bitmaps.
      */
     public static void matToBitmap(Mat mat, Bitmap bmp, boolean premultiplyAlpha) {
-        if (mat == null) throw new IllegalArgumentException("mat == null");
-        if (bmp == null) throw new IllegalArgumentException("bmp == null");
+        if (mat == null) throw new java.lang.IllegalArgumentException("mat == null");
+        if (bmp == null) throw new java.lang.IllegalArgumentException("bmp == null");
         nMatToBitmap2(mat.nativeObj, bmp, premultiplyAlpha);
     }
 

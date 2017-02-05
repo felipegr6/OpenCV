@@ -59,6 +59,18 @@ import org.opencv.utils.Converters;
  *
  * <p>virtual void load(const FileStorage& fs) = 0;</p>
  *
+ * <p>// Sets additional information as pairs label - info.</p>
+ *
+ * <p>void setLabelsInfo(const std.map<int, string>& labelsInfo);</p>
+ *
+ * <p>// Gets string information by label</p>
+ *
+ * <p>string getLabelInfo(const int &label);</p>
+ *
+ * <p>// Gets labels by string</p>
+ *
+ * <p>vector<int> getLabelsByString(const string& str);</p>
+ *
  * <p>};</p>
  *
  * @see <a href="http://docs.opencv.org/modules/contrib/doc/facerec_api.html#facerecognizer">org.opencv.contrib.FaceRecognizer
@@ -73,43 +85,6 @@ public class FaceRecognizer extends Algorithm {
     //
     // C++:  void FaceRecognizer::load(string filename)
     //
-
-    // C++:  void FaceRecognizer::load(string filename)
-    private static native void load_0(long nativeObj, String filename);
-
-    //
-    // C++:  void FaceRecognizer::predict(Mat src, int& label, double& confidence)
-    //
-
-    // C++:  void FaceRecognizer::predict(Mat src, int& label, double& confidence)
-    private static native void predict_0(long nativeObj, long src_nativeObj, double[] label_out,
-        double[] confidence_out);
-
-    //
-    // C++:  void FaceRecognizer::save(string filename)
-    //
-
-    // C++:  void FaceRecognizer::save(string filename)
-    private static native void save_0(long nativeObj, String filename);
-
-    //
-    // C++:  void FaceRecognizer::train(vector_Mat src, Mat labels)
-    //
-
-    // C++:  void FaceRecognizer::train(vector_Mat src, Mat labels)
-    private static native void train_0(long nativeObj, long src_mat_nativeObj,
-        long labels_nativeObj);
-
-    //
-    // C++:  void FaceRecognizer::update(vector_Mat src, Mat labels)
-    //
-
-    // C++:  void FaceRecognizer::update(vector_Mat src, Mat labels)
-    private static native void update_0(long nativeObj, long src_mat_nativeObj,
-        long labels_nativeObj);
-
-    // native support for java finalize()
-    private static native void delete(long nativeObj);
 
     /**
      * <p>Loads a "FaceRecognizer" and its model state.</p>
@@ -129,6 +104,10 @@ public class FaceRecognizer extends Algorithm {
 
         return;
     }
+
+    //
+    // C++:  void FaceRecognizer::predict(Mat src, int& label, double& confidence)
+    //
 
     /**
      * <p>Predicts a label and associated confidence (e.g. distance) for a given input
@@ -193,6 +172,10 @@ public class FaceRecognizer extends Algorithm {
         return;
     }
 
+    //
+    // C++:  void FaceRecognizer::save(string filename)
+    //
+
     /**
      * <p>Saves a "FaceRecognizer" and its model state.</p>
      *
@@ -218,6 +201,10 @@ public class FaceRecognizer extends Algorithm {
 
         return;
     }
+
+    //
+    // C++:  void FaceRecognizer::train(vector_Mat src, Mat labels)
+    //
 
     /**
      * <p>Trains a FaceRecognizer with given data and associated labels.</p>
@@ -301,6 +288,10 @@ public class FaceRecognizer extends Algorithm {
 
         return;
     }
+
+    //
+    // C++:  void FaceRecognizer::update(vector_Mat src, Mat labels)
+    //
 
     /**
      * <p>Updates a FaceRecognizer with given data and associated labels.</p>
@@ -388,4 +379,25 @@ public class FaceRecognizer extends Algorithm {
     @Override protected void finalize() throws Throwable {
         delete(nativeObj);
     }
+
+    // C++:  void FaceRecognizer::load(string filename)
+    private static native void load_0(long nativeObj, String filename);
+
+    // C++:  void FaceRecognizer::predict(Mat src, int& label, double& confidence)
+    private static native void predict_0(long nativeObj, long src_nativeObj, double[] label_out,
+        double[] confidence_out);
+
+    // C++:  void FaceRecognizer::save(string filename)
+    private static native void save_0(long nativeObj, String filename);
+
+    // C++:  void FaceRecognizer::train(vector_Mat src, Mat labels)
+    private static native void train_0(long nativeObj, long src_mat_nativeObj,
+        long labels_nativeObj);
+
+    // C++:  void FaceRecognizer::update(vector_Mat src, Mat labels)
+    private static native void update_0(long nativeObj, long src_mat_nativeObj,
+        long labels_nativeObj);
+
+    // native support for java finalize()
+    private static native void delete(long nativeObj);
 }
