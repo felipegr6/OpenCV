@@ -6,7 +6,7 @@ ext {
 
   publishedGroupId = 'org.opencv'
   libraryName = 'OpenCV Android'
-  artifact = 'opencv-android'
+  artifact = 'opencv2-android'
 
   libraryDescription = 'The OpenCV library for Android as Gradle project.'
 
@@ -19,9 +19,9 @@ ext {
   developerName = 'Felipe Rocha'
   developerEmail = 'felipegr6@gmail.com'
 
-  licenseName = 'The Apache Software License, Version 2.0'
-  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-  allLicenses = ["Apache-2.0"]
+  licenseName = 'The 3-Clause BSD License'
+  licenseUrl = 'https://opensource.org/licenses/BSD-3-Clause'
+  allLicenses = ["BSD 3-Clause"]
 }
 
 android {
