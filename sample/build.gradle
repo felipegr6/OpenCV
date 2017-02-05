@@ -16,7 +16,11 @@ android {
   }
   dependencies {
     compile project(':opencv-android')
+//    compile 'org.opencv:opencv-android:2.4.8'
     compile "com.github.hotchemi:permissionsdispatcher:$permission"
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:$permission"
+  }
+  lintOptions{
+    abortOnError false
   }
 }

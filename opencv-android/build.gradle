@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 ext {
   bintrayRepo = 'maven'
-  bintrayName = 'WalletListView'
+  bintrayName = 'OpenCVAndroid'
 
   publishedGroupId = 'org.opencv'
   libraryName = 'OpenCV Android'
@@ -44,6 +44,9 @@ android {
     encoding "UTF-8"
     sourceCompatibility JavaVersion.VERSION_1_7
     targetCompatibility JavaVersion.VERSION_1_7
+  }
+  lintOptions {
+    abortOnError false
   }
 }
 
