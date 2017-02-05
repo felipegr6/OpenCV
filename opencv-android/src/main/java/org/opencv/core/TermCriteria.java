@@ -1,57 +1,6 @@
 package org.opencv.core;
 
-/**
- * <p>class CV_EXPORTS TermCriteria <code></p>
- *
- * <p>// C++ code:</p>
- *
- *
- * <p>public:</p>
- *
- * <p>enum</p>
- *
- *
- * <p>COUNT=1, //!< the maximum number of iterations or elements to compute</p>
- *
- * <p>MAX_ITER=COUNT, //!< ditto</p>
- *
- * <p>EPS=2 //!< the desired accuracy or change in parameters at which the
- * iterative algorithm stops</p>
- *
- * <p>};</p>
- *
- * <p>//! default constructor</p>
- *
- * <p>TermCriteria();</p>
- *
- * <p>//! full constructor</p>
- *
- * <p>TermCriteria(int type, int maxCount, double epsilon);</p>
- *
- * <p>//! conversion from CvTermCriteria</p>
- *
- * <p>TermCriteria(const CvTermCriteria& criteria);</p>
- *
- * <p>//! conversion to CvTermCriteria</p>
- *
- * <p>operator CvTermCriteria() const;</p>
- *
- * <p>int type; //!< the type of termination criteria: COUNT, EPS or COUNT + EPS</p>
- *
- * <p>int maxCount; // the maximum number of iterations/elements</p>
- *
- * <p>double epsilon; // the desired accuracy</p>
- *
- * <p>};</p>
- *
- * <p>The class defining termination criteria for iterative algorithms. You can
- * initialize it by default constructor and then override any parameters, or the
- * structure may be fully initialized using the advanced variant of the
- * constructor.
- * </code></p>
- *
- * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#termcriteria">org.opencv.core.TermCriteria</a>
- */
+//javadoc:TermCriteria
 public class TermCriteria {
 
     /**
@@ -63,8 +12,7 @@ public class TermCriteria {
      */
     public static final int MAX_ITER = COUNT;
     /**
-     * The desired accuracy threshold or change in parameters at which the iterative algorithm is
-     * terminated.
+     * The desired accuracy threshold or change in parameters at which the iterative algorithm is terminated.
      */
     public static final int EPS = 2;
 
@@ -75,9 +23,12 @@ public class TermCriteria {
     /**
      * Termination criteria for iterative algorithms.
      *
-     * @param type the type of termination criteria: COUNT, EPS or COUNT + EPS.
-     * @param maxCount the maximum number of iterations/elements.
-     * @param epsilon the desired accuracy.
+     * @param type
+     *            the type of termination criteria: COUNT, EPS or COUNT + EPS.
+     * @param maxCount
+     *            the maximum number of iterations/elements.
+     * @param epsilon
+     *            the desired accuracy.
      */
     public TermCriteria(int type, int maxCount, double epsilon) {
         this.type = type;
@@ -112,7 +63,8 @@ public class TermCriteria {
         return new TermCriteria(type, maxCount, epsilon);
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         final int prime = 31;
         int result = 1;
         long temp;
@@ -125,14 +77,16 @@ public class TermCriteria {
         return result;
     }
 
-    @Override public boolean equals(Object obj) {
+    @Override
+    public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof TermCriteria)) return false;
         TermCriteria it = (TermCriteria) obj;
         return type == it.type && maxCount == it.maxCount && epsilon == it.epsilon;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "{ type: " + type + ", maxCount: " + maxCount + ", epsilon: " + epsilon + "}";
     }
 }

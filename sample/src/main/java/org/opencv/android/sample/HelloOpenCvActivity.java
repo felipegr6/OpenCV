@@ -37,7 +37,7 @@ import permissions.dispatcher.RuntimePermissions;
     }
 
     @NeedsPermission(Manifest.permission.CAMERA) public void initOpenCV() {
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_2_4_11, this, mLoaderCallback);
+        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_2_0, this, mLoaderCallback);
     }
 
     @Override public void onPause() {

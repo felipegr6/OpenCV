@@ -8,7 +8,8 @@ public class CvException extends RuntimeException {
         super(msg);
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "CvException [" + super.toString() + "]";
     }
 }

@@ -1,67 +1,6 @@
 package org.opencv.core;
 
-/**
- * <p>Template class specifying a continuous subsequence (slice) of a sequence.</p>
- *
- * <p>class CV_EXPORTS Range <code></p>
- *
- * <p>// C++ code:</p>
- *
- *
- * <p>public:</p>
- *
- * <p>Range();</p>
- *
- * <p>Range(int _start, int _end);</p>
- *
- * <p>Range(const CvSlice& slice);</p>
- *
- * <p>int size() const;</p>
- *
- * <p>bool empty() const;</p>
- *
- * <p>static Range all();</p>
- *
- * <p>operator CvSlice() const;</p>
- *
- * <p>int start, end;</p>
- *
- * <p>};</p>
- *
- * <p>The class is used to specify a row or a column span in a matrix (</code></p>
- *
- * <p>"Mat") and for many other purposes. <code>Range(a,b)</code> is basically the
- * same as <code>a:b</code> in Matlab or <code>a..b</code> in Python. As in
- * Python, <code>start</code> is an inclusive left boundary of the range and
- * <code>end</code> is an exclusive right boundary of the range. Such a
- * half-opened interval is usually denoted as <em>[start,end)</em>.
- * The static method <code>Range.all()</code> returns a special variable that
- * means "the whole sequence" or "the whole range", just like " <code>:</code> "
- * in Matlab or " <code>...</code> " in Python. All the methods and functions in
- * OpenCV that take <code>Range</code> support this special <code>Range.all()</code>
- * value. But, of course, in case of your own custom processing, you will
- * probably have to check and handle it explicitly: <code></p>
- *
- * <p>// C++ code:</p>
- *
- * <p>void my_function(..., const Range& r,....)</p>
- *
- *
- * <p>if(r == Range.all()) {</p>
- *
- * <p>// process all the data</p>
- *
- *
- * <p>else {</p>
- *
- * <p>// process [r.start, r.end)</p>
- *
- *
- *
- * <p></code></p>
- *
- * @see <a href="http://docs.opencv.org/modules/core/doc/basic_structures.html#range">org.opencv.core.Range</a>
- */
+//javadoc:Range
 public class Range {
 
     public int start, end;
@@ -87,6 +26,7 @@ public class Range {
             start = 0;
             end = 0;
         }
+
     }
 
     public int size() {
@@ -115,7 +55,8 @@ public class Range {
         return new Range(start, end);
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
         final int prime = 31;
         int result = 1;
         long temp;
@@ -126,14 +67,16 @@ public class Range {
         return result;
     }
 
-    @Override public boolean equals(Object obj) {
+    @Override
+    public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Range)) return false;
         Range it = (Range) obj;
         return start == it.start && end == it.end;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return "[" + start + ", " + end + ")";
     }
 }

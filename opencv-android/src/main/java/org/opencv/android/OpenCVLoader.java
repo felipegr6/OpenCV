@@ -5,7 +5,8 @@ import android.content.Context;
 /**
  * Helper class provides common initialization methods for OpenCV library.
  */
-public class OpenCVLoader {
+public class OpenCVLoader
+{
     /**
      * OpenCV Library version 2.4.2.
      */
@@ -57,37 +58,59 @@ public class OpenCVLoader {
     public static final String OPENCV_VERSION_2_4_11 = "2.4.11";
 
     /**
-     * Loads and initializes OpenCV library from current application package. Roughly, it's an
-     * analog of system.loadLibrary("opencv_java").
-     *
+     * OpenCV Library version 2.4.12.
+     */
+    public static final String OPENCV_VERSION_2_4_12 = "2.4.12";
+
+    /**
+     * OpenCV Library version 2.4.13.
+     */
+    public static final String OPENCV_VERSION_2_4_13 = "2.4.13";
+
+    /**
+     * OpenCV Library version 3.0.0.
+     */
+    public static final String OPENCV_VERSION_3_0_0 = "3.0.0";
+
+    /**
+     * OpenCV Library version 3.1.0.
+     */
+    public static final String OPENCV_VERSION_3_1_0 = "3.1.0";
+
+    /**
+     * OpenCV Library version 3.2.0.
+     */
+    public static final String OPENCV_VERSION_3_2_0 = "3.2.0";
+
+    /**
+     * Loads and initializes OpenCV library from current application package. Roughly, it's an analog of system.loadLibrary("opencv_java").
      * @return Returns true is initialization of OpenCV was successful.
      */
-    public static boolean initDebug() {
+    public static boolean initDebug()
+    {
         return StaticHelper.initOpenCV(false);
     }
 
     /**
-     * Loads and initializes OpenCV library from current application package. Roughly, it's an
-     * analog of system.loadLibrary("opencv_java").
-     *
+     * Loads and initializes OpenCV library from current application package. Roughly, it's an analog of system.loadLibrary("opencv_java").
      * @param InitCuda load and initialize CUDA runtime libraries.
      * @return Returns true is initialization of OpenCV was successful.
      */
-    public static boolean initDebug(boolean InitCuda) {
+    public static boolean initDebug(boolean InitCuda)
+    {
         return StaticHelper.initOpenCV(InitCuda);
     }
 
     /**
      * Loads and initializes OpenCV library using OpenCV Engine service.
-     *
      * @param Version OpenCV library version.
      * @param AppContext application context for connecting to the service.
-     * @param Callback object, that implements LoaderCallbackInterface for handling the connection
-     * status.
+     * @param Callback object, that implements LoaderCallbackInterface for handling the connection status.
      * @return Returns true if initialization of OpenCV is successful.
      */
     public static boolean initAsync(String Version, Context AppContext,
-        LoaderCallbackInterface Callback) {
+            LoaderCallbackInterface Callback)
+    {
         return AsyncServiceHelper.initOpenCV(Version, AppContext, Callback);
     }
 }

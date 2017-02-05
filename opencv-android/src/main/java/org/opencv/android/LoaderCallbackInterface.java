@@ -3,7 +3,8 @@ package org.opencv.android;
 /**
  * Interface for callback object in case of asynchronous initialization of OpenCV.
  */
-public interface LoaderCallbackInterface {
+public interface LoaderCallbackInterface
+{
     /**
      * OpenCV initialization finished successfully.
      */
@@ -17,8 +18,7 @@ public interface LoaderCallbackInterface {
      */
     static final int INSTALL_CANCELED = 3;
     /**
-     * This version of OpenCV Manager Service is incompatible with the app. Possibly, a service
-     * update is required.
+     * This version of OpenCV Manager Service is incompatible with the app. Possibly, a service update is required.
      */
     static final int INCOMPATIBLE_MANAGER_VERSION = 4;
     /**
@@ -28,14 +28,12 @@ public interface LoaderCallbackInterface {
 
     /**
      * Callback method, called after OpenCV library initialization.
-     *
      * @param status status of initialization (see initialization status constants).
      */
     public void onManagerConnected(int status);
 
     /**
      * Callback method, called in case the package installation is needed.
-     *
      * @param callback answer object with approve and cancel methods and the package description.
      */
     public void onPackageInstall(final int operation, InstallCallbackInterface callback);
